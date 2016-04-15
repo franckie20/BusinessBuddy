@@ -1,0 +1,38 @@
+header.navbar-empty {
+    height: 58px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+header.navbar-empty .center-logo {
+    margin: 11px 0;
+    text-align: center;
+}
+header.navbar-empty .center-logo #bb-logo, header.navbar-empty .center-logo img {
+    width: 36px;
+    height: 36px;
+}
+.login-page .brand-holder h1:first-child {
+    font-weight: normal;
+    margin-bottom: 30px;
+    margin-top: 0;
+}
+.login-page .brand-holder {
+    font-size: 18px;
+    line-height: 1.5;
+}
+.login-page .flash-container {
+    margin-bottom: 16px;
+}
+.login-page .container {
+    max-width: 960px;
+}
+.navless-container {
+    margin-top: 58px;
+    padding-top: 32px;
+}
+.footer-links {
+    margin-bottom: 20px;
+}
+.footer-links a {
+    margin-right: 15px;
+}

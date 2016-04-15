@@ -1,0 +1,84 @@
+<hmenu></hmenu> <!-- user information always in $scope -->
+
+<div class="page-with-sidebar page-sidebar-expanded">
+
+<div class="nicescroll sidebar-expanded sidebar-wrapper" tabindex="1" style="overflow: hidden; outline: none;">
+  <div class="header-logo">
+    <a id="logo">
+      <img src="/images/logo.png"/>
+    </a>
+    <a class="businessbuddy-text-container-link" title="Dashboard" id="js-shortcuts-home" href="/"><div class="businessbuddy-text-container">
+    <h3>BusinessBuddy</h3>
+    </div>
+    </a>
+  </div>
+  <ul class="nav nav-sidebar">
+    <li class="">
+      <a title="" class="back-link" href="/" data-original-title="Go to dashboard">
+        <i class="fa fa-bookmark fa-fw"></i>
+        <span>Categories</span>
+      </a>
+    </li>
+    <li class="separate-item"></li>
+    <li class="">
+      <a title="" class="back-link" href="/profile" data-original-title="Go to dashboard">
+        <i class="fa fa-user fa-fw"></i>
+        <span>Profile Settings</span>
+      </a>
+    </li>
+  </ul>
+
+<div class="collapse-nav">
+<a class="toggle-nav-collapse" title="Open/Close" href="#"><i class="fa fa-angle-left"></i></a>
+
+</div>
+
+  <a class="sidebar-user" title="" href="/u/franckie20" data-original-title="Profile">
+    <img alt="Profile" class="avatar avatar s36" src="https://secure.gravatar.com/avatar/cdffb550ab83f6eb6658ca6fe2c664ed?s=120&amp;d=identicon">
+    <div class="username">{{ businessbuddy.currentUser.username }}</div>
+  </a>
+</div>
+<div class="content-wrapper">
+<div class="flash-container"></div>
+  <div class="container-fluid container-limited">
+    <div class="content">
+      <div class="clearfix">
+          <h4 class="prepend-top-default">Welcome to BusinessBuddy!</h4>
+          <p>Plan, focus, succeed</p>
+          <hr>
+        <div>
+          <div class="dashboard-intro-icon">
+            <i class="fa fa-bookmark-o"></i>
+          </div>
+            <div class="dashboard-intro-text">
+              <p class="slead">You don't have access to any categories right now.
+                <br>You can create up to <strong>10 categories.</strong>
+              </p>
+              <div class="link_holder">
+                <a class="btn btn-new" href="/category/new">
+                  <i class="fa fa-plus"></i>New category
+                </a>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div>
+            <div class="dashboard-intro-icon">
+              <i class="fa fa-users"></i>
+            </div>
+              <div class="dashboard-intro-text">
+                <p class="slead">You can create a group for several dependent categories.
+                  <br>Groups are the best way to manage categories and members.
+                </p>
+                <div class="link_holder">
+                  <a class="btn btn-new" href="/group/new">
+                    <i class="fa fa-plus"></i>New group
+                  </a>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

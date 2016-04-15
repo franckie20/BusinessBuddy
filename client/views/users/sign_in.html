@@ -1,0 +1,70 @@
+<header class="navbar navbar-fixed-top navbar-empty">
+  <div class="container">
+    <div class="center-logo">
+      <img src="/images/logo.png"/>
+    </div>
+  </div>
+</header>
+<div class="container navless-container">
+  <div class="content">
+    <div class="flash-container">
+      <div class="flash-alert" ng-show="dashboard.error" ng-click="dashboard.error = null">{{ dashboard.error }}</div>
+      <div class="flash-alert" ng-show="register.error.message" ng-click="register.error = null">{{ register.error.message }}</div>
+        <div class="flash-alert" ng-show="login.error.message" ng-click="login.error = null">{{ login.error.message }}</div>
+          <div class="flash-success" ng-show="register.success" ng-click="register.success = null">{{ register.success }}</div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-5 pull-right">
+      <div>
+        <div class="login-box">
+          <div class="login-heading">
+            <h3>Existing user? Sign in</h3>
+          </div>
+          <div class="login-body">
+            <form class="loginForm" accept-charset="UTF-8">
+              <input class="form-control top" placeholder="Username or Email" autofocus="autofocus" autocapitalize="off" autocorrect="off" type="text" aria-label="username" ng-model="login.credentials.username">
+              <input class="form-control bottom" placeholder="Password" type="password" aria-label="password" ng-model="login.credentials.password">
+              <div class="remember-me checkbox">
+                <label for="user_remember_me">
+                  <input name="user[remember_me]" type="hidden" value="0">
+                  <input type="checkbox" value="1" name="user[remember_me]" id="user_remember_me">
+                  <span>Remember me</span>
+                </label>
+                <div class="pull-right">
+                  <a href="/users/password/new">Forgot your password?</a>
+                </div>
+              </div>
+              <div>
+              <input type="submit" ng-click="login.login()" aria-label="login" ng-disabled="login.loginForm.$invalid()" value="Sign in" class="btn btn-save">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <register></register>
+    </div>
+
+      <div class="col-sm-7 brand-holder pull-left">
+        <h1>BusinessBuddy</h1>
+
+        <p><strong>BusinessBuddy offers free unlimited use and persistent cloud hosting, please sign up or in on the right.</strong></p>
+
+        <ul>
+        <li>
+        <a href="/explore/projects/trending">Explore possibilities BusinessBuddy</a> (no login needed)</li>
+        <li><a href="/about" rel="nofollow">More information about BusinessBuddy</a></li>
+        <li><a href="/support-forum">BusinessBuddy Support Forum</a></li>
+        </ul>
+
+        <p>By signing up for and by signing in to this service you accept our:</p>
+
+        <ul>
+        <li><a href="/privacy/">Privacy policy</a></li>
+        <li>
+        <a href="/terms">BusinessBuddy Terms</a>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

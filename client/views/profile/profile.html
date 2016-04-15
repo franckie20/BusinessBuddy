@@ -1,0 +1,132 @@
+<hmenu></hmenu> <!-- isLoggedIn -->
+<div class="page-with-sidebar page-sidebar-expanded">
+
+<div class="nicescroll sidebar-expanded sidebar-wrapper" tabindex="1" style="overflow: hidden; outline: none;">
+  <div class="header-logo">
+    <a id="logo">
+      <img src="/images/logo.png"/>
+    </a>
+    <a class="businessbuddy-text-container-link" title="Dashboard" id="js-shortcuts-home" href="/"><div class="businessbuddy-text-container">
+    <h3>BusinessBuddy</h3>
+    </div>
+    </a>
+  </div>
+  <ul class="nav nav-sidebar">
+    <li class="">
+      <a title="" class="back-link" href="/dashboard" data-original-title="Go to dashboard">
+        <i class="fa fa-caret-square-o-left fa-fw"></i>
+        <span>Go to dashboard</span>
+      </a>
+    </li>
+    <li class="separate-item"></li>
+    <li class="home active">
+      <a title="" href="/profile" data-original-title="Profile Settings">
+        <i class="fa fa-user fa-fw"></i>
+        <span>Profile Settings</span>
+      </a>
+    </li>
+    <li class="">
+      <a title="" href="/profile/account" data-original-title="Account">
+        <i class="fa fa-gear fa-fw"></i>
+        <del><span>Account</span></del>
+      </a>
+    </li>
+    <li class="">
+      <a title="" href="/profile/password" data-original-title="Password">
+        <i class="fa fa-lock fa-fw"></i>
+        <span>Password</span>
+      </a>
+    </li>
+  </ul>
+
+<div class="collapse-nav">
+<a class="toggle-nav-collapse" title="Open/Close" href="#"><i class="fa fa-angle-left"></i></a>
+
+</div>
+
+  <a class="sidebar-user" title="" href="/u/franckie20" data-original-title="Profile">
+    <img alt="Profile" class="avatar avatar s36" src="https://secure.gravatar.com/avatar/cdffb550ab83f6eb6658ca6fe2c664ed?s=120&amp;d=identicon">
+    <div class="username">{{ businessbuddy.currentUser.username }}</div>
+  </a>
+</div>
+<div class="content-wrapper">
+<div class="flash-container"></div>
+
+<div class="container-fluid container-limited">
+  <div class="content">
+    <div class="clearfix">
+      <form class="edit-user prepend-top-default" id="edit_user_473471" enctype="multipart/form-data" action="/profile" accept-charset="UTF-8" method="post">
+        <div class="row">
+          <div class="col-lg-3 profile-settings-sidebar">
+            <h4 class="prepend-top-0">Public Avatar</h4>
+            <p>You can upload an avatar here or change it at <a href="http://gravatar.com">gravatar.com</a></p>
+          </div>
+            <div class="col-lg-9">
+              <div class="clearfix avatar-image append-bottom-default">
+                <img alt="" class="avatar s160" src="https://secure.gravatar.com/avatar/cdffb550ab83f6eb6658ca6fe2c664ed?s=320&amp;d=identicon">
+              </div>
+              <h5 class="prepend-top-0">
+                Upload new avatar
+              </h5>
+              <div class="prepend-top-5 append-bottom-10">
+              <a class="btn js-choose-user-avatar-button">Browse file...</a>
+              <span class="avatar-file-name prepend-left-default js-avatar-filename">No file chosen</span>
+              <input class="js-user-avatar-input hidden" type="file" name="user[avatar]" id="user_avatar">
+              </div>
+                <div class="help-block">The maximum file size allowed is 200KB.</div>
+            </div>
+          </div>
+          <hr>
+            <div class="row">
+              <div class="col-lg-3 profile-settings-sidebar">
+                <h4 class="prepend-top-0">Main settings</h4>
+                <p>This information will appear on your profile.</p>
+              </div>
+              <div class="col-lg-9">
+                <div class="form-group">
+                  <label class="label-light" for="user_name">Name</label>
+                  <input class="form-control" required="required" type="text" value="{{ businessbuddy.currentUser.username }}" name="user[name]" id="user_name">
+                  <span class="help-block">Enter your name, so people you know can recognize you.</span>
+                </div>
+                <div class="form-group">
+                  <label class="label-light" for="user_email">Email</label>
+                  <input class="form-control" required="required" type="text" value="{{ businessbuddy.currentUser.emails[0].address }}" name="user[email]" id="user_email">
+                  <span class="help-block">We also use email for avatar detection if no avatar is uploaded.</span>
+                </div>
+                <div class="form-group">
+                  <label class="label-light" for="user_skype">Skype</label>
+                  <input class="form-control" type="text" value="" name="user[skype]" id="user_skype">
+                </div>
+                <div class="form-group">
+                  <label class="label-light" for="user_linkedin">Linkedin</label>
+                  <input class="form-control" type="text" value="" name="user[linkedin]" id="user_linkedin">
+                </div>
+                <div class="form-group">
+                  <label class="label-light" for="user_twitter">Twitter</label>
+                  <input class="form-control" type="text" value="" name="user[twitter]" id="user_twitter">
+                </div>
+                <div class="form-group">
+                  <label class="label-light" for="user_website_url">Website</label>
+                  <input class="form-control" type="text" value="" name="user[website_url]" id="user_website_url">
+                </div>
+                <div class="form-group">
+                  <label class="label-light" for="user_location">Location</label>
+                  <input class="form-control" type="text" name="user[location]" id="user_location">
+                </div>
+                <div class="form-group">
+                  <label class="label-light" for="user_bio">Bio</label>
+                  <textarea rows="4" class="form-control" maxlength="250" name="user[bio]" id="user_bio"></textarea>
+                  <span class="help-block">Tell us about yourself in fewer than 250 characters.</span>
+                </div>
+                <div class="prepend-top-default append-bottom-default">
+                  <input type="submit" name="commit" value="Update profile settings" class="btn btn-success">
+                  <a class="btn btn-cancel" href="/u/franckie20">Cancel</a>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
