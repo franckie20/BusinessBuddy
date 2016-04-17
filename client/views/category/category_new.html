@@ -1,0 +1,80 @@
+<hmenu></hmenu> <!-- user information always in $scope -->
+
+<div class="page-with-sidebar page-sidebar-expanded">
+
+<div class="nicescroll sidebar-expanded sidebar-wrapper" tabindex="1" style="overflow: hidden; outline: none;">
+  <div class="header-logo">
+    <a id="logo">
+      <img src="/images/logo.png"/>
+    </a>
+    <a class="businessbuddy-text-container-link" title="Dashboard" id="js-shortcuts-home" href="/"><div class="businessbuddy-text-container">
+    <h3>BusinessBuddy</h3>
+    </div>
+    </a>
+  </div>
+  <ul class="nav nav-sidebar">
+    <li class="">
+      <a title="" class="back-link" href="/dashboard" data-original-title="Go to dashboard">
+        <i class="fa fa-caret-square-o-left fa-fw"></i>
+        <span>Go to dashboard</span>
+      </a>
+    </li>
+    <li class="separate-item"></li>
+    <li class="">
+      <a title="" class="back-link" href="/profile" data-original-title="Go to dashboard">
+        <i class="fa fa-user fa-fw"></i>
+        <span>Profile Settings</span>
+      </a>
+    </li>
+  </ul>
+
+<div class="collapse-nav">
+<a class="toggle-nav-collapse" title="Open/Close" href="#"><i class="fa fa-angle-left"></i></a>
+
+</div>
+
+  <a class="sidebar-user" title="" href="/u/franckie20" data-original-title="Profile">
+    <img alt="Profile" class="avatar avatar s36" src="https://secure.gravatar.com/avatar/cdffb550ab83f6eb6658ca6fe2c664ed?s=120&amp;d=identicon">
+    <div class="username">{{ businessbuddy.currentUser.username }}</div>
+  </a>
+</div>
+<div class="content-wrapper">
+  <div class="flash-container"></div>
+    <div class="container-fluid container-limited">
+      <div class="content">
+        <div class="content-wrapper">
+          <div class="clearfix">
+            <div class="row prepend-top-default">
+              <div class="col-lg-3 profile-settings-sidebar">
+                <h4 class="prepend-top-0">Category</h4>
+                <p>After a successful category creation, you will be redirected to the specific category.</p>
+              </div>
+              <div class="col-lg-9">
+              <h5 class="prepend-top-0">Category creation</h5>
+              <form class="categoryCreationForm" accept-charset="UTF-8">
+                <div class="form-group">
+                  <label class="label-light">Category name</label>
+                  <input required="required" class="form-control" aria-label="category_name" type="password" ng-model="password.credentials.oldPassword">
+                </div>
+                  <div class="form-group">
+                    <label class="label-light">Category field</label>
+                    <select class="form-control" id="select" required="required">
+                      <option>IT</option>
+                      <option>Automotive</option>
+                      <option>Electronics</option>
+                      <option>Sales</option>
+                      <option>Management</option>
+                    </select>
+                  </div>
+                  <div class="prepend-top-default append-bottom-default">
+                  <input ng-click="category_new.category_new()" aria-label="category" ng-disabled="category.categoryCreationForm.$invalid()" type="submit" value="Add category" class="btn btn-create append-right-10">
+                </div>
+              </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

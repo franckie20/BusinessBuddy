@@ -22,7 +22,9 @@ angular.module('register').directive('register', function() {
         username: '',
         email: '',
         password: '',
-        name: ''
+        profile: {
+          name: 'Franck V'
+        }
       };
 
       this.error = '';

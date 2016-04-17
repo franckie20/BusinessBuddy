@@ -5,6 +5,7 @@ if (Meteor.isClient) {
     'home',
     'menu',
     'dashboard',
+    'category',
     'profile',
     'password',
     'sign_in',
