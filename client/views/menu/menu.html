@@ -1,51 +1,60 @@
 <header class="navbar navbar-fixed-top navbar-businessbuddy header-expanded">
 <div class="container-fluid">
-  <div class="header-content">
-    <button class="navbar-toggle" type="button">
-      <span class="sr-only">Toggle navigation</span>
-      <i class="fa fa-bars"></i>
-    </button>
-    <div class="navbar-collapse collapse" style="display: none;">
-      <ul class="nav navbar-nav">
-        <li class="hidden-sm hidden-xs">
-        <!--
-          <div class="search">
-            <form class="navbar-form pull-left" action="/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
-            <input type="search" name="search" id="search" placeholder="Search" class="search-input form-control ui-autocomplete-input" spellcheck="false" tabindex="1" autocomplete="off" value="">
-            <input type="hidden" name="group_id" id="group_id">
-            <input type="hidden" name="repository_ref" id="repository_ref">
+    <div class="header-content">
+        <button class="navbar-toggle" type="button">
+          <span class="sr-only">Toggle navigation</span>
+          <i class="fa fa-bars"></i>
+        </button>
+            <div class="navbar-collapse collapse" style="display: none;">
+                <ul class="nav navbar-nav">
+                    <li class="hidden-sm hidden-xs">
+                        <!--
+                  <div class="search">
+                    <form class="navbar-form pull-left" action="/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
+                    <input type="search" name="search" id="search" placeholder="Search" class="search-input form-control ui-autocomplete-input" spellcheck="false" tabindex="1" autocomplete="off" value="">
+                    <input type="hidden" name="group_id" id="group_id">
+                    <input type="hidden" name="repository_ref" id="repository_ref">
 
-            <div class="search-autocomplete-opts hide" data-autocomplete-path="/search/autocomplete"></div>
-            </form>
-          </div>
-        -->
-
-        </li>
-        <li class="visible-sm visible-xs">
-          <a title="Search" data-toggle="tooltip" href="/search">
-            <i class="fa fa-search"></i>
-          </a>
-        </li>
-        <li>
-          <a title="" data-toggle="tooltip" href="/dashboard/todos" data-original-title="Todos">
-            <span class="badge todos-pending-count">0</span>
-          </a>
-        </li>
-        <li>
-          <a title="" data-toggle="tooltip" href="/projects/new" data-original-title="New project">
-            <i class="fa fa-plus fa-fw"></i>
-          </a>
-        </li>
-        <li>
-          <a class="logout" title="" ng-click="businessbuddy.logout()" ng-show="businessbuddy.isLoggedIn" data-toggle="tooltip" rel="nofollow" data-method="delete" href="/users/sign_out" data-original-title="Sign out">
-            <i class="fa fa-sign-out"></i>
-          </a>
-        </li>
-      </ul>
+                    <div class="search-autocomplete-opts hide" data-autocomplete-path="/search/autocomplete"></div>
+                    </form>
+                  </div>
+                -->
+                    </li>
+                    <li class="visible-sm visible-xs">
+                      <a title="Search" data-toggle="tooltip" href="/search">
+                        <i class="fa fa-search"></i>
+                      </a>
+                    </li>
+                    <li>
+                        <a title="" data-toggle="tooltip" href="/dashboard/klanten" data-original-title="Klanten">
+                          <span class="fa fa-users"></span>
+                        </a>
+                    </li>
+                    <li>
+                      <a title="" data-toggle="tooltip" href="/dashboard/werknemers" data-original-title="Werknemers">
+                          <a href="#">Profile <span class="badge"></span></a>
+                      </a>
+                    </li>
+                    <li>
+                        <a title="" data-toggle="tooltip" href="/dashboard/afspraken" data-original-title="Afspraken & Taken">
+                            <span class="fa fa-calendar"></span>
+                        </a>
+                    </li>
+                    <li>
+                      <a title="" data-toggle="tooltip" href="/dashboard/lease" data-original-title="Lease">
+                        <span class="fa fa-car"></span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="logout" title="" ng-click="businessbuddy.logout()" ng-show="businessbuddy.isLoggedIn" data-toggle="tooltip" rel="nofollow" data-method="delete" href="/users/sign_out" data-original-title="Sign out">
+                        <i class="fa fa-sign-out"></i>
+                      </a>
+                    </li>
+                </ul>
+            </div>
+        <h1 class="title" style="display: block;">
+            <a href="/dashboard/"></a>
+        </h1>
     </div>
-    <h1 class="title" style="display: block;">
-      <a href="/dashboard/"></a>
-    </h1>
-  </div>
 </div>
 </header>

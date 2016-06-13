@@ -9,8 +9,12 @@ if (Meteor.isClient) {
     'profile',
     'password',
     'sign_in',
-    'register'
-  ])
+    'register',
+    'klanten',
+    'werknemers',
+    'afspraken',
+    'lease'
+  ]);
 
   angular.module('businessbuddy').config(function ($urlRouterProvider, $stateProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
