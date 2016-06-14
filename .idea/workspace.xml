@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="998bcf21-fdcf-4d9f-aa46-5f5c8eb4776f" name="Default" comment="" />
+    <list default="true" id="998bcf21-fdcf-4d9f-aa46-5f5c8eb4776f" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="BusinessBuddy.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -422,15 +424,15 @@
       <workItem from="1465812863836" duration="6848000" />
       <workItem from="1465838658750" duration="773000" />
       <workItem from="1465899146806" duration="882000" />
-      <workItem from="1465900057540" duration="6819000" />
+      <workItem from="1465900057540" duration="6905000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15322000" />
+    <option name="totallyTimeSpent" value="15408000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1932" height="1048" extended-state="0" />
+    <frame x="-9" y="-9" width="1932" height="1048" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15256009" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
