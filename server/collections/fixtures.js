@@ -1,5 +1,5 @@
 werknemersCollection = new Mongo.Collection('werknemers');
-Parties = new Mongo.Collection('parties');
+const Parties = new Mongo.Collection('parties');
 
 
 console.log('hij is running');
@@ -44,6 +44,6 @@ Meteor.startup(() => {
 
     parties.forEach((party) => {
         Parties.insert(party)
-});
+    });
 }
 });
