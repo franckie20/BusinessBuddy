@@ -35,8 +35,12 @@ if (Meteor.isClient) {
           },
           currentUser: () => {
             return Meteor.user();
+          },
+          parties () {
+            //return Parties.find({});
           }
         });
+
         this.logout = () => {
           Accounts.logout();
         };
