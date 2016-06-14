@@ -10,6 +10,7 @@ if (Meteor.isClient) {
     'sign_in',
     'register',
     'klanten',
+    'klantenoverzicht',
     'werknemers',
     'afspraken',
     'lease'
