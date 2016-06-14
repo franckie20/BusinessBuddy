@@ -12,6 +12,7 @@ if (Meteor.isClient) {
     'klanten',
     'klantenoverzicht',
     'werknemers',
+    'werknemersoverzicht',
     'afspraken',
     'lease'
   ]);
