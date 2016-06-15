@@ -1,0 +1,1 @@
+Lease = new Mongo.Collection('lease');

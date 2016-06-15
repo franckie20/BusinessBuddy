@@ -53,4 +53,30 @@ Meteor.startup(() => {
             Klanten.insert(klant)
         });
     }
+
+    if (Lease.find().count() === 0) {
+        const leasefixtures = [{
+            'name': 'Jos Verstappen',
+            'company': 'BlueRent',
+            'start': '08-04-16',
+            'end': '08-08-16',
+            'comments': 'none'
+        }, {
+            'name': 'Max Verstappen',
+            'company': 'WhiteRent',
+            'start': '08-04-16',
+            'end': '08-08-16',
+            'comments': 'none'
+        }, {
+            'name': 'Kimi Raikonen',
+            'company': 'RedRent',
+            'start': '08-04-16',
+            'end': '08-08-16',
+            'comments': 'none'
+        }];
+
+        leasefixtures.forEach((lease) => {
+            Lease.insert(lease)
+    });
+    }
 });

@@ -12,34 +12,39 @@
                     </div>
                     <div class="col-lg-9">
                         <form class="updateProfile" accept-charset="UTF-8">
+
                             <div class="form-group">
                                 <label class="label-light" for="user_name">Name of driver</label>
-                                <input class="form-control" required="required" type="text" value="" name="user[name]" id="user_name">
+                                <input class="form-control" required="required" type="text" value="" ng-model="lease.drivername" aria-label="drivername">
                                 <span class="help-block"></span>
                             </div>
+
                             <div class="form-group">
                                 <label class="label-light" for="user_name">Lease company </label>
-                                <input class="form-control" required="required" type="text" value="" name="user[name]" id="user_name">
+                                <input class="form-control" required="required" type="text" value="" ng-model="lease.company" aria-label="company">
                                 <span class="help-block"></span>
                             </div>
+
                             <div class="form-group">
                                 <label class="label-light" for="user_name">Start of contract</label>
-                                <input class="form-control" required="required" type="text" value="" name="user[name]" id="user_name">
+                                <input class="form-control" required="required" type="text" value="" ng-model="lease.start" aria-label="start">
                                 <span class="help-block"></span>
                             </div>
+
                             <div class="form-group">
                                 <label class="label-light" for="user_name">End of contract</label>
-                                <input class="form-control" required="required" type="text" value="" name="user[name]" id="user_name">
+                                <input class="form-control" required="required" type="text" value="" ng-model="lease.end" aria-label="end">
                                 <span class="help-block"></span>
                             </div>
+
                             <div class="form-group">
                                 <label class="label-light" for="user_bio">Comments</label>
-                                <textarea rows="4" class="form-control" maxlength="250" name="user[bio]" id="user_bio"></textarea>
+                                <textarea rows="4" class="form-control" maxlength="250" ng-model="lease.comments" aria-label="comments"></textarea>
                                 <span class="help-block"></span>
                             </div>
 
                             <div class="prepend-top-default append-bottom-default">
-                                <input ng-click="profile.profile()" aria-label="profile" ng-disabled="profile.updateProfile.$invalid()" type="submit" value="New lease contract" class="btn-create btn">
+                                <input ng-click="lease.creating()" aria-label="create" ng-disabled="lease.create.$invalid()" type="submit" value="New lease contract" class="btn-create btn">
                                 <a class="btn btn-cancel" href="/u/franckie20">Cancel</a>
                             </div>
                         </form>
