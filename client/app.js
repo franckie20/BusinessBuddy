@@ -39,6 +39,9 @@ if (Meteor.isClient) {
           },
           werknemers() {
             return Werknemers.find({});
+          },
+          klanten() {
+            return Klanten.find({});
           }
         });
 
