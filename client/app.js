@@ -44,6 +44,9 @@ if (Meteor.isClient) {
           },
           klanten() {
             return Klanten.find({});
+          },
+          leasecontracts() {
+            return Lease.find({});
           }
         });
 
