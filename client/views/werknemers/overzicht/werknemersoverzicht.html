@@ -4,26 +4,35 @@
         <div class="flash-container"></div>
         <div class="container-fluid container-limited">
             <div class="content">
-                <table class="table table-striped">
-                    <thead>
-
-
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Telephone</th>
-                        <th>Company</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr ng-repeat="werknemer in businessbuddy.werknemers">
-                        <td>{{werknemer.name}}</td>
-                        <td>{{werknemer.email}}</td>
-                        <td>{{werknemer.telephone}}</td>
-                        <td>{{werknemer.company}}</td>
-                    </tr>
-                    </tbody>
-                </table>
+                <div ng-controller="WerknemersOverzichtController">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Telephone</th>
+                            <th>Company</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="werknemer in businessbuddy.werknemers">
+                            <td>{{werknemer.name}}</td>
+                            <td>{{werknemer.email}}</td>
+                            <td>{{werknemer.telephone}}</td>
+                            <td>{{werknemer.company}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <ul>
+                        <li ng-repeat="todo in filteredTodos">{{todo.text}}</li>
+                    </ul>
+                    <pagination
+                            ng-model="currentPage"
+                            total-items="todos.length"
+                            max-size="maxSize"
+                            boundary-links="true">
+                    </pagination>
+                </div>
             </div>
         </div>
     </div>
