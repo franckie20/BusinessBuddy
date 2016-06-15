@@ -14,7 +14,8 @@ if (Meteor.isClient) {
     'werknemers',
     'werknemersoverzicht',
     'afspraken',
-    'lease'
+    'lease',
+    'leaseoverzicht'
   ]);
 
   angular.module('businessbuddy').config(function ($urlRouterProvider, $stateProvider, $locationProvider) {
