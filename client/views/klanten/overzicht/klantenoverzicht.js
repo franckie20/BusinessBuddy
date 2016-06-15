@@ -7,7 +7,24 @@ angular.module('klantenoverzicht', [
 angular.module('klantenoverzicht').config(function ($urlRouterProvider, $stateProvider, $locationProvider) {
     $stateProvider.state('klantenoverzicht', {
         url: '/dashboard/klanten/overzicht',
-        templateUrl: 'client/views/klanten/overzicht/klantenoverzicht.html'
+        templateUrl: 'client/views/klanten/overzicht/klantenoverzicht.html',
+        resolve: {
+            currentUser: ($q) => {
+                var deferred = $q.defer();
+
+                Meteor.autorun(function () {
+                    if (!Meteor.loggingIn()) {
+                        if (Meteor.user() == null) {
+                            deferred.reject('AUTH_REQUIRED');
+                            window.location.href = '/users/sign_in';
+                        } else {
+                            deferred.resolve(Meteor.user());
+                        }
+                    }
+                });
+                return deferred.promise;
+            }
+        }
     });
 });
 

@@ -7,7 +7,24 @@ angular.module('lease', [
 angular.module('lease').config(function ($urlRouterProvider, $stateProvider, $locationProvider) {
     $stateProvider.state('lease', {
         url: '/dashboard/lease',
-        template: '<lease></lease>'
+        template: '<lease></lease>',
+        resolve: {
+            currentUser: ($q) => {
+                var deferred = $q.defer();
+
+                Meteor.autorun(function () {
+                    if (!Meteor.loggingIn()) {
+                        if (Meteor.user() == null) {
+                            deferred.reject('AUTH_REQUIRED');
+                            window.location.href = '/users/sign_in';
+                        } else {
+                            deferred.resolve(Meteor.user());
+                        }
+                    }
+                });
+                return deferred.promise;
+            }
+        }
     });
 });
 

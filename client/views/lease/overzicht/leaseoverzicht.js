@@ -7,7 +7,24 @@ angular.module('leaseoverzicht', [
 angular.module('leaseoverzicht').config(function ($urlRouterProvider, $stateProvider, $locationProvider) {
     $stateProvider.state('leaseoverzicht', {
         url: '/dashboard/lease/overzicht',
-        templateUrl: 'client/views/lease/overzicht/leaseoverzicht.html'
+        templateUrl: 'client/views/lease/overzicht/leaseoverzicht.html',
+        resolve: {
+            currentUser: ($q) => {
+                var deferred = $q.defer();
+
+                Meteor.autorun(function () {
+                    if (!Meteor.loggingIn()) {
+                        if (Meteor.user() == null) {
+                            deferred.reject('AUTH_REQUIRED');
+                            window.location.href = '/users/sign_in';
+                        } else {
+                            deferred.resolve(Meteor.user());
+                        }
+                    }
+                });
+                return deferred.promise;
+            }
+        }
     });
 });
 

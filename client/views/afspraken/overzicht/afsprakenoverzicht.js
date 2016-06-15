@@ -7,7 +7,24 @@ angular.module('afsprakenoverzicht', [
 angular.module('afsprakenoverzicht').config(function ($urlRouterProvider, $stateProvider, $locationProvider) {
     $stateProvider.state('afsprakenoverzicht', {
         url: '/dashboard/afspraken/overzicht',
-        templateUrl: 'client/views/afspraken/overzicht/afsprakenoverzicht.html'
+        templateUrl: 'client/views/afspraken/overzicht/afsprakenoverzicht.html',
+        resolve: {
+            currentUser: ($q) => {
+                var deferred = $q.defer();
+
+                Meteor.autorun(function () {
+                    if (!Meteor.loggingIn()) {
+                        if (Meteor.user() == null) {
+                            deferred.reject('AUTH_REQUIRED');
+                            window.location.href = '/users/sign_in';
+                        } else {
+                            deferred.resolve(Meteor.user());
+                        }
+                    }
+                });
+                return deferred.promise;
+            }
+        }
     });
 });
 
@@ -30,4 +47,6 @@ angular.module('afsprakenoverzicht').controller('AfsprakenOverzichtMenuCtrl', fu
 
 angular.module('afsprakenoverzicht').controller('kalender', function ($scope) {
     scheduler.init("scheduler_here", new Date());
+    //Init dhtmlxScheduler data adapter.
+    scheduler.meteor(TasksCollection);
 });

@@ -53,8 +53,6 @@ if (Meteor.isClient) {
         this.logout = () => {
           Accounts.logout();
         };
-
-
       }
     }
   });

@@ -23,3 +23,5 @@ dotansimha:accounts-ui-angular
 angular-templates
 angularui:angular-ui-bootstrap
 dhtmlx:scheduler
+dhtmlx:scheduler-data
+rajit:bootstrap3-datepicker

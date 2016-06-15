@@ -7,7 +7,24 @@ angular.module('afspraken', [
 angular.module('afspraken').config(function ($urlRouterProvider, $stateProvider, $locationProvider) {
     $stateProvider.state('afspraken', {
         url: '/dashboard/afspraken',
-        templateUrl: 'client/views/afspraken/afspraken.html'
+        templateUrl: 'client/views/afspraken/afspraken.html',
+        resolve: {
+            currentUser: ($q) => {
+                var deferred = $q.defer();
+
+                Meteor.autorun(function () {
+                    if (!Meteor.loggingIn()) {
+                        if (Meteor.user() == null) {
+                            deferred.reject('AUTH_REQUIRED');
+                            window.location.href = '/users/sign_in';
+                        } else {
+                            deferred.resolve(Meteor.user());
+                        }
+                    }
+                });
+                return deferred.promise;
+            }
+        }
     });
 });
 
