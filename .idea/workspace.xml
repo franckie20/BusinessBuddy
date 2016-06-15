@@ -26,7 +26,17 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="176">
               <caret line="8" column="57" selection-start-line="8" selection-start-column="57" selection-end-line="8" selection-end-column="57" />
-              <folding />
+              <folding>
+                <marker date="1466001154981" expanded="true" signature="52:3474" ph="..." />
+                <marker date="1466001154981" expanded="true" signature="160:3467" ph="..." />
+                <marker date="1466001154981" expanded="true" signature="503:3456" ph="..." />
+                <marker date="1466001154981" expanded="true" signature="537:3441" ph="..." />
+                <marker date="1466001154981" expanded="true" signature="571:3422" ph="..." />
+                <marker date="1466001154981" expanded="true" signature="847:3399" ph="..." />
+                <marker date="1466001154981" expanded="true" signature="923:3372" ph="..." />
+                <marker date="1466001154981" expanded="true" signature="977:1328" ph="..." />
+                <marker date="1466001154981" expanded="true" signature="1382:1733" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -41,51 +51,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lease.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="lease.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/views/lease/lease.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
+            <state relative-caret-position="1017">
               <caret line="50" column="140" selection-start-line="50" selection-start-column="140" selection-end-line="50" selection-end-column="140" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="register.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/views/users/register.js">
+      <file leaf-file-name="afsprakenoverzicht.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/views/afspraken/overzicht/afsprakenoverzicht.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="445">
-              <caret line="33" column="51" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="51" />
-              <folding />
+            <state relative-caret-position="154">
+              <caret line="7" column="46" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#4;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#5;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#6;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#7;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sign_in.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/views/users/sign_in.html">
+      <file leaf-file-name="afsprakenoverzicht.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/views/afspraken/overzicht/afsprakenoverzicht.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
-              <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="14" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="616">
-              <caret line="28" column="12" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="lease.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/collections/lease.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+            <state relative-caret-position="682">
+              <caret line="31" column="49" selection-start-line="31" selection-start-column="49" selection-end-line="31" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -130,16 +126,16 @@
         <option value="$PROJECT_DIR$/client/views/klanten/klanten.js" />
         <option value="$PROJECT_DIR$/client/views/klanten/overzicht/klantenoverzicht.js" />
         <option value="$PROJECT_DIR$/client/views/lease/overzicht/leaseoverzicht.html" />
-        <option value="$PROJECT_DIR$/client/views/afspraken/overzicht/afsprakenoverzicht.html" />
         <option value="$PROJECT_DIR$/client/views/werknemers/werknemers.js" />
         <option value="$PROJECT_DIR$/client/views/werknemers/werknemers.html" />
         <option value="$PROJECT_DIR$/client/views/werknemers/overzicht/werknemersoverzicht.html" />
         <option value="$PROJECT_DIR$/client/views/lease/overzicht/leaseoverzicht.js" />
         <option value="$PROJECT_DIR$/client/views/werknemers/overzicht/werknemersoverzicht.js" />
-        <option value="$PROJECT_DIR$/client/views/afspraken/overzicht/afsprakenoverzicht.js" />
         <option value="$PROJECT_DIR$/collections/lease.js" />
         <option value="$PROJECT_DIR$/client/views/lease/lease.html" />
         <option value="$PROJECT_DIR$/client/views/lease/lease.js" />
+        <option value="$PROJECT_DIR$/client/views/afspraken/overzicht/afsprakenoverzicht.js" />
+        <option value="$PROJECT_DIR$/client/views/afspraken/overzicht/afsprakenoverzicht.html" />
       </list>
     </option>
   </component>
@@ -306,8 +302,26 @@
               <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="users" />
+              <option name="myItemId" value="BusinessBuddy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BusinessBuddy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="afspraken" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -328,26 +342,12 @@
               <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="BusinessBuddy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BusinessBuddy" />
+              <option name="myItemId" value="afspraken" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lease" />
+              <option name="myItemId" value="overzicht" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -442,12 +442,12 @@
       <workItem from="1465977089372" duration="8715000" />
       <workItem from="1465987290861" duration="8290000" />
       <workItem from="1465997421906" duration="668000" />
-      <workItem from="1465999319383" duration="2036000" />
+      <workItem from="1465999319383" duration="2398000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41117000" />
+    <option name="totallyTimeSpent" value="41479000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
@@ -673,14 +673,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/afspraken/overzicht/afsprakenoverzicht.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/views/werknemers/werknemers.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -723,14 +715,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="3" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/afspraken/overzicht/afsprakenoverzicht.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -803,14 +787,46 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="8" column="57" selection-start-line="8" selection-start-column="57" selection-end-line="8" selection-end-column="57" />
-          <folding />
+          <folding>
+            <marker date="1466001154981" expanded="true" signature="52:3474" ph="..." />
+            <marker date="1466001154981" expanded="true" signature="160:3467" ph="..." />
+            <marker date="1466001154981" expanded="true" signature="503:3456" ph="..." />
+            <marker date="1466001154981" expanded="true" signature="537:3441" ph="..." />
+            <marker date="1466001154981" expanded="true" signature="571:3422" ph="..." />
+            <marker date="1466001154981" expanded="true" signature="847:3399" ph="..." />
+            <marker date="1466001154981" expanded="true" signature="923:3372" ph="..." />
+            <marker date="1466001154981" expanded="true" signature="977:1328" ph="..." />
+            <marker date="1466001154981" expanded="true" signature="1382:1733" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/views/lease/lease.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
+        <state relative-caret-position="1017">
           <caret line="50" column="140" selection-start-line="50" selection-start-column="140" selection-end-line="50" selection-end-column="140" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/afspraken/overzicht/afsprakenoverzicht.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="46" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#5;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#6;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#7;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/afspraken/overzicht/afsprakenoverzicht.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="682">
+          <caret line="31" column="49" selection-start-line="31" selection-start-column="49" selection-end-line="31" selection-end-column="49" />
           <folding />
         </state>
       </provider>

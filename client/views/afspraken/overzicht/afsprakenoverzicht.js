@@ -27,3 +27,7 @@ angular.module('afsprakenoverzicht').controller('AfsprakenOverzichtMenuCtrl', fu
         'active': 'active'
     }]
 });
+
+angular.module('afsprakenoverzicht').controller('kalender', function ($scope) {
+    scheduler.init("scheduler_here", new Date());
+});
