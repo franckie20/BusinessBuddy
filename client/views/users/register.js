@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('register', [
-  'ui.router'
-])
+    'ui.router'
+]);
 
 angular.module('register').config(function ($urlRouterProvider, $stateProvider, $locationProvider) {
   $stateProvider.state('register', {

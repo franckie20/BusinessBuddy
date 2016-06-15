@@ -15,6 +15,7 @@ if (Meteor.isClient) {
     'werknemers',
     'werknemersoverzicht',
     'afspraken',
+    'afsprakenoverzicht',
     'lease',
     'leaseoverzicht'
   ]);
@@ -43,6 +44,9 @@ if (Meteor.isClient) {
           },
           klanten() {
             return Klanten.find({});
+          },
+          leasecontracts() {
+            return Lease.find({});
           }
         });
 

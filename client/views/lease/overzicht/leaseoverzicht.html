@@ -7,25 +7,21 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>LinkedIn</th>
-                        <th>Website</th>
-                        <th>Location</th>
-                        <th>Bio</th>
+                        <th>Drivers name</th>
+                        <th>Company</th>
+                        <th>Start</th>
+                        <th>End</th>
+                        <th>Comments</th>
                     </tr>
                     </thead>
 
                     <tbody>
-                    <tr ng-repeat="klanten in businessbuddy.klanten">
-                        <td>{{klanten.name}}</td>
-                        <td>{{klanten.email}}</td>
-                        <td>{{klanten.linkedin}}</td>
-                        <td>{{klanten.website}}</td>
-                        <td>{{klanten.telephone}}</td>
-                        <td>{{klanten.location}}</td>
-                        <td>{{klanten.bio}}</td>
+                    <tr ng-repeat="lease in businessbuddy.leasecontracts">
+                        <td>{{lease.name}}</td>
+                        <td>{{lease.company}}</td>
+                        <td>{{lease.start}}</td>
+                        <td>{{lease.end}}</td>
+                        <td>{{lease.comments}}</td>
                     </tr>
                     </tbody>
                 </table>
