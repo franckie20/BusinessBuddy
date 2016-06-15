@@ -1,0 +1,1 @@
+Klanten = new Mongo.Collection('klanten');
