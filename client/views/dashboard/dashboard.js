@@ -28,3 +28,27 @@ angular.module('dashboard').config(function ($urlRouterProvider, $stateProvider,
     }
   });
 });
+
+angular.module('dashboard').controller('DashboardMenuCtrl', function ($scope) {
+  $scope.settings = true;
+  $scope.title = 'Dashboard';
+  $scope.link = "/dashboard";
+
+  $scope.menuItems =  [{
+    'text': 'Klanten',
+    'link': '/dashboard/klanten',
+    'icon': 'fa-users'
+  }, {
+    'text': 'Werknemers',
+    'link': '/dashboard/werknemers',
+    'icon': 'fa-briefcase'
+  }, {
+    'text': 'Afspraken & Taken',
+    'link': '/dashboard/afspraken',
+    'icon': 'fa-calendar'
+  }, {
+    'text': 'Lease Gegevens',
+    'link': '/dashboard/lease',
+    'icon': 'fa-car'
+  }]
+});

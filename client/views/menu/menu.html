@@ -40,7 +40,13 @@
         </div>
 
         <ul class="nav nav-sidebar">
-            <li class="">
+            <li ng-show="{{settings}}" class="">
+                <a title="" class="back-link" href="/profile" data-original-title="Profile settings">
+                    <i class="fa fa-user fa-fw"></i>
+                    <span>Profile Settings</span>
+                </a>
+            </li>
+            <li ng-show="{{showGoToDashboard}}" class="">
                 <a title="" class="back-link" href="/dashboard" data-original-title="Go to dashboard">
                     <i class="fa fa-caret-square-o-left fa-fw"></i>
                     <span>Go to dashboard</span>
@@ -48,16 +54,10 @@
             </li>
             <li class="separate-item"></li>
 
-            <li class="">
-                <a title="" class="back-link" href="/dashboard/lease">
-                    <i class="fa fa-newspaper-o fa-fw"></i>
-                    <span>Nieuw leasecontract</span>
-                </a>
-            </li>
-            <li class="">
-                <a title="" class="back-link" href="/dashboard/lease/overzicht">
-                    <i class="fa fa-table fa-fw"></i>
-                    <span>Lease overzicht</span>
+            <li class="{{menu.active}}" ng-repeat="menu in menuItems">
+                <a title="" class="back-link" href="{{menu.link}}">
+                    <i class="fa {{menu.icon}} fa-fw"></i>
+                    <span>{{menu.text}}</span>
                 </a>
             </li>
         </ul>
