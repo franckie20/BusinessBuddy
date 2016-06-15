@@ -10,3 +10,20 @@ angular.module('werknemersoverzicht').config(function ($urlRouterProvider, $stat
         templateUrl: 'client/views/werknemers/overzicht/werknemersoverzicht.html'
     });
 });
+
+angular.module('werknemersoverzicht').controller('WerknemersOverzichtMenuCtrl', function ($scope) {
+    $scope.title = 'Werknemers overzicht';
+    $scope.link = "/dashboard/werknemers/overzicht";
+    $scope.showGoToDashboard = true;
+
+    $scope.menuItems =  [{
+        'text': 'Werknemers toevoegen',
+        'link': '/dashboard/werknemers',
+        'icon': 'fa-user-plus'
+    }, {
+        'text': 'Werknemers overzicht',
+        'link': '/dashboard/werknemers/overzicht',
+        'icon': 'fa-users',
+        'active': 'active'
+    }]
+});

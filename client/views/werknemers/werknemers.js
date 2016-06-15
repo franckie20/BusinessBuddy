@@ -11,7 +11,7 @@ angular.module('werknemers').config(function ($urlRouterProvider, $stateProvider
     });
 });
 
-angular.module('werknemers').controller('WerknemerMenuCtrl', function ($scope) {
+angular.module('werknemers').controller('WerknemersMenuCtrl', function ($scope) {
     $scope.title = 'Werknemers toevoegen';
     $scope.link = "/dashboard/werknemers";
     $scope.showGoToDashboard = true;
