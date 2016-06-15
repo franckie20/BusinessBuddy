@@ -1,0 +1,1 @@
+Werknemers = new Mongo.Collection('werknemers');

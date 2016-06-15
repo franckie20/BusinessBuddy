@@ -7,40 +7,20 @@
                 <table class="table table-striped">
                     <thead>
 
-                    <!--<ul>-->
-                        <!--<li ng-repeat="werknemer in businessbuddy.werknemers">-->
-                            <!---->
-
-
-                        <!--</li>-->
-                    <!--</ul>-->
-
 
                     <tr>
-                        <th>#</th>
-                        <th>this.name</th>
-                        <th>this.lastName</th>
-                        <th>Username</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Telephone</th>
+                        <th>Company</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
+                    <tr ng-repeat="werknemer in businessbuddy.werknemers">
+                        <td>{{werknemer.name}}</td>
+                        <td>{{werknemer.email}}</td>
+                        <td>{{werknemer.telephone}}</td>
+                        <td>{{werknemer.company}}</td>
                     </tr>
                     </tbody>
                 </table>
