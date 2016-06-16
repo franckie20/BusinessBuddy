@@ -50,6 +50,11 @@ if (Meteor.isClient) {
           }
         });
 
+        this.subscribe('lease');
+        this.subscribe('werknemers');
+        this.subscribe('klanten');
+        this.subscribe('tasks');
+
         this.logout = () => {
           Accounts.logout();
         };

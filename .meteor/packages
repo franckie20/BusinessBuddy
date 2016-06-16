@@ -12,7 +12,6 @@ tracker                 # Meteor's client-side reactive programming library
 
 es5-shim                # ECMAScript 5 compatibility for older browsers.
 
-autopublish             # Publish all data to the clients (for prototyping)
 angular
 standard-minifier-css
 standard-minifier-js

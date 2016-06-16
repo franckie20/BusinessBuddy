@@ -66,7 +66,7 @@ angular.module('lease').directive('lease', function() {
 
             this.creating = () => {
                 if (this.info.name != '' || this.info.company != '' || this.info.start != '' || this.info.end != '' || this.info.comments != '') {
-                    Lease.insert(this.info);
+                    Meteor.call('lease.insert', this.info);
                     this.success = "Successfully added contract " + this.info.name;
                 } else {
                     this.error = 'error';
