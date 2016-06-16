@@ -23,5 +23,12 @@ Meteor.methods({
             'location': data.location,
             'bio': data.bio
         });
+    },
+
+
+    'klanten.remove' (klant) {
+        Klanten.remove({
+            '_id': klant._id
+        });
     }
 });

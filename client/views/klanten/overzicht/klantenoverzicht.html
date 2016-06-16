@@ -2,6 +2,7 @@
     <div ng-controller="KlantenOverizchtMenuCtrl">
         <menu></menu>
     </div>
+    <klantenoverzicht>
     <div class="content-wrapper">
         <div class="flash-container"></div>
         <div class="container-fluid container-limited">
@@ -16,24 +17,27 @@
                         <th>Telephone</th>
                         <th>Location</th>
                         <th>Bio</th>
+                        <th></th>
                     </tr>
                     </thead>
 
                     <tbody>
-                    <tr ng-repeat="klanten in businessbuddy.klanten">
-                        <td>{{klanten.name}}</td>
-                        <td>{{klanten.email}}</td>
-                        <td>{{klanten.linkedin}}</td>
-                        <td>{{klanten.website}}</td>
-                        <td>{{klanten.telephone}}</td>
-                        <td>{{klanten.location}}</td>
-                        <td>{{klanten.bio}}</td>
+                    <tr ng-repeat="klant in businessbuddy.klanten">
+                        <td>{{klant.name}}</td>
+                        <td>{{klant.email}}</td>
+                        <td>{{klant.linkedin}}</td>
+                        <td>{{klant.website}}</td>
+                        <td>{{klant.telephone}}</td>
+                        <td>{{klant.location}}</td>
+                        <td>{{klant.bio}}</td>
+                        <td><button class="delete" ng-click="klantenoverzicht.removeKlant(klant)">&times;</button></td>
                     </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+    </klantenoverzicht>
 </div>
 
 

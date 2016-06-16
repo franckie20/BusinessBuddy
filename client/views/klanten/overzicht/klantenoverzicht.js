@@ -44,3 +44,18 @@ angular.module('klantenoverzicht').controller('KlantenOverizchtMenuCtrl', functi
         'active': 'active'
     }]
 });
+
+angular.module('klantenoverzicht').directive('klantenoverzicht', function() {
+    return {
+        restrict: 'E',
+        controllerAs: 'klantenoverzicht',
+        controller: function ($scope, $reactive, $state) {
+            $reactive(this).attach($scope);
+
+                this.removeKlant = (klant) => {
+                    Meteor.call('klanten.remove', klant);
+                }
+
+        }
+    }
+});
