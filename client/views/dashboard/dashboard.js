@@ -8,7 +8,7 @@ angular.module('dashboard', [
 angular.module('dashboard').config(function ($urlRouterProvider, $stateProvider, $locationProvider) {
   $stateProvider.state('dashboard', {
     url: '/dashboard',
-    templateUrl: 'client/views/dashboard/dashboard.html',
+    template: '<dashboard></dashboard>',
     resolve: {
       currentUser: ($q) => {
         var deferred = $q.defer();
@@ -51,4 +51,52 @@ angular.module('dashboard').controller('DashboardMenuCtrl', function ($scope) {
     'link': '/dashboard/lease',
     'icon': 'fa-car'
   }]
+});
+
+angular.module('dashboard').directive('dashboard', function() {
+  return {
+    scope: {
+      fileread: "="
+    },
+    link: function (scope, element, attributes) {
+      element.bind("change", function (changeEvent) {
+        scope.$apply(function () {
+          scope.fileread = changeEvent.target.files[0];
+          // or all selected files:
+          // scope.fileread = changeEvent.target.files;
+        });
+      });
+    },
+    restrict: 'E',
+    templateUrl: 'client/views/dashboard/dashboard.html',
+    controllerAs: 'dashboard',
+    controller: function ($scope, $reactive, $state) {
+      $reactive(this).attach($scope);
+
+      this.success = '';
+      this.error = '';
+
+      this.uploadCSV = (file) =>
+      {
+        if($scope.fileread != null) {
+          Papa.parse($scope.fileread, {
+            header: true,
+            complete: function (results) {
+              for(var i=0; i < results.data.length; i++)
+              {
+                if(results.data[i] != null) {
+                  Meteor.call('klanten.insert', results.data[i]);
+                }
+              }
+              console.log("Data:", results.data);
+            }
+          });
+          this.success = 'Al uw contacten zijn geïmporteerd';
+        }
+        else {
+          this.error = 'Kies een bestand om te importeren!';
+        }
+      }
+    }
+  }
 });

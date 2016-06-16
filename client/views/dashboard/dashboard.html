@@ -4,14 +4,31 @@
     </div>
 
     <div class="content-wrapper">
-        <div class="flash-container"></div>
+        <div class="flash-container">
+            <div class="flash-success" ng-show="dashboard.success" ng-click="dashboard.success = null">{{ dashboard.success }}</div>
+            <div class="flash-alert" ng-show="dashboard.error" ng-click="dashboard.error = null">{{ dashboard.error }}</div>
+        </div>
             <div class="container-fluid container-limited">
                 <div class="content">
-                    <div class="clearfix">
-                      <h4 class="prepend-top-default">Welcome to BusinessBuddy!</h4>
+                    <div class="clearfix col-lg-3 prepend-top-0">
+                      <h4 class="prepend-top-default">Welcome bij BusinessBuddy!</h4>
                       <p>Plan, focus, succeed</p>
-                      <hr>
-                        <img src="/images/businessbuddy.jpg" alt="B-buddy" style="width:804px;height:300px;">
+                    </div>
+                    <div class="col-lg-12">
+                        <hr>
+                    </div>
+                    <div class="clearfix col-lg-3 prepend-top-0">
+                        <h4>Importeren van Outlook contacten</h4>
+                        <p >Hieronder kunt u bestaande Outlook klanten importeren zodat BusinessBuddy over al uw contacten beschikt om hier afspraken mee in te plannen etc.</p>
+                    </div>
+                    <div class="col-lg-12">
+                        <hr>
+                        <form class="updateProfile" accept-charset="UTF-8">
+                            <label class="btn btn-primary btn-file">
+                                Browse <input type="file" style="display: none;" fileread="file">
+                            </label>
+                            <input ng-click="dashboard.uploadCSV()" aria-label="create" type="submit" value="Upload" class="btn-create btn">
+                        </form>
                     </div>
                 </div>
             </div>
