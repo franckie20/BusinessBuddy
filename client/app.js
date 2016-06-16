@@ -32,6 +32,21 @@ if (Meteor.isClient) {
       controller: function ($scope, $reactive) {
         $reactive(this).attach($scope);
 
+        this.perPage = 15;
+        this.currentPage = 1;
+        this.sort = {
+          name: 1
+        };
+
+        this.subscribe('lease');
+        this.subscribe('werknemers');
+        this.subscribe('klanten', () => [{
+          limit: parseInt(this.perPage),
+          skip: parseInt((this.getReactively('page') - 1) * this.perPage),
+          sort: this.getReactively('sort')}
+        ]);
+        this.subscribe('tasks');
+
         this.helpers({
           isLoggedIn: () => {
             return Meteor.userId() !== null;
@@ -40,20 +55,19 @@ if (Meteor.isClient) {
             return Meteor.user();
           },
           werknemers() {
-            return Werknemers.find({});
+            return Werknemers.find({}, {
+              sort : this.getReactively('sort')
+            });
           },
           klanten() {
-            return Klanten.find({});
+            return Klanten.find({}, {
+              sort : this.getReactively('sort')
+            });
           },
           leasecontracts() {
             return Lease.find({});
           }
         });
-
-        this.subscribe('lease');
-        this.subscribe('werknemers');
-        this.subscribe('klanten');
-        this.subscribe('tasks');
 
         this.logout = () => {
           Accounts.logout();

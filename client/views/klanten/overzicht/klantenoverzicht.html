@@ -7,6 +7,10 @@
         <div class="flash-container"></div>
         <div class="container-fluid container-limited">
             <div class="content">
+                <div class="col-lg-12">
+                    <label for="search">Search:</label>
+                    <input ng-model="q" id="search" class="form-control" placeholder="Filter text">
+                </div>
                 <table class="table table-striped">
                     <thead>
                     <tr>
@@ -22,7 +26,7 @@
                     </thead>
 
                     <tbody>
-                    <tr ng-repeat="klant in businessbuddy.klanten">
+                    <tr dir-paginate="klant in businessbuddy.klanten | filter:q | itemsPerPage: businessbuddy.perPage">
                         <td>{{klant.name}}</td>
                         <td>{{klant['E-mailadres']}}</td>
                         <td>{{klant.linkedin}}</td>
@@ -34,6 +38,7 @@
                     </tr>
                     </tbody>
                 </table>
+                <dir-pagination-controls on-page-change="businessbuddy.pageChanged(newPageNumber)"></dir-pagination-controls>
             </div>
         </div>
     </div>

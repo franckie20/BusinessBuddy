@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('klantenoverzicht', [
-    'ui.router'
+    'ui.router',
+    'angularUtils.directives.dirPagination'
 ]);
 
 angular.module('klantenoverzicht').config(function ($urlRouterProvider, $stateProvider, $locationProvider) {

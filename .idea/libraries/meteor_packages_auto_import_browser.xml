@@ -49,6 +49,7 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/templating-tools/1.0.2/web.browser/html-scanner-tests.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/angularui_angular-ui-router/0.2.15/web.browser/packages/angularui_angular-ui-router.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/templating-tools/1.0.2/web.browser/throw-compile-error.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/angularutils_pagination/0.9.1_2/web.browser/dirPagination.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/lai_collection-extensions/0.1.4/web.browser/packages/lai_collection-extensions.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/templating-tools/1.0.2/web.browser/code-generation.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/launch-screen/1.0.8/web.browser/default-behavior.js" />
@@ -317,6 +318,7 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/templating-tools/1.0.2/web.browser/html-scanner-tests.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/angularui_angular-ui-router/0.2.15/web.browser/packages/angularui_angular-ui-router.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/templating-tools/1.0.2/web.browser/throw-compile-error.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/angularutils_pagination/0.9.1_2/web.browser/dirPagination.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/lai_collection-extensions/0.1.4/web.browser/packages/lai_collection-extensions.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/templating-tools/1.0.2/web.browser/code-generation.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/launch-screen/1.0.8/web.browser/default-behavior.js" />

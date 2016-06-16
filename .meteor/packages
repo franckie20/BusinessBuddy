@@ -24,3 +24,4 @@ angularui:angular-ui-bootstrap
 dhtmlx:scheduler
 dhtmlx:scheduler-data
 rajit:bootstrap3-datepicker
+angularutils:pagination
