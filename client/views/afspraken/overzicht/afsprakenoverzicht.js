@@ -1,13 +1,13 @@
 'use strict';
 
-angular.module('afspraken', [
+angular.module('afsprakenoverzicht', [
     'ui.router'
 ]);
 
-angular.module('afspraken').config(function ($urlRouterProvider, $stateProvider, $locationProvider) {
-    $stateProvider.state('afspraken', {
-        url: '/dashboard/afspraken',
-        templateUrl: 'client/views/afspraken/afspraken.html',
+angular.module('afsprakenoverzicht').config(function ($urlRouterProvider, $stateProvider, $locationProvider) {
+    $stateProvider.state('afsprakenoverzicht', {
+        url: '/dashboard/afspraken/overzicht',
+        templateUrl: 'client/views/afspraken/overzicht/afsprakenoverzicht.html',
         resolve: {
             currentUser: ($q) => {
                 var deferred = $q.defer();
@@ -28,19 +28,25 @@ angular.module('afspraken').config(function ($urlRouterProvider, $stateProvider,
     });
 });
 
-angular.module('afspraken').controller('AfsprakenMenuCtrl', function ($scope) {
-    $scope.title = 'Afspraken toevoegen';
-    $scope.link = "/dashboard/afspraken";
+angular.module('afsprakenoverzicht').controller('AfsprakenOverzichtMenuCtrl', function ($scope) {
+    $scope.title = 'Afspraken overzicht';
+    $scope.link = "/dashboard/afspraken/overzicht";
     $scope.showGoToDashboard = true;
 
     $scope.menuItems =  [{
         'text': 'Nieuwe afspraak',
         'link': '/dashboard/afspraken',
-        'icon': 'fa-plus-square-o',
-        'active': 'active'
+        'icon': 'fa-plus-square-o'
     }, {
         'text': 'Afspraken overzicht',
         'link': '/dashboard/afspraken/overzicht',
-        'icon': 'fa-table'
+        'icon': 'fa-table',
+        'active': 'active'
     }]
+});
+
+angular.module('afsprakenoverzicht').controller('kalender', function ($scope) {
+    scheduler.init("scheduler_here", new Date());
+    //Init dhtmlxScheduler data adapter.
+    scheduler.meteor(TasksCollection);
 });

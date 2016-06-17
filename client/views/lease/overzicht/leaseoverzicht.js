@@ -1,13 +1,13 @@
 'use strict';
 
-angular.module('klanten', [
+angular.module('leaseoverzicht', [
     'ui.router'
 ]);
 
-angular.module('klanten').config(function ($urlRouterProvider, $stateProvider, $locationProvider) {
-    $stateProvider.state('klanten', {
-        url: '/dashboard/klanten',
-        templateUrl: 'client/views/klanten/klanten.html',
+angular.module('leaseoverzicht').config(function ($urlRouterProvider, $stateProvider, $locationProvider) {
+    $stateProvider.state('leaseoverzicht', {
+        url: '/dashboard/lease/overzicht',
+        templateUrl: 'client/views/lease/overzicht/leaseoverzicht.html',
         resolve: {
             currentUser: ($q) => {
                 var deferred = $q.defer();
@@ -28,19 +28,19 @@ angular.module('klanten').config(function ($urlRouterProvider, $stateProvider, $
     });
 });
 
-angular.module('klanten').controller('KlantenMenuCtrl', function ($scope) {
-    $scope.title = 'Klanten toevoegen';
-    $scope.link = "/dashboard/klanten";
+angular.module('leaseoverzicht').controller('LeaseOverzichtMenuCtrl', function ($scope) {
+    $scope.title = 'Lease overzicht';
+    $scope.link = "/dashboard/lease/overzicht";
     $scope.showGoToDashboard = true;
 
     $scope.menuItems =  [{
-        'text': 'Klanten toevoegen',
-        'link': '/dashboard/klanten',
-        'icon': 'fa-user-plus',
-        'active': 'active'
+        'text': 'Nieuw leasecontract',
+        'link': '/dashboard/lease',
+        'icon': 'fa-newspaper-o'
     }, {
-        'text': 'Klanten overzicht',
-        'link': '/dashboard/klanten/overzicht',
-        'icon': 'fa-users'
+        'text': 'Lease overzicht',
+        'link': '/dashboard/lease/overzicht',
+        'icon': 'fa-table',
+        'active': 'active'
     }]
 });

@@ -2,6 +2,7 @@ if (Meteor.isClient) {
   angular.module('businessbuddy', [
     'angular-meteor',
     'ui.router',
+    'ui.bootstrap',
     'menu',
     'dashboard',
     'category',
@@ -14,7 +15,9 @@ if (Meteor.isClient) {
     'werknemers',
     'werknemersoverzicht',
     'afspraken',
-    'lease'
+    'afsprakenoverzicht',
+    'lease',
+    'leaseoverzicht'
   ]);
 
   angular.module('businessbuddy').config(function ($urlRouterProvider, $stateProvider, $locationProvider) {
@@ -29,18 +32,70 @@ if (Meteor.isClient) {
       controller: function ($scope, $reactive) {
         $reactive(this).attach($scope);
 
+        this.perPage = 15;
+        this.currentPage = 1;
+        this.sort = {
+          name: 1
+        };
+
+        this.subscribe('lease');
+        this.subscribe('werknemers');
+        this.subscribe('klanten', () => [{
+          limit: parseInt(this.perPage),
+          skip: parseInt((this.getReactively('page') - 1) * this.perPage),
+          sort: this.getReactively('sort')}
+        ]);
+        this.subscribe('tasks');
+
         this.helpers({
           isLoggedIn: () => {
             return Meteor.userId() !== null;
           },
           currentUser: () => {
             return Meteor.user();
+          },
+          werknemers() {
+            return Werknemers.find({}, {
+              sort : this.getReactively('sort')
+            });
+          },
+          klanten() {
+            return Klanten.find({}, {
+              sort : this.getReactively('sort')
+            });
+          },
+          leasecontracts() {
+            return Lease.find({});
           }
         });
+
         this.logout = () => {
           Accounts.logout();
         };
       }
     }
   });
+
+  angular.module('businessbuddy').controller('WerknemersOverzichtController', function ($scope) {
+    $scope.filteredTodos = []
+        ,$scope.currentPage = 1
+        ,$scope.numPerPage = 10
+        ,$scope.maxSize = 5;
+
+    $scope.makeTodos = function() {
+      $scope.todos = [];
+      for (i=1;i<=1000;i++) {
+        $scope.todos.push({ text:'todo '+i, done:false});
+      }
+    };
+    $scope.makeTodos();
+
+    $scope.$watch('currentPage + numPerPage', function() {
+      var begin = (($scope.currentPage - 1) * $scope.numPerPage)
+          , end = begin + $scope.numPerPage;
+
+      $scope.filteredTodos = $scope.todos.slice(begin, end);
+    });
+  });
+
 }

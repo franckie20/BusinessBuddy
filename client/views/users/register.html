@@ -1,35 +1,41 @@
 <div class="prepend-top-20">
-  <div class="login-box">
-    <div class="login-heading">
-      <h3>New user? Create an account</h3>
+    <div class="login-box">
+        <div class="login-heading">
+          <h3>New user? Create an account</h3>
+        </div>
+      <div class="login-body">
+        <form class="registerForm" accept-charset="UTF-8">
+        <div class="devise-errors">
+        </div>
+
+        <div>
+            <input class="form-control top" placeholder="Name" required="required" type="text" ng-model="register.credentials.profile.name" aria-label="name">
+        </div>
+
+        <div>
+            <input class="form-control middle" placeholder="Username" required="required" type="text" ng-model="register.credentials.username" aria-label="username">
+        </div>
+
+        <div>
+            <input class="form-control middle" placeholder="Email" required="required" type="email" ng-model="register.credentials.email" aria-label="email">
+        </div>
+
+        <div class="form-group append-bottom-20" id="password-strength">
+            <input class="form-control bottom" aria-label="password" placeholder="Password" required="required" type="password" ng-model="register.credentials.password">
+        </div>
+
+        <div>
+            <input ng-click="register.register()" aria-label="login" ng-disabled="register.registerForm.$invalid()" type="submit" value="Sign up" class="btn-create btn">
+        </div>
+
+        </form>
+        </div>
+      </div>
+    <div class="clearfix prepend-top-20">
+        <p>
+            <span class="light">Didn't receive a confirmation email?</span>
+            <a href="/users/confirmation/new">Request a new one</a>.
+        </p>
     </div>
-  <div class="login-body">
-    <form class="registerForm" accept-charset="UTF-8">
-      <div class="devise-errors">
-      </div>
-      <div>
-        <input class="form-control top" placeholder="Name" required="required" type="text" ng-model="register.credentials.profile.name" aria-label="name">
-      </div>
-      <div>
-        <input class="form-control middle" placeholder="Username" required="required" type="text" ng-model="register.credentials.username" aria-label="username">
-      </div>
-      <div>
-        <input class="form-control middle" placeholder="Email" required="required" type="email" ng-model="register.credentials.email" aria-label="email">
-      </div>
-      <div class="form-group append-bottom-20" id="password-strength">
-        <input class="form-control bottom" aria-label="password" placeholder="Password" required="required" type="password" ng-model="register.credentials.password">
-      </div>
-      <div>
-        <input ng-click="register.register()" aria-label="login" ng-disabled="register.registerForm.$invalid()" type="submit" value="Sign up" class="btn-create btn">
-      </div>
-    </form>
-    </div>
-  </div>
-  <div class="clearfix prepend-top-20">
-  <p>
-  <span class="light">Didn't receive a confirmation email?</span>
-  <a href="/users/confirmation/new">Request a new one</a>.
-  </p>
-  </div>
 
 </div>

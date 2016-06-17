@@ -22,6 +22,8 @@
     container: 'body'
   )
 
+
+
   $('.navbar-toggle').on 'click', ->
     $('.header-content .title').toggle()
     $('.header-content .navbar-collapse').toggle()

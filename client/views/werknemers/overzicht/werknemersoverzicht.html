@@ -1,39 +1,40 @@
 <div class="page-with-sidebar page-sidebar-expanded">
-    <menu name="werknemermenu" title="Werknemers overzicht" link="/dashboard/werknemers/overzicht/werknemersoverzichg"></menu>
+    <div ng-controller="WerknemersOverzichtMenuCtrl">
+        <menu></menu>
+    </div>
     <div class="content-wrapper">
         <div class="flash-container"></div>
         <div class="container-fluid container-limited">
             <div class="content">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Username</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
-                    </tbody>
-                </table>
+                <div ng-controller="WerknemersOverzichtController">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Telephone</th>
+                            <th>Company</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="werknemer in businessbuddy.werknemers">
+                            <td>{{werknemer.name}}</td>
+                            <td>{{werknemer.email}}</td>
+                            <td>{{werknemer.telephone}}</td>
+                            <td>{{werknemer.company}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <ul>
+                        <li ng-repeat="todo in filteredTodos">{{todo.text}}</li>
+                    </ul>
+                    <pagination
+                            ng-model="currentPage"
+                            total-items="todos.length"
+                            max-size="maxSize"
+                            boundary-links="true">
+                    </pagination>
+                </div>
             </div>
         </div>
     </div>

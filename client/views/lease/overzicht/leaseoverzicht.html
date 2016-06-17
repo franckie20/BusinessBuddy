@@ -1,0 +1,36 @@
+<div class="page-with-sidebar page-sidebar-expanded">
+    <div ng-controller="LeaseOverzichtMenuCtrl">
+        <menu></menu>
+    </div>
+    <div class="content-wrapper">
+        <div class="flash-container"></div>
+        <div class="container-fluid container-limited">
+            <div class="content">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Drivers name</th>
+                        <th>Company</th>
+                        <th>Start</th>
+                        <th>End</th>
+                        <th>Comments</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr ng-repeat="lease in businessbuddy.leasecontracts">
+                        <td>{{lease.name}}</td>
+                        <td>{{lease.company}}</td>
+                        <td>{{lease.start}}</td>
+                        <td>{{lease.end}}</td>
+                        <td>{{lease.comments}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

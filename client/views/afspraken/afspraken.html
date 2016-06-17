@@ -1,0 +1,56 @@
+<div class="page-with-sidebar page-sidebar-expanded">
+    <div ng-controller="AfsprakenMenuCtrl">
+        <menu></menu>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="flash-container"></div>
+        <div class="container-fluid container-limited">
+            <div class="content">
+                <div class="row">
+                    <div class="col-lg-3 profile-settings-sidebar">
+                        <h4 class="prepend-top-0">Basic information</h4>
+                        <p>Information about the appointment.</p>
+                    </div>
+                    <div class="col-lg-9">
+                        <form class="updateProfile" accept-charset="UTF-8">
+
+                            <div class="form-group">
+                                <label class="label-light" for="user_name">Name</label>
+                                <input class="form-control" required="required" type="text" value="" name="user[name]" id="user_name">
+                                <span class="help-block"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="label-light" for="user_bio">Description</label>
+                                <input class="form-control" required="required" type="text" value="" name="user[name]" id="user_name">
+                                <span class="help-block"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="label-light" for="user_bio">Date</label>
+                                <input type="text" class="form-control" data-provide="datepicker">
+                                <span class="help-block"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="label-light" for="user_bio">Time</label>
+                                <input class="form-control" required="required" type="text" value="" name="user[name]" id="user_name">
+                                <span class="help-block"></span>
+                            </div>
+
+
+                            <div class="prepend-top-default append-bottom-default">
+                                <input ng-click="profile.profile()" aria-label="profile" ng-disabled="profile.updateProfile.$invalid()" type="submit" value="New appointment" class="btn-create btn">
+                                <a class="btn btn-cancel" href="/u/franckie20">Cancel</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

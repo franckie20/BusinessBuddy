@@ -3,7 +3,7 @@
 angular.module('sign_in', [
   'ui.router',
   'businessbuddy'
-])
+]);
 
 angular.module('sign_in').config(function ($urlRouterProvider, $stateProvider, $locationProvider) {
   $stateProvider.state('sign_in', {

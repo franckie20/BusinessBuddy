@@ -8,20 +8,6 @@
                 </button>
                 <div class="navbar-collapse collapse" style="display: none;">
                     <ul class="nav navbar-nav">
-                        <li class="hidden-sm hidden-xs">
-                            <!--
-                              <div class="search">
-                                <form class="navbar-form pull-left" action="/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
-                                <input type="search" name="search" id="search" placeholder="Search" class="search-input form-control ui-autocomplete-input" spellcheck="false" tabindex="1" autocomplete="off" value="">
-                                <input type="hidden" name="group_id" id="group_id">
-                                <input type="hidden" name="repository_ref" id="repository_ref">
-
-                                <div class="search-autocomplete-opts hide" data-autocomplete-path="/search/autocomplete"></div>
-                                </form>
-                              </div>
-                            -->
-                        </li>
-
                         <li class="visible-sm visible-xs">
                             <a title="Search" data-toggle="tooltip" href="/search">
                                 <i class="fa fa-search"></i>
@@ -41,8 +27,8 @@
             </div>
         </div>
     </header>
-    <div class="nicescroll sidebar-expanded sidebar-wrapper" tabindex="1" style="overflow: hidden; outline: none;">
 
+    <div class="nicescroll sidebar-expanded sidebar-wrapper" tabindex="1" style="overflow: hidden; outline: none;">
         <div class="header-logo">
             <a id="logo">
                 <img src="/images/logo.png"/>
@@ -54,23 +40,24 @@
         </div>
 
         <ul class="nav nav-sidebar">
-            <li class="">
+            <li ng-show="{{settings}}" class="">
+                <a title="" class="back-link" href="/profile" data-original-title="Profile settings">
+                    <i class="fa fa-user fa-fw"></i>
+                    <span>Profile Settings</span>
+                </a>
+            </li>
+            <li ng-show="{{showGoToDashboard}}" class="">
                 <a title="" class="back-link" href="/dashboard" data-original-title="Go to dashboard">
                     <i class="fa fa-caret-square-o-left fa-fw"></i>
                     <span>Go to dashboard</span>
                 </a>
             </li>
             <li class="separate-item"></li>
-            <li class="">
-                <a title="" class="back-link" href="/dashboard/werknemers">
-                    <i class="fa fa-user-plus fa-fw"></i>
-                    <span>Werknemers toevoegen</span>
-                </a>
-            </li>
-            <li class="">
-                <a title="" class="back-link" href="/dashboard/werknemers/overzicht">
-                    <i class="fa fa-users fa-fw"></i>
-                    <span>Werknemers overzicht</span>
+
+            <li class="{{menu.active}}" ng-repeat="menu in menuItems">
+                <a title="" class="back-link" href="{{menu.link}}">
+                    <i class="fa {{menu.icon}} fa-fw"></i>
+                    <span>{{menu.text}}</span>
                 </a>
             </li>
         </ul>
