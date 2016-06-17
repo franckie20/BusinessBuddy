@@ -54,14 +54,18 @@ angular.module('dashboard').controller('DashboardMenuCtrl', function ($scope) {
 });
 
 angular.module('dashboard').directive('dashboard', function() {
+
   return {
     scope: {
-      fileread: "="
+      fileread: "=",
+      fileName: "="
     },
     link: function (scope, element, attributes) {
       element.bind("change", function (changeEvent) {
         scope.$apply(function () {
           scope.fileread = changeEvent.target.files[0];
+          var thefile = document.getElementById('fileName');
+          scope.fileName = thefile.value;
           // or all selected files:
           // scope.fileread = changeEvent.target.files;
         });

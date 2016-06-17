@@ -25,10 +25,11 @@
                         <hr>
                         <form class="uploadCSV" accept-charset="UTF-8">
                             <label class="btn btn-primary btn-file">
-                                Browse <input type="file" style="display: none;" fileread="file">
+                                Kies CSV <input type="file" id="fileName" style="display: none;" fileread="file">
                             </label>
-                            <input ng-click="dashboard.uploadCSV()" aria-label="create" type="submit" value="Upload" class="btn-create btn">
+                            <input ng-click="dashboard.uploadCSV()" aria-label="create" type="submit" value="Importeer" class="btn-create btn">
                         </form>
+                        <p>{{fileName}}</p>
                     </div>
                 </div>
             </div>
