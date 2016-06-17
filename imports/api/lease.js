@@ -21,5 +21,10 @@ Meteor.methods({
             'end': data.end,
             'comments': data.comments
         });
+    },
+    'Lease.remove' (lease) {
+        Lease.remove({
+            '_id': lease._id
+        });
     }
 });

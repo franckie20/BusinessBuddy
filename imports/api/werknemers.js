@@ -20,5 +20,11 @@ Meteor.methods({
             'telephone': data.telephone,
             'company': data.company
         });
+    },
+
+    'Werknemers.remove' (werknemer) {
+        Werknemers.remove({
+            '_id': werknemer._id
+        });
     }
 });

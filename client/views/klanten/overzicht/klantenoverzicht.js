@@ -8,7 +8,7 @@ angular.module('klantenoverzicht', [
 angular.module('klantenoverzicht').config(function ($urlRouterProvider, $stateProvider, $locationProvider) {
     $stateProvider.state('klantenoverzicht', {
         url: '/dashboard/klanten/overzicht',
-        templateUrl: 'client/views/klanten/overzicht/klantenoverzicht.html',
+        template: '<overzichtklant></overzichtklant>',
         resolve: {
             currentUser: ($q) => {
                 var deferred = $q.defer();
@@ -46,16 +46,30 @@ angular.module('klantenoverzicht').controller('KlantenOverizchtMenuCtrl', functi
     }]
 });
 
-angular.module('klantenoverzicht').directive('klantenoverzicht', function() {
+angular.module('klantenoverzicht').directive('overzichtklant', function() {
     return {
         restrict: 'E',
-        controllerAs: 'klantenoverzicht',
+        templateUrl: 'client/views/klanten/overzicht/klantenoverzicht.html',
+        controllerAs: 'overzichtklant',
         controller: function ($scope, $reactive, $state) {
             $reactive(this).attach($scope);
 
-                this.removeKlant = (klant) => {
-                    Meteor.call('klanten.remove', klant);
-                }
+            this.perPage = 15;
+            this.currentPage = 1;
+            this.sort = {
+                name: 1
+            };
+
+            this.removeKlant = (klant) => {
+                Meteor.call('klanten.remove', klant);
+            }
+
+            this.subscribe('klanten', () => [{
+
+                limit: parseInt(this.perPage),
+                skip: parseInt((this.getReactively('page') - 1) * this.perPage),
+                sort: this.getReactively('sort')}
+            ]);
 
         }
     }

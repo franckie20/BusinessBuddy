@@ -7,7 +7,7 @@ angular.module('leaseoverzicht', [
 angular.module('leaseoverzicht').config(function ($urlRouterProvider, $stateProvider, $locationProvider) {
     $stateProvider.state('leaseoverzicht', {
         url: '/dashboard/lease/overzicht',
-        templateUrl: 'client/views/lease/overzicht/leaseoverzicht.html',
+        template: '<overzichtlease></overzichtlease>',
         resolve: {
             currentUser: ($q) => {
                 var deferred = $q.defer();
@@ -43,4 +43,33 @@ angular.module('leaseoverzicht').controller('LeaseOverzichtMenuCtrl', function (
         'icon': 'fa-table',
         'active': 'active'
     }]
+});
+
+angular.module('leaseoverzicht').directive('overzichtlease', function() {
+    return {
+        restrict: 'E',
+        templateUrl: 'client/views/lease/overzicht/leaseoverzicht.html',
+        controllerAs: 'overzichtlease',
+        controller: function ($scope, $reactive, $state) {
+            $reactive(this).attach($scope);
+
+            this.perPage = 15;
+            this.currentPage = 1;
+            this.sort = {
+                name: 1
+            };
+
+            this.removeLease = (lease) => {
+                Meteor.call('lease.remove', lease);
+            }
+
+            this.subscribe('lease', () => [{
+
+                limit: parseInt(this.perPage),
+                skip: parseInt((this.getReactively('page') - 1) * this.perPage),
+                sort: this.getReactively('sort')}
+            ]);
+
+        }
+    }
 });

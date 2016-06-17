@@ -14,31 +14,29 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>Name</th>
+                        <th>Contactpersoon</th>
+                        <th>Bedrijf</th>
                         <th>Email</th>
-                        <th>LinkedIn</th>
-                        <th>Website</th>
-                        <th>Telephone</th>
-                        <th>Location</th>
-                        <th>Bio</th>
+                        <th>Tel werk</th>
+                        <th>Tel prive</th>
+                        <th>Plaats</th>
                         <th></th>
                     </tr>
                     </thead>
 
                     <tbody>
-                    <tr dir-paginate="klant in businessbuddy.klanten | filter:q | itemsPerPage: businessbuddy.perPage">
-                        <td>{{klant.name}}</td>
+                    <tr dir-paginate="klant in businessbuddy.klanten | filter:q | itemsPerPage: overzichtklant.perPage">
+                        <td>{{klant.Voornaam}} {{klant.Achternaam}}</td>
+                        <td>{{klant.Bedrijf}}</td>
                         <td>{{klant['E-mailadres']}}</td>
-                        <td>{{klant.linkedin}}</td>
-                        <td>{{klant.website}}</td>
-                        <td>{{klant.telephone}}</td>
-                        <td>{{klant.location}}</td>
-                        <td>{{klant.bio}}</td>
+                        <td>{{klant['Telefoon op werk']}}</td>
+                        <td>{{klant['Mobiele telefoon']}}</td>
+                        <td>{{klant['Werkadres, plaats']}}</td>
                         <td><button class="delete" ng-click="klantenoverzicht.removeKlant(klant)">&times;</button></td>
                     </tr>
                     </tbody>
                 </table>
-                <dir-pagination-controls on-page-change="businessbuddy.pageChanged(newPageNumber)"></dir-pagination-controls>
+                <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
             </div>
         </div>
     </div>
