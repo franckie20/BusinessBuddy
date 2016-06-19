@@ -89,7 +89,12 @@ angular.module('dashboard').directive('dashboard', function() {
               for(var i=0; i < results.data.length; i++)
               {
                 if(results.data[i] != null) {
-                  Meteor.call('klanten.insert', results.data[i]);
+                  if(results.data[i].Achternaam != null) {
+                    Meteor.call('klanten.insertDutch', results.data[i]);
+                  }
+                  else if(results.data[i].Anniversary != null) {
+                    Meteor.call('klanten.insertEnglish', results.data[i]);
+                  }
                 }
               }
               console.log("Data:", results.data);

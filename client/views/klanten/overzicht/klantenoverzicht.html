@@ -20,7 +20,7 @@
                         <th>Tel werk</th>
                         <th>Tel prive</th>
                         <th>Plaats</th>
-                        <th></th>
+                        <th>Actie</th>
                     </tr>
                     </thead>
 
@@ -32,7 +32,28 @@
                         <td>{{klant['Telefoon op werk']}}</td>
                         <td>{{klant['Mobiele telefoon']}}</td>
                         <td>{{klant['Werkadres, plaats']}}</td>
-                        <td><button class="delete" ng-click="overzichtklant.removeKlant(klant)">&times;</button></td>
+                        <td>
+                            <button class="btn btn-default btn-sm"><span class="fa fa-pencil"></span></button>
+                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#verwijderKlantModal"><span class="fa fa-trash"></span></button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="verwijderKlantModal" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title">Contact verwijderen</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            Weet je zeker dat je dit contact wilt verwijderen?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Nee</button>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="overzichtklant.removeKlant(klant)">Verwijder</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                     </tbody>
                 </table>

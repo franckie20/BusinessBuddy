@@ -60,9 +60,9 @@ angular.module('klantenoverzicht').directive('overzichtklant', function() {
                 name: 1
             };
 
-            this.removeKlant = (klant) => {
+            this.removeKlant = (klant) =>  {
                 Meteor.call('klanten.remove', klant);
-            }
+            };
 
             this.subscribe('klanten', () => [{
 
