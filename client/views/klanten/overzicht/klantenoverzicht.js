@@ -54,13 +54,12 @@ angular.module('klantenoverzicht').directive('overzichtklant', function() {
         controller: function ($scope, $reactive, $state) {
             $reactive(this).attach($scope);
 
+            this.klant = '';
             this.perPage = 15;
             this.currentPage = 1;
             this.sort = {
                 name: 1
             };
-
-            this.klant = '';
 
             this.subscribe('klanten', () => [{
 
@@ -73,11 +72,13 @@ angular.module('klantenoverzicht').directive('overzichtklant', function() {
                 this.klant = klant;
             }
 
+            this.updateKlant = () => {
+                Meteor.call('klanten.update', this.details);
+            }
+
             this.removeKlant = () =>  {
                 Meteor.call('klanten.remove', this.klant);
             };
-
-
         }
     }
 });
