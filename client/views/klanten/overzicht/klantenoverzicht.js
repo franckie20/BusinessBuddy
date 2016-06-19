@@ -60,9 +60,7 @@ angular.module('klantenoverzicht').directive('overzichtklant', function() {
                 name: 1
             };
 
-            this.removeKlant = (klant) =>  {
-                Meteor.call('klanten.remove', klant);
-            };
+            this.klant = '';
 
             this.subscribe('klanten', () => [{
 
@@ -70,6 +68,15 @@ angular.module('klantenoverzicht').directive('overzichtklant', function() {
                 skip: parseInt((this.getReactively('page') - 1) * this.perPage),
                 sort: this.getReactively('sort')}
             ]);
+
+            this.selectedKlant = (klant) => {
+                this.klant = klant;
+            }
+
+            this.removeKlant = () =>  {
+                Meteor.call('klanten.remove', this.klant);
+            };
+
 
         }
     }

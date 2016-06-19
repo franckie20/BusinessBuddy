@@ -34,25 +34,7 @@
                         <td>{{klant['Werkadres, plaats']}}</td>
                         <td>
                             <button class="btn btn-default btn-sm"><span class="fa fa-pencil"></span></button>
-                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#verwijderKlantModal"><span class="fa fa-trash"></span></button>
-                            <!-- Modal -->
-                            <div class="modal fade" id="verwijderKlantModal" tabindex="-1" role="dialog">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title">Contact verwijderen</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            Weet je zeker dat je dit contact wilt verwijderen?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Nee</button>
-                                            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="overzichtklant.removeKlant(klant)">Verwijder</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#verwijderKlantModal" ng-click="overzichtklant.selectedKlant(klant)"><span class="fa fa-trash"></span></button>
                         </td>
                     </tr>
                     </tbody>
@@ -62,6 +44,25 @@
         </div>
     </div>
     </klantenoverzicht>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="verwijderKlantModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Contact verwijderen</h4>
+            </div>
+            <div class="modal-body">
+                Weet je zeker dat je <b>{{overzichtklant.klant.Voornaam}} {{overzichtklant.klant.Achternaam}}</b> wilt verwijderen?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Nee</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="overzichtklant.removeKlant()">Verwijder</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 
