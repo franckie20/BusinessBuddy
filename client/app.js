@@ -12,7 +12,6 @@ if (Meteor.isClient) {
     'register',
     'klanten',
     'klantenoverzicht',
-    'klantDetails',
     'werknemers',
     'werknemersoverzicht',
     'afspraken',
