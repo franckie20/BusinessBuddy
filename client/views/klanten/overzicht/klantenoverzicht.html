@@ -33,7 +33,7 @@
                         <td>{{klant['Mobiele telefoon']}}</td>
                         <td>{{klant['Werkadres, plaats']}}</td>
                         <td>
-                            <button class="btn btn-default btn-sm"><span class="fa fa-pencil"></span></button>
+                            <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#wijzigKlantModal" ng-click="overzichtklant.selectedKlant(klant)"><span class="fa fa-pencil"></span></button>
                             <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#verwijderKlantModal" ng-click="overzichtklant.selectedKlant(klant)"><span class="fa fa-trash"></span></button>
                         </td>
                     </tr>
@@ -60,6 +60,68 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Nee</button>
                 <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="overzichtklant.removeKlant()">Verwijder</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="wijzigKlantModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Contact wijzigen</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group col-lg-6">
+                    <label class="label-light" for="user_name"><b>Voornaam</b></label>
+                    <input class="form-control" required="required" type="text" value="{{overzichtklant.klant.Voornaam}}">
+                </div>
+                <div class="form-group col-lg-6">
+                    <label class="label-light" for="user_name"><b>Achternaam</b></label>
+                    <input class="form-control" required="required" type="text" value="{{overzichtklant.klant.Achternaam}}">
+                </div>
+                <div class="form-group col-lg-12">
+                    <label class="label-light" for="user_name"><b>Bedrijf</b></label>
+                    <input class="form-control" required="required" type="text" value="{{overzichtklant.klant.Bedrijf}}"><br>
+                    <label class="label-light" for="user_name"><b>E-mailadres</b></label>
+                    <input class="form-control" required="required" type="text" value="{{overzichtklant.klant['E-mailadres']}}"><br>
+                    <label class="label-light" for="user_name"><b>Afdeling</b></label>
+                    <input class="form-control" required="required" type="text" value="{{overzichtklant.klant.Afdeling}}"><br>
+                    <label class="label-light" for="user_name"><b>Notities</b></label>
+                    <textarea class="form-control" rows="3" id="textArea" value="{{overzichtklant.klant.Notities}}"></textarea><br>
+                </div>
+                <div class="form-group col-lg-6">
+                    <label class="label-light" for="user_name"><b>Huisadres, plaats</b></label>
+                    <input class="form-control" required="required" type="text" value="{{overzichtklant.klant['Huisadres, plaats']}}">
+                </div>
+                <div class="form-group col-lg-6">
+                    <label class="label-light" for="user_name"><b>Huisadres, postbusnummer</b></label>
+                    <input class="form-control" required="required" type="text" value="{{overzichtklant.klant['Huisadres, postbusnummer']}}">
+                </div>
+                <div class="form-group col-lg-6">
+                    <label class="label-light" for="user_name"><b>Huisadres, postcode</b></label>
+                    <input class="form-control" required="required" type="text" value="{{overzichtklant.klant['Huisadres, postcode']}}">
+                </div>
+                <div class="form-group col-lg-6">
+                    <label class="label-light" for="user_name"><b>Huisadres, provincie</b></label>
+                    <input class="form-control" required="required" type="text" value="{{overzichtklant.klant['Huisadres, provincie']}}">
+                </div>
+                <div class="form-group col-lg-12">
+                    <label class="label-light" for="user_name"><b>Locatie</b></label>
+                    <input class="form-control" required="required" type="text" value="{{overzichtklant.klant.Locatie}}"><br>
+                    <label class="label-light" for="user_name"><b>Mobiele telefoon</b></label>
+                    <input class="form-control" required="required" type="text" value="{{overzichtklant.klant['Mobiele telefoon']}}"><br>
+                    <label class="label-light" for="user_name"><b>Telefoon op werk</b></label>
+                    <input class="form-control" required="required" type="text" value="{{overzichtklant.klant['Telefoon op werk']}}"><br>
+                    <label class="label-light" for="user_name"><b>Telefoon thuis</b></label>
+                    <input class="form-control" required="required" type="text" value="{{overzichtklant.klant['Telefoon thuis']}}"><br>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Nee</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="overzichtklant.updateKlant()">Wijzig</button>
             </div>
         </div>
     </div>
