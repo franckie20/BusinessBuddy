@@ -97,7 +97,6 @@ angular.module('dashboard').directive('dashboard', function() {
                   }
                 }
               }
-              console.log("Data:", results.data);
             }
           });
           this.success = 'Al uw contacten zijn geïmporteerd';
