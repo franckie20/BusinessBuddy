@@ -4,6 +4,7 @@
     <list default="true" id="998bcf21-fdcf-4d9f-aa46-5f5c8eb4776f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/klanten/overzicht/klantenoverzicht.html" afterPath="$PROJECT_DIR$/client/views/klanten/overzicht/klantenoverzicht.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/klanten/overzicht/klantenoverzicht.js" afterPath="$PROJECT_DIR$/client/views/klanten/overzicht/klantenoverzicht.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/api/klanten.js" afterPath="$PROJECT_DIR$/imports/api/klanten.js" />
     </list>
     <ignored path="BusinessBuddy.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,8 +28,8 @@
       <file leaf-file-name="klantenoverzicht.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/views/klanten/overzicht/klantenoverzicht.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="80" column="14" selection-start-line="80" selection-start-column="14" selection-end-line="80" selection-end-column="14" />
+            <state relative-caret-position="1037">
+              <caret line="104" column="69" selection-start-line="104" selection-start-column="69" selection-end-line="104" selection-end-column="69" />
               <folding />
             </state>
           </provider>
@@ -37,8 +38,8 @@
       <file leaf-file-name="klanten.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/imports/api/klanten.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="799">
-              <caret line="97" column="5" selection-start-line="97" selection-start-column="5" selection-end-line="97" selection-end-column="5" />
+            <state relative-caret-position="646">
+              <caret line="111" column="16" selection-start-line="111" selection-start-column="16" selection-end-line="111" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -47,8 +48,8 @@
       <file leaf-file-name="klantenoverzicht.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/views/klanten/overzicht/klantenoverzicht.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="95" column="15" selection-start-line="95" selection-start-column="15" selection-end-line="95" selection-end-column="15" />
+            <state relative-caret-position="467">
+              <caret line="108" column="110" selection-start-line="108" selection-start-column="110" selection-end-line="108" selection-end-column="132" />
               <folding />
             </state>
           </provider>
@@ -385,12 +386,12 @@
       <workItem from="1465912876923" duration="18000" />
       <workItem from="1466156870568" duration="5766000" />
       <workItem from="1466162786190" duration="8012000" />
-      <workItem from="1466345530481" duration="8132000" />
+      <workItem from="1466345530481" duration="10771000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39150000" />
+    <option name="totallyTimeSpent" value="41789000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -718,22 +719,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/klanten/overzicht/klantenoverzicht.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="95" column="15" selection-start-line="95" selection-start-column="15" selection-end-line="95" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/api/klanten.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="97" column="5" selection-start-line="97" selection-start-column="5" selection-end-line="97" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/views/profile/password.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="629">
@@ -750,10 +735,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/klanten/overzicht/klantenoverzicht.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="467">
+          <caret line="108" column="110" selection-start-line="108" selection-start-column="110" selection-end-line="108" selection-end-column="132" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/api/klanten.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="111" column="16" selection-start-line="111" selection-start-column="16" selection-end-line="111" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/views/klanten/overzicht/klantenoverzicht.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="80" column="14" selection-start-line="80" selection-start-column="14" selection-end-line="80" selection-end-column="14" />
+        <state relative-caret-position="1037">
+          <caret line="104" column="69" selection-start-line="104" selection-start-column="69" selection-end-line="104" selection-end-column="69" />
           <folding />
         </state>
       </provider>

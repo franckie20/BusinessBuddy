@@ -95,5 +95,28 @@ Meteor.methods({
         Klanten.remove({
             '_id': klant._id
         });
+    },
+
+    'klanten.update' (details) {
+        Klanten.update({
+            _id: details._id
+        }, {
+            $set: {
+                'Achternaam': details.Achternaam,
+                'Afdeling': details.Afdeling,
+                'Bedrijf': details.Bedrijf,
+                'E-mailadres': details.Email,
+                'Notities': details.Notities,
+                'Voornaam': details.Voornaam,
+                'Huisadres, plaats': details.HPlaats,
+                'Huisadres, postbusnummer': details.HPostbusnummer,
+                'Huisadres, postcode': details.HPostcode,
+                'Huisadres, provincie': details.HProvincie,
+                'Locatie': details.Locatie,
+                'Mobiele telefoon': details.Mobtel,
+                'Telefoon op werk': details.Telwerk,
+                'Telefoon thuis': details.Telthuis
+            }
+        });
     }
 });

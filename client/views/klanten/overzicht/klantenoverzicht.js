@@ -68,8 +68,41 @@ angular.module('klantenoverzicht').directive('overzichtklant', function() {
                 sort: this.getReactively('sort')}
             ]);
 
+            this.details = {
+                _id: '',
+                Voornaam: '',
+                Achternaam: '',
+                Email: '',
+                Bedrijf: '',
+                Afdeling: '',
+                Notities: '',
+                HPlaats: '',
+                HPostbusnummer: '',
+                HPostcode: '',
+                HProvincie: '',
+                Locatie: '',
+                Mobtel: '',
+                Telwerk: '',
+                Telthuis: ''
+            };
+
             this.selectedKlant = (klant) => {
                 this.klant = klant;
+                this.details._id = this.klant._id;
+                this.details.Voornaam = this.klant.Voornaam;
+                this.details.Achternaam = this.klant.Achternaam;
+                this.details.Email = this.klant['E-mailadres'];
+                this.details.Bedrijf = this.klant.Bedrijf;
+                this.details.Afdeling = this.klant.Afdeling;
+                this.details.Notities = this.klant.Notities;
+                this.details.HPlaats = this.klant['Huisadres, plaats'];
+                this.details.HPostbusnummer = this.klant['Huisadres, postbusnummer'];
+                this.details.HPostcode = this.klant['Huisadres, postcode'];
+                this.details.HProvincie = this.klant['Huisadres, provincie'];
+                this.details.Locatie = this.klant.Locatie;
+                this.details.Mobtel = this.klant['Mobiele telefoon'];
+                this.details.Telwerk = this.klant['Telefoon op werk'];
+                this.details.Telthuis = this.klant['Telefoon thuis'];
             }
 
             this.updateKlant = () => {
@@ -79,6 +112,7 @@ angular.module('klantenoverzicht').directive('overzichtklant', function() {
             this.removeKlant = () =>  {
                 Meteor.call('klanten.remove', this.klant);
             };
+
         }
     }
 });
