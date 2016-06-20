@@ -62,7 +62,6 @@ angular.module('klantenoverzicht').directive('overzichtklant', function() {
             };
 
             this.subscribe('klanten', () => [{
-
                 limit: parseInt(this.perPage),
                 skip: parseInt((this.getReactively('page') - 1) * this.perPage),
                 sort: this.getReactively('sort')}

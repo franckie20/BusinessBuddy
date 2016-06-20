@@ -20,7 +20,8 @@
                         <th>Tel werk</th>
                         <th>Tel prive</th>
                         <th>Plaats</th>
-                        <th>Actie</th>
+                        <th>Wijzig</th>
+                        <th>Verwijder</th>
                     </tr>
                     </thead>
 
@@ -34,6 +35,8 @@
                         <td>{{klant['Werkadres, plaats']}}</td>
                         <td>
                             <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#wijzigKlantModal" ng-click="overzichtklant.selectedKlant(klant)"><span class="fa fa-pencil"></span></button>
+                        </td>
+                        <td>
                             <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#verwijderKlantModal" ng-click="overzichtklant.selectedKlant(klant)"><span class="fa fa-trash"></span></button>
                         </td>
                     </tr>
@@ -90,7 +93,7 @@
                     <label class="label-light" for="user_name"><b>Afdeling</b></label>
                     <input class="form-control" required="required" type="text" ng-model="overzichtklant.details.Afdeling"><br>
                     <label class="label-light" for="user_name"><b>Notities</b></label>
-                    <textarea class="form-control" rows="3" id="textArea" ng-model="overzichtklant.details.Notities"></textarea><br>
+                    <textarea class="form-control" rows="5" id="textArea" ng-model="overzichtklant.details.Notities"></textarea><br>
                 </div>
                 <div class="form-group col-lg-6">
                     <label class="label-light" for="user_name"><b>Huisadres, plaats</b></label>

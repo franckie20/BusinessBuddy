@@ -29,13 +29,12 @@ if (Meteor.isClient) {
     return {
       restrict: 'E',
       controllerAs: 'businessbuddy',
-      controller: function ($scope, $reactive) {
+      controller: function ($scope, $reactive, $rootScope) {
         $reactive(this).attach($scope);
 
-      
         this.subscribe('lease');
         this.subscribe('werknemers');
-   
+        this.subscribe('klanten');
         this.subscribe('tasks');
 
         this.helpers({
