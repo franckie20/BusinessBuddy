@@ -3,7 +3,7 @@
         <menu></menu>
     </div>
 
-    <div class="content-wrapper">
+    <div class="content-wrapper" ng-show="dashboard.loading == false">
         <div class="flash-container">
             <div class="flash-success" ng-show="dashboard.success" ng-click="dashboard.success = null">{{ dashboard.success }}</div>
             <div class="flash-alert" ng-show="dashboard.error" ng-click="dashboard.error = null">{{ dashboard.error }}</div>
@@ -31,7 +31,15 @@
                         </form>
                         <p>{{fileName}}</p>
                     </div>
+
                 </div>
             </div>
+    </div>
+</div>
+
+<div id="overlay" ng-show="dashboard.loading == true">
+    Bezig met <br> contacten importeren
+    <div class="cssload-container">
+        <div class="cssload-whirlpool"></div>
     </div>
 </div>

@@ -527,3 +527,104 @@ header.navbar-businessbuddy .container-fluid .navbar-toggle:hover {
 .top-area {
     border-bottom: 1px solid #eee;
 }
+
+
+.cssload-container{
+    position:relative;
+}
+
+.cssload-whirlpool,
+.cssload-whirlpool::before,
+.cssload-whirlpool::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 4px solid rgb(204,204,204);
+    border-left-color: rgb(37,124,230);
+    border-radius: 3871px;
+    -o-border-radius: 3871px;
+    -ms-border-radius: 3871px;
+    -webkit-border-radius: 3871px;
+    -moz-border-radius: 3871px;
+}
+
+.cssload-whirlpool {
+    margin: -97px 0 0 -97px;
+    height: 194px;
+    width: 194px;
+    animation: cssload-rotate 4000ms linear infinite;
+    -o-animation: cssload-rotate 4000ms linear infinite;
+    -ms-animation: cssload-rotate 4000ms linear infinite;
+    -webkit-animation: cssload-rotate 4000ms linear infinite;
+    -moz-animation: cssload-rotate 4000ms linear infinite;
+}
+
+.cssload-whirlpool::before {
+    content: "";
+    margin: -89px 0 0 -89px;
+    height: 171px;
+    width: 171px;
+    animation: cssload-rotate 4000ms linear infinite;
+    -o-animation: cssload-rotate 4000ms linear infinite;
+    -ms-animation: cssload-rotate 4000ms linear infinite;
+    -webkit-animation: cssload-rotate 4000ms linear infinite;
+    -moz-animation: cssload-rotate 4000ms linear infinite;
+}
+
+.cssload-whirlpool::after {
+    content: "";
+    margin: -112px 0 0 -112px;
+    height: 217px;
+    width: 217px;
+    animation: cssload-rotate 8000ms linear infinite;
+    -o-animation: cssload-rotate 8000ms linear infinite;
+    -ms-animation: cssload-rotate 8000ms linear infinite;
+    -webkit-animation: cssload-rotate 8000ms linear infinite;
+    -moz-animation: cssload-rotate 8000ms linear infinite;
+}
+
+
+
+@keyframes cssload-rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@-o-keyframes cssload-rotate {
+    100% {
+        -o-transform: rotate(360deg);
+    }
+}
+
+@-ms-keyframes cssload-rotate {
+    100% {
+        -ms-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes cssload-rotate {
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-moz-keyframes cssload-rotate {
+    100% {
+        -moz-transform: rotate(360deg);
+    }
+}
+
+#overlay {
+    background: #212121;
+    color: rgb(204,204,204);
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 5000;
+    top: 0;
+    left: 0;
+    float: left;
+    text-align: center;
+    padding-top: 22%;
+}

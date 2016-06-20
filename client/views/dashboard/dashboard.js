@@ -79,27 +79,38 @@ angular.module('dashboard').directive('dashboard', function() {
 
       this.success = '';
       this.error = '';
+      this.loading = '';
 
+      // Het uploaded van de CSV
       this.uploadCSV = (file) =>
       {
         if($scope.fileread != null) {
-          Papa.parse($scope.fileread, {
-            header: true,
-            complete: function (results) {
-              for(var i=0; i < results.data.length; i++)
-              {
-                if(results.data[i] != null) {
-                  if(results.data[i].Achternaam != null) {
-                    Meteor.call('klanten.insertDutch', results.data[i]);
-                  }
-                  else if(results.data[i].Anniversary != null) {
-                    Meteor.call('klanten.insertEnglish', results.data[i]);
+          // Kijken of de file extensie een CSV is of niet
+          if($scope.fileName.substr($scope.fileName.lastIndexOf('.')+1) == 'CSV') {
+            this.loading = true;
+            Papa.parse($scope.fileread, {
+              header: true,
+              complete: function (results) {
+                for (var i = 0; i < results.data.length; i++) {
+                  if (results.data[i] != null) {
+                    // Is de header in het Nederlands?
+                    if (results.data[i].Achternaam != null) {
+                      Meteor.call('klanten.insertDutch', results.data[i]);
+                    }
+                    // Of is de header in het Engels?
+                    else if (results.data[i].Anniversary != null) {
+                      Meteor.call('klanten.insertEnglish', results.data[i]);
+                    }
                   }
                 }
+                this.loading = false;
+                this.success = "Al uw contacten zijn geïmporteerd";
+                console.log(this.loading);
               }
-            }
-          });
-          this.success = 'Al uw contacten zijn geïmporteerd';
+            });
+          } else {
+            this.error = 'Kies een correct bestand om te importeren!';
+          }
         }
         else {
           this.error = 'Kies een bestand om te importeren!';
