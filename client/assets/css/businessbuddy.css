@@ -618,6 +618,7 @@ header.navbar-businessbuddy .container-fluid .navbar-toggle:hover {
 #overlay {
     background: #212121;
     color: rgb(204,204,204);
+    opacity: 0.75;
     position: fixed;
     height: 100%;
     width: 100%;
