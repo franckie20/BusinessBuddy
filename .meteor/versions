@@ -9,6 +9,7 @@ angular-templates@1.0.2
 angular:angular@1.4.8
 angularui:angular-ui-bootstrap@0.13.0
 angularui:angular-ui-router@0.2.15
+angularui:ui-calendar@1.0.1
 angularutils:pagination@0.9.1_2
 autoupdate@1.2.6
 babel-compiler@6.5.2
@@ -64,6 +65,7 @@ mobile-experience@1.0.2
 mobile-status-bar@1.0.10
 modules@0.5.1
 modules-runtime@0.6.1
+momentjs:moment@2.8.4
 mongo@1.1.5
 mongo-id@1.0.2
 npm-bcrypt@0.7.8_2
