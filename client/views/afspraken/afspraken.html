@@ -6,24 +6,24 @@
     <div class="content-wrapper">
         <div class="flash-container"></div>
         <div class="container-fluid container-limited">
-            <div class="content">
+            <div class="content" ng-controller="AfsprakenCtrl">
                 <div class="row">
                     <div class="col-lg-3 profile-settings-sidebar">
                         <h4 class="prepend-top-0">Nieuwe afspraak</h4>
                         <p>Hiernaast laat u weten wat de nieuwe afspraak betreft.</p>
                     </div>
                     <div class="col-lg-9">
-                        <form class="updateProfile" accept-charset="UTF-8">
+                        <form class="nieuweAfspraak" accept-charset="UTF-8">
 
                             <div class="form-group">
                                 <label class="label-light" for="user_name">Titel</label>
-                                <input class="form-control" required="required" type="text" ng-model="afspraken.details.titel">
+                                <input class="form-control" required="required" type="text" ng-model="details.Titel">
                                 <span class="help-block">Vul hier een titel in voor de nieuwe afspraak</span>
                             </div>
 
                             <div class="form-group">
                                 <label class="label-light" for="user_bio">Omschrijving</label>
-                                <textarea class="form-control" required="required" rows="6" ng-model="afspraken.details.omschrijving"></textarea>
+                                <textarea class="form-control" required="required" rows="6" ng-model="details.Omschrijving"></textarea>
                                 <span class="help-block"></span>
                             </div>
 
@@ -59,19 +59,19 @@
 
                             <div class="form-group">
                                 <label class="label-light" for="user_bio">Einddatum</label>
-                                <input type="text" class="form-control" data-provide="datepicker" ng-model="afspraken.details.einddatum">
+                                <input type="text" class="form-control" data-provide="datepicker" ng-model="details.Einddatum">
                                 <span class="help-block"></span>
                             </div>
 
                             <div class="form-group">
                                 <label class="label-light" for="user_bio">Eindtijd</label>
-                                <input class="form-control" required="required" type="text" ng-model="afspraken.details.eindtijd">
+                                <input class="form-control" required="required" type="text" ng-model="details.Eindtijd">
                                 <span class="help-block"></span>
                             </div>
 
 
                             <div class="prepend-top-default append-bottom-default">
-                                <input ng-click="nieuweAfspraak(titel, omschrijving, einddatum, eindtijd)" aria-label="Nieuwe afspraak" type="submit" value="Nieuwe afspraak toevoegen" class="btn-create btn">
+                                <input ng-click="nieuweAfspraak()" aria-label="Nieuwe afspraak" type="submit" value="Nieuwe afspraak toevoegen" class="btn-create btn">
                                 <a class="btn btn-cancel" href="/dashboard">Annuleer</a>
                             </div>
                         </form>

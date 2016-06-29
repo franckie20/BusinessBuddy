@@ -110,7 +110,7 @@ angular.module('klantenoverzicht').directive('overzichtklant', function() {
 
             this.removeKlant = () =>  {
                 Meteor.call('klanten.remove', this.klant);
-            };
+            }
 
         }
     }

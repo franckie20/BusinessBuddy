@@ -2,8 +2,8 @@
 
 angular.module('afspraken', [
     'ui.router',
-    'ngSanitize',
-    'ui.select'
+    'ui.select',
+    'ngSanitize'
 ]);
 
 angular.module('afspraken').config(function ($urlRouterProvider, $stateProvider, $locationProvider) {
@@ -88,3 +88,23 @@ angular.module('afspraken').controller('AfsprakenMenuCtrl', function ($scope) {
         'icon': 'fa-table'
     }]
 });
+
+angular.module('afspraken').controller('AfsprakenCtrl', ['$scope', function($scope) {
+    $scope.klant = {};
+    $scope.user = {};
+    
+    $scope.details = {
+        Titel: '',
+        Omschrijving: '',
+        Einddatum: '',
+        Eindtijd: '',
+        Uitvoerder: '',
+        Klant: ''
+    };
+
+    $scope.nieuweAfspraak = () => {
+        $scope.details.Klant = $scope.klant.selected;
+        $scope.details.Uitvoerder = $scope.user.selected;
+        console.log($scope.details);
+    }
+}]);
