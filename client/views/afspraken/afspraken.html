@@ -9,40 +9,70 @@
             <div class="content">
                 <div class="row">
                     <div class="col-lg-3 profile-settings-sidebar">
-                        <h4 class="prepend-top-0">Basic information</h4>
-                        <p>Information about the appointment.</p>
+                        <h4 class="prepend-top-0">Nieuwe afspraak</h4>
+                        <p>Hiernaast laat u weten wat de nieuwe afspraak betreft.</p>
                     </div>
                     <div class="col-lg-9">
                         <form class="updateProfile" accept-charset="UTF-8">
 
                             <div class="form-group">
-                                <label class="label-light" for="user_name">Name</label>
-                                <input class="form-control" required="required" type="text" value="" name="user[name]" id="user_name">
+                                <label class="label-light" for="user_name">Titel</label>
+                                <input class="form-control" required="required" type="text" ng-model="afspraken.details.titel">
+                                <span class="help-block">Vul hier een titel in voor de nieuwe afspraak</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="label-light" for="user_bio">Omschrijving</label>
+                                <textarea class="form-control" required="required" rows="6" ng-model="afspraken.details.omschrijving"></textarea>
+                                <span class="help-block"></span>
+                            </div>
+                            
+                            <div class="form-group" id="formFix">
+                                <label class="label-light" for="user_bio">Taak uitvoerder</label>
+                                <ui-select ng-model="user.selected" theme="bootstrap" ng-disabled="disabled" style="min-width: 300px;">
+                                    <ui-select-match placeholder="Selecteer een uitvoerder uit de lijst of zoek op naam">{{$select.selected.profile.name}}</ui-select-match>
+                                    <ui-select-choices repeat="user in businessbuddy.users | propsFilter: {username: $select.search} | limitTo: 50">
+                                        <div ng-bind-html="user.profile.name | highlight: $select.search"></div>
+                                        <small>
+                                            name: {{user.profile.name}}
+                                            email: <span ng-bind-html="'' + user.emails[0].address | highlight: $select.search"></span>
+                                        </small>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <span class="help-block">Kies hier de medewerker die de taak moet gaan uitvoeren</span>
+                            </div>
+
+                            <div class="form-group" id="formFix">
+                                <label class="label-light" for="user_bio">Klant</label>
+                                <ui-select ng-model="klant.selected" theme="bootstrap" ng-disabled="disabled" style="min-width: 300px;">
+                                    <ui-select-match placeholder="Selecteer een klant in de lijst of zoek op naam">{{$select.selected.Voornaam}} {{$select.selected.Bedrijf}}</ui-select-match>
+                                    <ui-select-choices repeat="klant in businessbuddy.klanten | propsFilter: {Voornaam: $select.search, Bedrijf: $select.search} | limitTo: 50">
+                                        <div ng-bind-html="klant.Voornaam | highlight: $select.search"></div>
+                                        <small>
+                                            email: {{klant['E-mailadres']}}
+                                            bedrijf: <span ng-bind-html="''+klant.Bedrijf | highlight: $select.search"></span>
+                                        </small>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <span class="help-block">Kies hier de klant voor de afspraak</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="label-light" for="user_bio">Einddatum</label>
+                                <input type="text" class="form-control" data-provide="datepicker" ng-model="afspraken.details.einddatum">
                                 <span class="help-block"></span>
                             </div>
 
                             <div class="form-group">
-                                <label class="label-light" for="user_bio">Description</label>
-                                <input class="form-control" required="required" type="text" value="" name="user[name]" id="user_name">
-                                <span class="help-block"></span>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="label-light" for="user_bio">Date</label>
-                                <input type="text" class="form-control" data-provide="datepicker">
-                                <span class="help-block"></span>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="label-light" for="user_bio">Time</label>
-                                <input class="form-control" required="required" type="text" value="" name="user[name]" id="user_name">
+                                <label class="label-light" for="user_bio">Eindtijd</label>
+                                <input class="form-control" required="required" type="text" ng-model="afspraken.details.eindtijd">
                                 <span class="help-block"></span>
                             </div>
 
 
                             <div class="prepend-top-default append-bottom-default">
-                                <input ng-click="profile.profile()" aria-label="profile" ng-disabled="profile.updateProfile.$invalid()" type="submit" value="New appointment" class="btn-create btn">
-                                <a class="btn btn-cancel" href="/u/franckie20">Cancel</a>
+                                <input ng-click="nieuweAfspraak(titel, omschrijving, einddatum, eindtijd)" aria-label="Nieuwe afspraak" type="submit" value="Nieuwe afspraak toevoegen" class="btn-create btn">
+                                <a class="btn btn-cancel" href="/dashboard">Annuleer</a>
                             </div>
                         </form>
                     </div>

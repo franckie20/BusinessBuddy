@@ -36,6 +36,7 @@ if (Meteor.isClient) {
         this.subscribe('werknemers');
         this.subscribe('klanten');
         this.subscribe('tasks');
+        this.subscribe('users');
 
         this.helpers({
           isLoggedIn: () => {
@@ -55,9 +56,12 @@ if (Meteor.isClient) {
             });
           },
           leasecontracts() {
-          return Lease.find({}, {
-            sort : this.getReactively('sort')
-          });
+            return Lease.find({}, {
+              sort : this.getReactively('sort')
+            });
+          },
+          users() {
+            return Meteor.users.find({});
           }
         });
 

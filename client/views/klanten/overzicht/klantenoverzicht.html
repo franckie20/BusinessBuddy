@@ -20,8 +20,7 @@
                         <th>Tel werk</th>
                         <th>Tel prive</th>
                         <th>Plaats</th>
-                        <th>Wijzig</th>
-                        <th>Verwijder</th>
+                        <th>Actie</th>
                     </tr>
                     </thead>
 
@@ -30,13 +29,11 @@
                         <td>{{klant.Voornaam}} {{klant.Achternaam}}</td>
                         <td>{{klant.Bedrijf}}</td>
                         <td>{{klant['E-mailadres']}}</td>
-                        <td>{{klant['Telefoon op werk']}}</td>
-                        <td>{{klant['Mobiele telefoon']}}</td>
+                        <td style="width: 12%;">{{klant['Telefoon op werk']}}</td>
+                        <td style="width: 12%;">{{klant['Mobiele telefoon']}}</td>
                         <td>{{klant['Werkadres, plaats']}}</td>
-                        <td>
-                            <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#wijzigKlantModal" ng-click="overzichtklant.selectedKlant(klant)"><span class="fa fa-pencil"></span></button>
-                        </td>
-                        <td>
+                        <td style="width: 10%;">
+                            <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#wijzigKlantModal" style="margin-right: 5px;" ng-click="overzichtklant.selectedKlant(klant)"><span class="fa fa-pencil"></span></button>
                             <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#verwijderKlantModal" ng-click="overzichtklant.selectedKlant(klant)"><span class="fa fa-trash"></span></button>
                         </td>
                     </tr>

@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('afspraken', [
-    'ui.router'
+    'ui.router',
+    'ngSanitize',
+    'ui.select'
 ]);
 
 angular.module('afspraken').config(function ($urlRouterProvider, $stateProvider, $locationProvider) {
@@ -28,6 +30,37 @@ angular.module('afspraken').config(function ($urlRouterProvider, $stateProvider,
     });
 });
 
+angular.module('afspraken').filter('propsFilter', function() {
+    return function(items, props) {
+        var out = [];
+
+        if (angular.isArray(items)) {
+            items.forEach(function(item) {
+                var itemMatches = false;
+
+                var keys = Object.keys(props);
+                for (var i = 0; i < keys.length; i++) {
+                    var prop = keys[i];
+                    var text = props[prop].toLowerCase();
+                    if (item[prop].toString().toLowerCase().indexOf(text) !== -1) {
+                        itemMatches = true;
+                        break;
+                    }
+                }
+
+                if (itemMatches) {
+                    out.push(item);
+                }
+            });
+        } else {
+            // Let the output be the input untouched
+            out = items;
+        }
+
+        return out;
+    }
+});
+
 angular.module('afspraken').controller('AfsprakenMenuCtrl', function ($scope) {
     $scope.title = 'Afspraken toevoegen';
     $scope.link = "/dashboard/afspraken";
@@ -38,7 +71,18 @@ angular.module('afspraken').controller('AfsprakenMenuCtrl', function ($scope) {
         'link': '/dashboard/afspraken',
         'icon': 'fa-plus-square-o',
         'active': 'active'
-    }, {
+    },
+    {
+        'text': 'Nieuwe taak',
+        'link': '/dashboard/taken',
+        'icon': 'fa-plus-square-o'
+    },
+    {
+        'text': 'Taken overzicht',
+        'link': '/dashboard/taken/overzicht',
+        'icon': 'fa-table'
+    },
+    {
         'text': 'Afspraken overzicht',
         'link': '/dashboard/afspraken/overzicht',
         'icon': 'fa-table'
