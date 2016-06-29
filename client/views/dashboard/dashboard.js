@@ -53,73 +53,8 @@ angular.module('dashboard').controller('DashboardMenuCtrl', function ($scope) {
   }]
 });
 
-angular.module('dashboard').directive('dashboard', function() {
-  return {
-    scope: {
-      fileread: "=",
-      fileName: "="
-    },
-    link: function (scope, element, attributes) {
-      element.bind("change", function (changeEvent) {
-        scope.$apply(function () {
-          scope.fileread = changeEvent.target.files[0];
-          var thefile = document.getElementById('fileName');
-          scope.fileName = thefile.value;
-          // or all selected files:
-          // scope.fileread = changeEvent.target.files;
-        });
-      });
-    },
-    restrict: 'E',
-    templateUrl: 'client/views/dashboard/dashboard.html',
-    controllerAs: 'dashboard',
-    controller: function ($scope, $reactive, $state) {
-      $reactive(this).attach($scope);
-
-      this.success = '';
-      this.error = '';
-      this.loading = '';
-
-      // Het uploaded van de CSV
-      this.uploadCSV = (file) =>
-      {
-        if($scope.fileread != null) {
-          // Kijken of de file extensie een CSV is of niet
-          if($scope.fileName.substr($scope.fileName.lastIndexOf('.')+1) == 'CSV') {
-            this.loading = true;
-            Papa.parse($scope.fileread, {
-              header: true,
-              complete: function (results) {
-                for (var i = 0; i < results.data.length; i++) {
-                  if (results.data[i] != null) {
-                    // Is de header in het Nederlands?
-                    if (results.data[i].Achternaam != null) {
-                      Meteor.call('klanten.insertDutch', results.data[i]);
-                    }
-                    // Of is de header in het Engels?
-                    else if (results.data[i].Anniversary != null) {
-                      Meteor.call('klanten.insertEnglish', results.data[i]);
-                    }
-                  }
-                }
-                this.loading = false;
-                this.success = "Al uw contacten zijn geïmporteerd";
-                console.log(this.loading);
-              }
-            });
-          } else {
-            this.error = 'Kies een correct bestand om te importeren!';
-          }
-        }
-        else {
-          this.error = 'Kies een bestand om te importeren!';
-        }
-      }
-    }
-  }
-  // Your Client ID can be retrieved from your project in the Google
-  // Developer Console, https://console.developers.google.com
-  var CLIENT_ID = '716612570431-g5f2afa579te88t49t99bef4u89k6jat.apps.googleusercontent.com';
+angular.module('dashboard').controller('GoogleCalendarCtrl', ['$scope', function($scope) {
+  var CLIENT_ID = '716612570431-6j4da5f1kdaqpifndr0e7a916n3m3m4m.apps.googleusercontent.com';
 
   var SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
 
@@ -141,6 +76,7 @@ angular.module('dashboard').directive('dashboard', function() {
    * @param {Object} authResult Authorization result.
    */
   function handleAuthResult(authResult) {
+    console.log(authResult);
     var authorizeDiv = document.getElementById('authorize-div');
     if (authResult && !authResult.error) {
       // Hide auth UI, then load client library.
@@ -158,10 +94,8 @@ angular.module('dashboard').directive('dashboard', function() {
    *
    * @param {Event} event Button click event.
    */
-  function handleAuthClick(event) {
-    gapi.auth.authorize(
-        {client_id: CLIENT_ID, scope: SCOPES, immediate: false},
-        handleAuthResult);
+  $scope.handleAuthClick = function() {
+    gapi.auth.authorize({client_id: CLIENT_ID, scope: SCOPES, immediate: false}, handleAuthResult);
     return false;
   }
 
@@ -193,7 +127,7 @@ angular.module('dashboard').directive('dashboard', function() {
       appendPre('Upcoming events:');
 
       if (events.length > 0) {
-        for (i = 0; i < events.length; i++) {
+        for (var i = 0; i < events.length; i++) {
           var event = events[i];
           var when = event.start.dateTime;
           if (!when) {
@@ -218,5 +152,81 @@ angular.module('dashboard').directive('dashboard', function() {
     var pre = document.getElementById('output');
     var textContent = document.createTextNode(message + '\n');
     pre.appendChild(textContent);
+  }
+}]);
+
+angular.module('dashboard').directive('dashboard', function() {
+  return {
+    scope: {
+      fileread: "=",
+      fileName: "="
+    },
+    link: function (scope, element, attributes) {
+      element.bind("change", function (changeEvent) {
+        scope.$apply(function () {
+          scope.fileread = changeEvent.target.files[0];
+          var thefile = document.getElementById('fileName');
+          scope.fileName = thefile.value;
+        });
+      });
+    },
+    restrict: 'E',
+    templateUrl: 'client/views/dashboard/dashboard.html',
+    controllerAs: 'dashboard',
+    controller: function ($scope, $reactive, $state) {
+      $reactive(this).attach($scope);
+
+      this.success = '';
+      this.error = '';
+      this.loading = '';
+
+      /**
+       * Uploading a CSV file
+       *
+       * @param (file) file to be placed in the argument
+       */
+      this.uploadCSV = (file) =>
+      {
+        if($scope.fileread != null) {
+          /**
+           * Check if the inserted file is actually a CSV file
+           *
+           * @lastIndexOf(substr)
+           */
+          if($scope.fileName.substr($scope.fileName.lastIndexOf('.')+1) == 'CSV') {
+            this.loading = true;
+            Papa.parse($scope.fileread, {
+              header: true,
+              complete: function (results) {
+                for (var i = 0; i < results.data.length; i++) {
+                  if (results.data[i] != null) {
+                    /**
+                     * Check if the header is dutch
+                     */
+                    if (results.data[i].Achternaam != null) {
+                      Meteor.call('klanten.insertDutch', results.data[i]);
+                    }
+                    /**
+                     * Check if the header is english
+                     */
+                    else if (results.data[i].Anniversary != null) {
+                      Meteor.call('klanten.insertEnglish', results.data[i]);
+                    }
+                  }
+                }
+                this.loading = false;
+                this.success = "Al uw contacten zijn geïmporteerd";
+                console.log(this.loading);
+              }
+            });
+          } else {
+            this.error = 'Kies een correct bestand om te importeren!';
+          }
+        }
+        else {
+          this.error = 'Kies een bestand om te importeren!';
+        }
+      }
+    }
   }
 });
