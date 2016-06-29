@@ -37,11 +37,11 @@
                         <p >Hieronder kunt u ons toegang geven tot uw Google Calendar zodat al uw afspraken gesynchroniseerd kunnen worden</p>
                     </div>
 
-                    <div class="col-lg-12">
+                    <div class="col-lg-12" ng-controller="GoogleCalendarCtrl">
                         <hr>
 
                         <div id="authorize-div">
-                            <button class="btn btn-primary" id="authorize-button" onclick="handleAuthClick(event)">Authorize</button>
+                            <button class="btn btn-primary" id="authorize-button" ng-click="handleAuthClick()">Authorize</button>
                         </div>
                         <br />
                         <pre id="output"></pre>
