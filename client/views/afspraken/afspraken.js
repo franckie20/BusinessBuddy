@@ -110,6 +110,9 @@ angular.module('afspraken').controller('AfsprakenCtrl', ['$scope', function($sco
         }
     };
 
+    $scope.success = '';
+    $scope.error = '';
+
     $scope.nieuweAfspraak = (afspraak) => {
         if($scope.nieuweAfspraakForm.$valid) {
             $scope.afspraak.Klant._id = $scope.klant.selected._id;
@@ -118,7 +121,11 @@ angular.module('afspraken').controller('AfsprakenCtrl', ['$scope', function($sco
             $scope.afspraak.Klant.Bedrijf = $scope.klant.selected.Bedrijf;
             $scope.afspraak.Uitvoerder._id = $scope.user.selected._id;
             $scope.afspraak.Uitvoerder.username = $scope.user.selected.username;
-            console.log($scope.afspraak);
+            
+            Meteor.call('afspraken.insert', $scope.afspraak);
+
+        } else {
+            $scope.error = "Controleer de velden";
         }
     }
 }]);

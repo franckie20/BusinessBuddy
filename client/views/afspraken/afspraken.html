@@ -3,10 +3,13 @@
         <menu></menu>
     </div>
 
-    <div class="content-wrapper">
-        <div class="flash-container"></div>
+    <div class="content-wrapper" ng-controller="AfsprakenCtrl">
+        <div class="flash-container">
+            <div class="flash-alert" ng-show="error" ng-click="error = null">{{ error }}</div>
+            <div class="flash-success" ng-show="success" ng-click="success = null">{{ success }}</div>
+        </div>
         <div class="container-fluid container-limited">
-            <div class="content" ng-controller="AfsprakenCtrl">
+            <div class="content">
                 <div class="row">
                     <div class="col-lg-3 profile-settings-sidebar">
                         <h4 class="prepend-top-0">Nieuwe afspraak</h4>

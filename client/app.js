@@ -35,7 +35,8 @@ if (Meteor.isClient) {
         this.subscribe('lease');
         this.subscribe('werknemers');
         this.subscribe('klanten');
-        this.subscribe('tasks');
+        this.subscribe('taken');
+        this.subscribe('afspraken');
         this.subscribe('users');
 
         this.helpers({
@@ -52,6 +53,16 @@ if (Meteor.isClient) {
           },
           klanten() {
             return Klanten.find({}, {
+              sort : this.getReactively('sort')
+            });
+          },
+          taken() {
+            return Taken.find({}, {
+              sort : this.getReactively('sort')
+            });
+          },
+          afspraken() {
+            return Afspraken.find({}, {
               sort : this.getReactively('sort')
             });
           },
