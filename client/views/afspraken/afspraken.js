@@ -93,18 +93,32 @@ angular.module('afspraken').controller('AfsprakenCtrl', ['$scope', function($sco
     $scope.klant = {};
     $scope.user = {};
     
-    $scope.details = {
+    $scope.afspraak = {
         Titel: '',
         Omschrijving: '',
         Einddatum: '',
         Eindtijd: '',
-        Uitvoerder: '',
-        Klant: ''
+        Uitvoerder: {
+            _id: '',
+            username: ''
+        },
+        Klant: {
+            _id: '',
+            Voornaam: '',
+            Achternaam: '',
+            Bedrijf: ''
+        }
     };
 
-    $scope.nieuweAfspraak = () => {
-        $scope.details.Klant = $scope.klant.selected;
-        $scope.details.Uitvoerder = $scope.user.selected;
-        console.log($scope.details);
+    $scope.nieuweAfspraak = (afspraak) => {
+        if($scope.nieuweAfspraakForm.$valid) {
+            $scope.afspraak.Klant._id = $scope.klant.selected._id;
+            $scope.afspraak.Klant.Voornaam = $scope.klant.selected.Voornaam;
+            $scope.afspraak.Klant.Achternaam = $scope.klant.selected.Achternaam;
+            $scope.afspraak.Klant.Bedrijf = $scope.klant.selected.Bedrijf;
+            $scope.afspraak.Uitvoerder._id = $scope.user.selected._id;
+            $scope.afspraak.Uitvoerder.username = $scope.user.selected.username;
+            console.log($scope.afspraak);
+        }
     }
 }]);
