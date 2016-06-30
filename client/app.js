@@ -5,6 +5,7 @@ if (Meteor.isClient) {
     'ui.bootstrap',
     'menu',
     'dashboard',
+    'taken',
     'category',
     'profile',
     'password',
@@ -12,6 +13,7 @@ if (Meteor.isClient) {
     'register',
     'klanten',
     'klantenoverzicht',
+    'takenoverzicht',
     'werknemers',
     'werknemersoverzicht',
     'afspraken',
@@ -38,6 +40,7 @@ if (Meteor.isClient) {
         this.subscribe('taken');
         this.subscribe('afspraken');
         this.subscribe('users');
+        this.subscribe('urgentie');
 
         this.helpers({
           isLoggedIn: () => {
@@ -73,6 +76,9 @@ if (Meteor.isClient) {
           },
           users() {
             return Meteor.users.find({});
+          },
+          urgentie() {
+            return Urgentie.find({});
           }
         });
 

@@ -1,0 +1,112 @@
+<div class="page-with-sidebar page-sidebar-expanded">
+    <div ng-controller="TakenOverzichtMenuCtrl">
+        <menu></menu>
+    </div>
+    <div class="content-wrapper">
+        <div class="flash-container"></div>
+        <div class="container-fluid container-limited">
+            <div class="content">
+                <div class="col-lg-12">
+                    <label for="search">Search:</label>
+                    <input ng-model="q" id="search" class="form-control" placeholder="Filter text">
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Titel</th>
+                        <th>Omschrijving</th>
+                        <th>Einddatum</th>
+                        <th>Eindtijd</th>
+                        <th>Uitvoerder</th>
+                        <th>Actie</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr dir-paginate="taak in businessbuddy.taken | filter:q | itemsPerPage: overzichttaak.perPage" class="{{taak.Urgentie.kleur}}">
+                        <td>{{taak.Titel}}</td>
+                        <td>{{taak.Omschrijving}}</td>
+                        <td>{{taak.Einddatum}}</td>
+                        <td style="width: 12%;">{{taak.Eindtijd | date: "HH:mm"}}</td>
+                        <td style="width: 12%;">{{taak.Uitvoerder.profile.name}}</td>
+                        <td style="width: 10%;">
+                            <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#wijzigeTaakModal" style="margin-right: 5px;" ng-click="overzichttaak.selectedTaak(taak)"><span class="fa fa-pencil"></span></button>
+                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#verwijderTaakModal" ng-click="overzichttaak.selectedTaak(taak)"><span class="fa fa-trash"></span></button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="verwijderTaakModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Taak verwijderen</h4>
+            </div>
+            <div class="modal-body">
+                Weet je zeker dat je <b>{{overzichttaak.taak.Titel}}</b> wilt verwijderen?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Nee</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="overzichttaak.removeTaak()">Verwijder</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="wijzigeTaakModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Taak wijzigen</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group col-lg-12">
+                    <label class="label-light"><b>Titel</b></label>
+                    <input class="form-control" required="required" type="text" ng-model="overzichttaak.details.Titel">
+                </div>
+                <div class="form-group col-lg-12">
+                    <label class="label-light"><b>Omschrijving</b></label>
+                    <textarea class="form-control" rows="5" id="textArea" ng-model="overzichttaak.details.Omschrijving"></textarea><br>
+                </div>
+                <div class="form-group col-lg-6">
+                    <label class="label-light"><b>Einddatum</b></label>
+                    <input class="form-control" required="required" type="text" data-provide="datepicker" ng-model="overzichttaak.details.Einddatum">
+                </div>
+                <div class="form-group col-lg-6">
+                    <label class="label-light"><b>Eindtijd</b></label>
+                    <input class="form-control" required="required" type="time" ng-model="overzichttaak.details.Eindtijd">
+                </div>
+                <div class="form-group col-lg-12">
+                    <div class="form-group" id="formFix">
+                        <label class="label-light">Taak uitvoerder</label>
+                        <ui-select ng-model="overzichttaak.details.Uitvoerder" required="" theme="bootstrap" ng-disabled="disabled" style="min-width: 300px;">
+                            <ui-select-match placeholder="Selecteer een uitvoerder uit de lijst of zoek op naam">{{$select.selected.profile.name}}</ui-select-match>
+                            <ui-select-choices repeat="user in businessbuddy.users | propsFilter: {username: $select.search} | limitTo: 50">
+                                <div ng-bind-html="user.profile.name | highlight: $select.search"></div>
+                                <small>
+                                    name: {{user.profile.name}}
+                                    email: <span ng-bind-html="'' + user.emails[0].address | highlight: $select.search"></span>
+                                </small>
+                            </ui-select-choices>
+                        </ui-select>
+                        <span class="help-block">Kies hier de medewerker die de taak moet gaan uitvoeren</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Nee</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="overzichttaak.updateTaak()">Wijzig</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -22,7 +22,10 @@ Meteor.methods({
                 Eindtijd: data.Eindtijd,
                 Uitvoerder: {
                     _id: data.Uitvoerder._id,
-                    username: data.Uitvoerder.username
+                    username: data.Uitvoerder.username,
+                    profile: {
+                        name: data.Uitvoerder.profile.name
+                    }
                 },
                 Klant: {
                     _id: data.Klant._id,

@@ -100,7 +100,10 @@ angular.module('afspraken').controller('AfsprakenCtrl', ['$scope', function($sco
         Eindtijd: '',
         Uitvoerder: {
             _id: '',
-            username: ''
+            username: '',
+            profile: {
+                name: ''
+            }
         },
         Klant: {
             _id: '',
@@ -121,6 +124,9 @@ angular.module('afspraken').controller('AfsprakenCtrl', ['$scope', function($sco
             $scope.afspraak.Klant.Bedrijf = $scope.klant.selected.Bedrijf;
             $scope.afspraak.Uitvoerder._id = $scope.user.selected._id;
             $scope.afspraak.Uitvoerder.username = $scope.user.selected.username;
+            $scope.afspraak.Uitvoerder.profile.name = $scope.user.selected.profile.name;
+
+            console.log($scope.user.selected.profile.name);
             
             Meteor.call('afspraken.insert', $scope.afspraak);
 

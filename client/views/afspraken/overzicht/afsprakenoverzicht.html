@@ -5,27 +5,41 @@
     <div class="content-wrapper">
         <div class="flash-container"></div>
         <div class="container-fluid container-limited">
-            <div class="content" ng-controller="kalender">
-                <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:500px;'>
-                    <div class="dhx_cal_navline">
-                        <div class="dhx_cal_prev_button">&nbsp;</div>
-                        <div class="dhx_cal_next_button">&nbsp;</div>
-                        <div class="dhx_cal_today_button"></div>
-                        <div class="dhx_cal_date"></div>
-                        <div class="dhx_cal_tab" name="day_tab" style="right:332px;"></div>
-                        <div class="dhx_cal_tab" name="week_tab" style="right:268px;"></div>
-                        <div class="dhx_cal_tab" name="month_tab" style="right:204px;"></div>
-                        <div class="dhx_cal_tab" name="year_tab" style="right:140px;"></div>
-                    </div>
-                    <div class="dhx_cal_header">
-                    </div>
-                    <div class="dhx_cal_data">
-                    </div>
+            <div class="content">
+                <div class="col-lg-12">
+                    <label for="search">Search:</label>
+                    <input ng-model="q" id="search" class="form-control" placeholder="Filter text">
                 </div>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Titel</th>
+                        <th>Omschrijving</th>
+                        <th>Einddatum</th>
+                        <th>Eindtijd</th>
+                        <th>Uitvoerder</th>
+                        <th>Klant</th>
+                        <th>Actie</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr dir-paginate="afspraak in businessbuddy.afspraken | filter:q | itemsPerPage: overzichtafspraak.perPage">
+                        <td>{{afspraak.Titel}}</td>
+                        <td>{{afspraak.Omschrijving}}</td>
+                        <td>{{afspraak.Einddatum}}</td>
+                        <td style="width: 12%;">{{afspraak.Eindtijd | date: "HH:mm"}}</td>
+                        <td style="width: 12%;">{{afspraak.Uitvoerder.profile.name}}</td>
+                        <td style="width: 12%;">{{afspraak.Klant.Voornaam}} {{afspraak.Klant.Achternaam}} {{afspraak.Klant.Bedrijf}}</td>
+                        <td style="width: 10%;">
+                            <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#wijzigeAfspraakModal" style="margin-right: 5px;" ng-click="overzichtafspraak.selectedAfspraak(afspraak)"><span class="fa fa-pencil"></span></button>
+                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#verwijderAfspraakModal" ng-click="overzichtafspraak.selectedAfspraak(afspraak)"><span class="fa fa-trash"></span></button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
             </div>
         </div>
     </div>
 </div>
-
-
-

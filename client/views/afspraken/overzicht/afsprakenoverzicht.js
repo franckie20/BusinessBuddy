@@ -37,7 +37,18 @@ angular.module('afsprakenoverzicht').controller('AfsprakenOverzichtMenuCtrl', fu
         'text': 'Nieuwe afspraak',
         'link': '/dashboard/afspraken',
         'icon': 'fa-plus-square-o'
-    }, {
+    },
+    {
+        'text': 'Nieuwe taak',
+        'link': '/dashboard/taken',
+        'icon': 'fa-plus-square-o'
+    },
+    {
+        'text': 'Taken overzicht',
+        'link': '/dashboard/taken/overzicht',
+        'icon': 'fa-table'
+    },
+    {
         'text': 'Afspraken overzicht',
         'link': '/dashboard/afspraken/overzicht',
         'icon': 'fa-table',
@@ -45,8 +56,69 @@ angular.module('afsprakenoverzicht').controller('AfsprakenOverzichtMenuCtrl', fu
     }]
 });
 
-angular.module('afsprakenoverzicht').controller('kalender', function ($scope) {
-    scheduler.init("scheduler_here", new Date());
-    //Init dhtmlxScheduler data adapter.
-    scheduler.meteor(TasksCollection);
+angular.module('afsprakenoverzicht').directive('overzichtafspraak', function() {
+    return {
+        restrict: 'E',
+        templateUrl: 'client/views/afspraken/overzicht/afsprakenoverzicht.html',
+        controllerAs: 'overzichtafspraak',
+        controller: function ($scope, $reactive, $state) {
+            $reactive(this).attach($scope);
+
+            this.afspraak = '';
+            this.perPage = 15;
+            this.currentPage = 1;
+            this.sort = {
+                name: 1
+            };
+
+            this.subscribe('taken', () => [{
+                limit: parseInt(this.perPage),
+                skip: parseInt((this.getReactively('page') - 1) * this.perPage),
+                sort: this.getReactively('sort')}
+            ]);
+
+            this.details = {
+                _id: '',
+                Titel: '',
+                Omschrijving: '',
+                Einddatum: '',
+                Eindtijd: '',
+                Uitvoerder: {
+                    _id: '',
+                    username: ''
+                },
+                Klant: {
+                    _id: '',
+                    Voornaam: '',
+                    Achternaam: '',
+                    Bedrijf: ''
+                }
+            };
+
+            this.selectedAfspraak = (afspraak) => {
+                this.afspraak = afspraak;
+                this.details._id = this.afspraak._id;
+                this.details.Titel = this.afspraak.Titel;
+                this.details.Omschrijving = this.afspraak.Omschrijving;
+                this.details.Einddatum = this.afspraak.Einddatum;
+                this.details.Eindtijd = this.afspraak.Eindtijd;
+                this.details.Klant._id = this.afspraak.Klant._id;
+                this.details.Klant.Voornaam = this.afspraak.Klant.Voornaam;
+                this.details.Klant.Achternaam = this.afspraak.Klant.Achternaam;
+                this.details.Klant.Bedrijf = this.afspraak.Klant.Bedrijf;
+                this.details.Uitvoerder._id = this.afspraak.Uitvoerder._id;
+                this.details.Uitvoerder.username = this.afspraak.Uitvoerder.username;
+            }
+
+            this.updateAfspraak = () => {
+                Meteor.call('afspraak.update', this.details);
+            }
+
+            this.removeAfspraak = () =>  {
+                Meteor.call('afspraak.remove', this.afspraak);
+            }
+
+        }
+    }
 });
+
