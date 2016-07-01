@@ -82,4 +82,28 @@ Meteor.startup(() => {
             Lease.insert(lease)
     });
     }
+
+
+    if (Notifications.find().count() === 0) {
+        const notificationFixtures = [{
+            'type': 'afspraak',
+            'content': 'BlueRent',
+            'eind': '02-07-2016',
+            'contact': 'Henkie Mcskou'
+        }, {
+            'type': 'taak',
+            'content': 'Herinnering voor uw taak',
+            'eind': '04-07-2016',
+            'contact': 'Boris vd Swag',
+        }, {
+            'type': 'lease',
+            'content': 'Contract loopt af',
+            'eind': '08-08-2016',
+            'contact': 'BlueRent',
+        }];
+
+        notificationFixtures.forEach((notification) => {
+            Notifications.insert(notification)
+    });
+    }
 });
