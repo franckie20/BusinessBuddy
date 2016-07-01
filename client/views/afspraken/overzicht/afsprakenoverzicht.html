@@ -3,42 +3,47 @@
         <menu></menu>
     </div>
     <div class="content-wrapper">
-        <div class="flash-container"></div>
+        <div class="flash-container">
+            <div class="flash-success" ng-show="overzichtafspraak.success" ng-click="overzichtafspraak.success = null">{{ overzichtafspraak.success }}</div>
+            <div class="flash-alert" ng-show="overzichtafspraak.error" ng-click="overzichtafspraak.error = null">{{ overzichtafspraak.error }}</div>
+        </div>
         <div class="container-fluid container-limited">
             <div class="content">
                 <div class="col-lg-12">
                     <label for="search">Search:</label>
                     <input ng-model="q" id="search" class="form-control" placeholder="Filter text">
                 </div>
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>Titel</th>
-                        <th>Omschrijving</th>
-                        <th>Einddatum</th>
-                        <th>Eindtijd</th>
-                        <th>Uitvoerder</th>
-                        <th>Klant</th>
-                        <th>Actie</th>
-                    </tr>
-                    </thead>
+                <div class="col-lg-12">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Titel</th>
+                            <th>Omschrijving</th>
+                            <th>Einddatum</th>
+                            <th>Eindtijd</th>
+                            <th>Uitvoerder</th>
+                            <th>Klant</th>
+                            <th>Actie</th>
+                        </tr>
+                        </thead>
 
-                    <tbody>
-                    <tr dir-paginate="afspraak in businessbuddy.afspraken | filter:q | itemsPerPage: overzichtafspraak.perPage">
-                        <td>{{afspraak.Titel}}</td>
-                        <td>{{afspraak.Omschrijving}}</td>
-                        <td>{{afspraak.Einddatum | date: "dd-MM-yyyy"}}</td>
-                        <td style="width: 12%;">{{afspraak.Eindtijd | date: "HH:mm"}}</td>
-                        <td style="width: 12%;">{{afspraak.Uitvoerder.profile.name}}</td>
-                        <td style="width: 12%;">{{afspraak.Klant.Voornaam}} {{afspraak.Klant.Achternaam}} {{afspraak.Klant.Bedrijf}}</td>
-                        <td style="width: 10%;">
-                            <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#wijzigeAfspraakModal" style="margin-right: 5px;" ng-click="overzichtafspraak.selectedAfspraak(afspraak)"><span class="fa fa-pencil"></span></button>
-                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#verwijderAfspraakModal" ng-click="overzichtafspraak.selectedAfspraak(afspraak)"><span class="fa fa-trash"></span></button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-                <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
+                        <tbody>
+                        <tr dir-paginate="afspraak in businessbuddy.afspraken | filter:q | itemsPerPage: overzichtafspraak.perPage">
+                            <td>{{afspraak.Titel}}</td>
+                            <td>{{afspraak.Omschrijving}}</td>
+                            <td>{{afspraak.Einddatum | date: "dd-MM-yyyy"}}</td>
+                            <td style="width: 12%;">{{afspraak.Eindtijd | date: "HH:mm"}}</td>
+                            <td style="width: 12%;">{{afspraak.Uitvoerder.profile.name}}</td>
+                            <td style="width: 12%;">{{afspraak.Klant.Voornaam}} {{afspraak.Klant.Achternaam}} {{afspraak.Klant.Bedrijf}}</td>
+                            <td style="width: 10%;">
+                                <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#wijzigeAfspraakModal" style="margin-right: 5px;" ng-click="overzichtafspraak.selectedAfspraak(afspraak)"><span class="fa fa-pencil"></span></button>
+                                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#verwijderAfspraakModal" ng-click="overzichtafspraak.selectedAfspraak(afspraak)"><span class="fa fa-trash"></span></button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
+                </div>
             </div>
         </div>
     </div>
@@ -69,7 +74,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Taak wijzigen</h4>
+                <h4 class="modal-title">Afspraak wijzigen</h4>
             </div>
             <div class="modal-body">
                 <div class="form-group col-lg-12">
@@ -104,19 +109,21 @@
                         <span class="help-block">Kies hier de medewerker die de taak moet gaan uitvoeren</span>
                     </div>
                 </div>
-                <div class="form-group" id="formFix" ng-class="{'has-error': nieuweAfspraakForm.aKlant.$invalid && nieuweAfspraakForm.$submitted}">
-                    <label class="label-light">Klant</label>
-                    <ui-select ng-model="overzichtafspraak.details.Klant" required="" name="aKlant" theme="bootstrap" ng-disabled="disabled" style="min-width: 300px;">
-                        <ui-select-match placeholder="Selecteer een klant in de lijst of zoek op naam">{{$select.selected.Voornaam}} {{$select.selected.Bedrijf}}</ui-select-match>
-                        <ui-select-choices repeat="klant in businessbuddy.klanten | propsFilter: {Voornaam: $select.search, Bedrijf: $select.search} | limitTo: 50">
-                            <div ng-bind-html="klant.Voornaam | highlight: $select.search"></div>
-                            <small>
-                                email: {{klant['E-mailadres']}}
-                                bedrijf: <span ng-bind-html="''+klant.Bedrijf | highlight: $select.search"></span>
-                            </small>
-                        </ui-select-choices>
-                    </ui-select>
-                    <span class="help-block">Kies hier de klant voor de afspraak</span>
+                <div class="form-group col-lg-12">
+                    <div class="form-group" id="formFix" ng-class="{'has-error': nieuweAfspraakForm.aKlant.$invalid && nieuweAfspraakForm.$submitted}">
+                        <label class="label-light">Klant</label>
+                        <ui-select ng-model="overzichtafspraak.details.Klant" required="" name="aKlant" theme="bootstrap" ng-disabled="disabled" style="min-width: 300px;">
+                            <ui-select-match placeholder="Selecteer een klant in de lijst of zoek op naam">{{$select.selected.Voornaam}} {{$select.selected.Bedrijf}}</ui-select-match>
+                            <ui-select-choices repeat="klant in businessbuddy.klanten | propsFilter: {Voornaam: $select.search, Bedrijf: $select.search} | limitTo: 50">
+                                <div ng-bind-html="klant.Voornaam | highlight: $select.search"></div>
+                                <small>
+                                    email: {{klant['E-mailadres']}}
+                                    bedrijf: <span ng-bind-html="''+klant.Bedrijf | highlight: $select.search"></span>
+                                </small>
+                            </ui-select-choices>
+                        </ui-select>
+                        <span class="help-block">Kies hier de klant voor de afspraak</span>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">

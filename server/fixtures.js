@@ -1,26 +1,29 @@
 Meteor.startup(() => {
     if (Werknemers.find().count() === 0) {
+        var datum = new Date();
+        datum.setHours(20,59,59);
+
         const werknemers = [{
-            'name': 'Henkie Palentijn',
-            'email': 'henkje@email.com',
-            'telephone': '064575415',
-            'company': 'Aqualux Engineering',
-            'start': '05-04-16',
-            'end': '05-10-16'
+            'Naam': 'Henkie Palentijn',
+            'Email': 'henkje@email.com',
+            'Telefoon': '064575415',
+            'Bedrijf': 'Aqualux Engineering',
+            'Start': datum,
+            'Eind': ''
         }, {
-            'name': 'Sjonnie Flex',
-            'email': 'sjonnieisflexibel@live.nl.',
-            'telephone': '0645164578',
-            'company': 'Dynavin 3D Studio',
-            'start': '05-04-16',
-            'end': '05-10-16'
+            'Naam': 'Sjonnie Flex',
+            'Email': 'sjonnieisflexibel@live.nl.',
+            'Telefoon': '0645164578',
+            'Bedrijf': 'Dynavin 3D Studio',
+            'Start': datum,
+            'Eind': ''
         }, {
-            'name': 'Patrick Flattrice',
-            'email': 'patrickiscool@gmail.com',
-            'telephone': '0645132548',
-            'company': 'Flow design',
-            'start': '05-04-16',
-            'end': '05-10-16'
+            'Naam': 'Patrick Flattrice',
+            'Email': 'patrickiscool@gmail.com',
+            'Telefoon': '0645132548',
+            'Bedrijf': 'Flow design',
+            'Start': datum,
+            'End': ''
         }];
 
         werknemers.forEach((werknemer) => {

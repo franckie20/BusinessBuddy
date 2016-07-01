@@ -15,15 +15,15 @@
                         </li>
 
                         <li>
-                            <a class="" title="" ng-show="businessbuddy.isLoggedIn" data-toggle="tooltip" rel="nofollow" data-method="delete" href="" data-original-title="Notifications">
+                            <a class="" title="" ng-show="businessbuddy.isLoggedIn" data-toggle="tooltip" data-method="delete" href="" data-original-title="Notifications">
                                <span data-toggle="modal" data-target="#popupNotifications">
-                                    <i class="fa fa-bell-o"></i>
+                                    <i class="fa fa-bell-o">{{businessbuddy.totalNotifications}} </i>
                                 </span>
                             </a>
                         </li>
 
                         <li>
-                            <a class="logout" title="" ng-click="businessbuddy.logout()" ng-show="businessbuddy.isLoggedIn" data-toggle="tooltip" rel="nofollow" data-method="delete" href="/users/sign_out" data-original-title="Sign out">
+                            <a class="logout" title="" ng-click="businessbuddy.logout()" ng-show="businessbuddy.isLoggedIn" data-toggle="tooltip" data-method="delete" href="/users/sign_out" data-original-title="Sign out">
                                 <i class="fa fa-sign-out"></i>
                             </a>
                         </li>
@@ -91,24 +91,15 @@
             </div>
             <div class="modal-body">
                 <ul class="list-group">
-                    <a href='/dashboard/afspraken/overzicht'>
-                        <li class="list-group-item">
-                            <span class="badge">10</span>
-                            Afspraken
-                        </li>
+                    <a class="list-group-item" href="/dashboard/notifications/afspraak">
+                        Afspraken<span class="badge">{{businessbuddy.totalAfsprakenNotifications}}</span>
                     </a>
-                    <a href='/dashboard/taken/overzicht'>
-                        <li class="list-group-item">
-                            <span class="badge">2</span>
-                            Taken
-                        </li>
+                    <a class="list-group-item" href="/dashboard/notifications/taak">
+                        Taken<span class="badge">{{businessbuddy.totalTakenNotifications}}</span>
                     </a>
 
-                    <a href='/dashboard/taken/overzicht'>
-                        <li class="list-group-item">
-                            <span class="badge">5</span>
-                            Lease contracten
-                        </li>
+                    <a class="list-group-item" href="/dashboard/notifications/lease">
+                        Lease contracten<span class="badge">{{businessbuddy.totalLeaseAfsprakenNotifications}}</span>
                     </a>
                 </ul>
             </div>

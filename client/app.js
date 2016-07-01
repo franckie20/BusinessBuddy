@@ -14,14 +14,15 @@ if (Meteor.isClient) {
     'klanten',
     'klantenoverzicht',
     'takenoverzicht',
+    'notificationsLease',
+    'notificationsAfspraak',
+    'notificationsTaak',
     'werknemers',
     'werknemersoverzicht',
     'afspraken',
     'afsprakenoverzicht',
     'lease',
-    'leaseoverzicht',
-    'notifications'
-
+    'leaseoverzicht'
   ]);
 
   angular.module('businessbuddy').config(function ($urlRouterProvider, $stateProvider, $locationProvider) {
@@ -33,7 +34,7 @@ if (Meteor.isClient) {
     return {
       restrict: 'E',
       controllerAs: 'businessbuddy',
-      controller: function ($scope, $reactive, $rootScope) {
+      controller: function ($scope, $reactive, $location) {
         $reactive(this).attach($scope);
 
         this.subscribe('lease');
@@ -83,10 +84,30 @@ if (Meteor.isClient) {
           notifications() {
             return Notifications.find({});
           },
+          totalTakenNotifications() {
+            return Notifications.find({'Type': "taak"}).count();
+          },
+          totalAfsprakenNotifications() {
+            return Notifications.find({'Type': "afspraak"}).count();
+          },
+          totalLeaseAfsprakenNotifications() {
+            return Notifications.find({'Type': "lease"}).count();
+          },
+          totalNotifications() {
+            var taken = Notifications.find({'Type': "taak"}).count();
+            var afspraken = Notifications.find({'Type': "afspraak"}).count();
+            var lease = Notifications.find({'Type': "lease"}).count();
+            return taken + afspraken + lease;
+          },
           urgentie() {
             return Urgentie.find({});
           }
         });
+
+        this.sortBy = function(propertyName) {
+          this.reverse = (this.propertyName === propertyName) ? !this.reverse : false;
+          this.propertyName = propertyName;
+        };
 
         this.logout = () => {
           Accounts.logout();

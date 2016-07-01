@@ -10,8 +10,16 @@ if (Meteor.isServer) {
 Meteor.methods({
     'notifications.insert' (data) {
         // Make sure the user is logged in before inserting
-        if (!Meteor.userId()) {
-            throw new Meteor.Error('not-authorized');
+        if(Meteor.isServer) {
+            if (Notifications.find({Titel: data.Titel}, {Omschrijving: data.Omschrijving}).count() == 0) {
+                Notifications.insert({
+                    'Type': data.Type,
+                    'Titel': data.Titel,
+                    'Omschrijving': data.Omschrijving,
+                    'Einddatum': data.Einddatum,
+                    'Eindtijd': data.Eindtijd
+                });
+            }
         }
     },
     'notifications.remove' (notification) {

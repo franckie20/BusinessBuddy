@@ -15,16 +15,33 @@ Meteor.methods({
         }
 
         Werknemers.insert({
-            'name': data.name,
-            'email': data.email,
-            'telephone': data.telephone,
-            'company': data.company
+            'Naam': data.Naam,
+            'Email': data.Email,
+            'Telefoon': data.Telefoon,
+            'Bedrijf': data.Bedrijf,
+            'Start': data.Start,
+            'Eind': data.Eind
         });
     },
 
-    'Werknemers.remove' (werknemer) {
+    'werknemers.remove' (werknemer) {
         Werknemers.remove({
             '_id': werknemer._id
+        });
+    },
+
+    'werknemers.update' (details) {
+        Werknemers.update({
+            _id: details._id
+        }, {
+            $set: {
+                'Naam': details.Naam,
+                'Email': details.Email,
+                'Telefoon': details.Telefoon,
+                'Bedrijf': details.Bedrijf,
+                'Start': details.Start,
+                'Eind': details.Eind
+            }
         });
     }
 });

@@ -12,20 +12,20 @@ angular.module('takenoverzicht').config(function ($urlRouterProvider, $stateProv
             currentUser: ($q) => {
             var deferred = $q.defer();
 
-    Meteor.autorun(function () {
-        if (!Meteor.loggingIn()) {
-            if (Meteor.user() == null) {
-                deferred.reject('AUTH_REQUIRED');
-                window.location.href = '/users/sign_in';
-            } else {
-                deferred.resolve(Meteor.user());
+            Meteor.autorun(function () {
+                if (!Meteor.loggingIn()) {
+                    if (Meteor.user() == null) {
+                        deferred.reject('AUTH_REQUIRED');
+                        window.location.href = '/users/sign_in';
+                    } else {
+                        deferred.resolve(Meteor.user());
+                    }
+                }
+            });
+            return deferred.promise;
             }
         }
     });
-    return deferred.promise;
-}
-}
-});
 });
 
 angular.module('takenoverzicht').controller('TakenOverzichtMenuCtrl', function ($scope) {
@@ -101,6 +101,9 @@ angular.module('takenoverzicht').directive('overzichttaak', function() {
                 }
             };
 
+            this.error = '';
+            this.success = '';
+
             this.selectedTaak = (taak) => {
                 this.taak = taak;
                 this.details._id = this.taak._id;
@@ -129,6 +132,7 @@ angular.module('takenoverzicht').directive('overzichttaak', function() {
                 var fReminder = new Date(fromReminder[2], fromReminder[1] - 1, fromReminder[0]);
                 this.details.Reminder.datum = fReminder;
 
+                this.success = "taak gewijzigd!";
                 Meteor.call('taken.update', this.details);
             }
 

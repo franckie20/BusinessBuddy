@@ -10,35 +10,37 @@
                     <label for="search">Search:</label>
                     <input ng-model="q" id="search" class="form-control" placeholder="Filter text">
                 </div>
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>Contactpersoon</th>
-                        <th>Bedrijf</th>
-                        <th>Email</th>
-                        <th>Tel werk</th>
-                        <th>Tel prive</th>
-                        <th>Plaats</th>
-                        <th>Actie</th>
-                    </tr>
-                    </thead>
+                <div class="col-lg-12">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Contactpersoon</th>
+                            <th>Bedrijf</th>
+                            <th>Email</th>
+                            <th>Tel werk</th>
+                            <th>Tel prive</th>
+                            <th>Plaats</th>
+                            <th>Actie</th>
+                        </tr>
+                        </thead>
 
-                    <tbody>
-                    <tr dir-paginate="klant in businessbuddy.klanten | filter:q | itemsPerPage: overzichtklant.perPage">
-                        <td>{{klant.Voornaam}} {{klant.Achternaam}}</td>
-                        <td>{{klant.Bedrijf}}</td>
-                        <td>{{klant['E-mailadres']}}</td>
-                        <td style="width: 12%;">{{klant['Telefoon op werk']}}</td>
-                        <td style="width: 12%;">{{klant['Mobiele telefoon']}}</td>
-                        <td>{{klant['Werkadres, plaats']}}</td>
-                        <td style="width: 10%;">
-                            <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#wijzigKlantModal" style="margin-right: 5px;" ng-click="overzichtklant.selectedKlant(klant)"><span class="fa fa-pencil"></span></button>
-                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#verwijderKlantModal" ng-click="overzichtklant.selectedKlant(klant)"><span class="fa fa-trash"></span></button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-                <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
+                        <tbody>
+                        <tr dir-paginate="klant in businessbuddy.klanten | filter:q | itemsPerPage: overzichtklant.perPage">
+                            <td>{{klant.Voornaam}} {{klant.Achternaam}}</td>
+                            <td>{{klant.Bedrijf}}</td>
+                            <td>{{klant['E-mailadres']}}</td>
+                            <td style="width: 12%;">{{klant['Telefoon op werk']}}</td>
+                            <td style="width: 12%;">{{klant['Mobiele telefoon']}}</td>
+                            <td>{{klant['Werkadres, plaats']}}</td>
+                            <td style="width: 10%;">
+                                <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#wijzigKlantModal" style="margin-right: 5px;" ng-click="overzichtklant.selectedKlant(klant)"><span class="fa fa-pencil"></span></button>
+                                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#verwijderKlantModal" ng-click="overzichtklant.selectedKlant(klant)"><span class="fa fa-trash"></span></button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
+                </div>
             </div>
         </div>
     </div>

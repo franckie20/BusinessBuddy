@@ -3,42 +3,47 @@
         <menu></menu>
     </div>
     <div class="content-wrapper">
-        <div class="flash-container"></div>
+        <div class="flash-container">
+            <div class="flash-success" ng-show="overzichttaak.success" ng-click="overzichttaak.success = null">{{ overzichttaak.success }}</div>
+            <div class="flash-alert" ng-show="overzichttaak.error" ng-click="overzichttaak.error = null">{{ overzichttaak.error }}</div>
+        </div>
         <div class="container-fluid container-limited">
             <div class="content">
                 <div class="col-lg-12">
                     <label for="search">Search:</label>
                     <input ng-model="q" id="search" class="form-control" placeholder="Filter text">
                 </div>
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>Titel</th>
-                        <th>Omschrijving</th>
-                        <th>Einddatum</th>
-                        <th>Eindtijd</th>
-                        <th>Uitvoerder</th>
-                        <th>Urgentie</th>
-                        <th>Actie</th>
-                    </tr>
-                    </thead>
+                <div class="col-lg-12">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Titel</th>
+                            <th>Omschrijving</th>
+                            <th>Einddatum</th>
+                            <th>Eindtijd</th>
+                            <th>Uitvoerder</th>
+                            <th>Urgentie</th>
+                            <th>Actie</th>
+                        </tr>
+                        </thead>
 
-                    <tbody>
-                    <tr dir-paginate="taak in businessbuddy.taken | filter:q | itemsPerPage: overzichttaak.perPage" class="{{taak.Urgentie.kleur}}">
-                        <td>{{taak.Titel}}</td>
-                        <td>{{taak.Omschrijving}}</td>
-                        <td>{{taak.Einddatum | date: "dd-MM-yyyy"}}</td>
-                        <td style="width: 12%;">{{taak.Eindtijd | date: "HH:mm"}}</td>
-                        <td style="width: 12%;">{{taak.Uitvoerder.profile.name}}</td>
-                        <td style="width: 12%;">{{taak.Urgentie.niveau}}</td>
-                        <td style="width: 10%;">
-                            <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#wijzigeTaakModal" style="margin-right: 5px;" ng-click="overzichttaak.selectedTaak(taak)"><span class="fa fa-pencil"></span></button>
-                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#verwijderTaakModal" ng-click="overzichttaak.selectedTaak(taak)"><span class="fa fa-trash"></span></button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-                <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
+                        <tbody>
+                        <tr dir-paginate="taak in businessbuddy.taken | filter:q | itemsPerPage: overzichttaak.perPage" class="{{taak.Urgentie.kleur}}">
+                            <td>{{taak.Titel}}</td>
+                            <td>{{taak.Omschrijving}}</td>
+                            <td>{{taak.Einddatum | date: "dd-MM-yyyy"}}</td>
+                            <td style="width: 12%;">{{taak.Eindtijd | date: "HH:mm"}}</td>
+                            <td style="width: 12%;">{{taak.Uitvoerder.profile.name}}</td>
+                            <td style="width: 12%;">{{taak.Urgentie.niveau}}</td>
+                            <td style="width: 10%;">
+                                <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#wijzigTaakModal" style="margin-right: 5px;" ng-click="overzichttaak.selectedTaak(taak)"><span class="fa fa-pencil"></span></button>
+                                <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#verwijderTaakModal" ng-click="overzichttaak.selectedTaak(taak)"><span class="fa fa-trash"></span></button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
+                </div>
             </div>
         </div>
     </div>
@@ -64,7 +69,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="wijzigeTaakModal" tabindex="-1" role="dialog">
+<div class="modal fade" id="wijzigTaakModal" tabindex="-1" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

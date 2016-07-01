@@ -16,25 +16,25 @@ Meteor.methods({
 
         if(Taken.find({Titel: data.Titel}, {Omschrijving: data.Omschrijving}).count() == 0) {
             Taken.insert({
-                Titel: data.Titel,
-                Omschrijving: data.Omschrijving,
-                Einddatum: data.Einddatum,
-                Eindtijd: data.Eindtijd,
-                Uitvoerder: {
-                    _id: data.Uitvoerder._id,
-                    username: data.Uitvoerder.username,
-                    profile: {
-                        name: data.Uitvoerder.profile.name
+                'Titel': data.Titel,
+                'Omschrijving': data.Omschrijving,
+                'Einddatum': data.Einddatum,
+                'Eindtijd': data.Eindtijd,
+                'Uitvoerder': {
+                    '_id': data.Uitvoerder._id,
+                    'username': data.Uitvoerder.username,
+                    'profile': {
+                        'name': data.Uitvoerder.profile.name
                     }
                 },
-                Reminder: {
-                    datum: data.Reminder.datum,
-                    tijd: data.Reminder.tijd
+                'Reminder': {
+                    'datum': data.Reminder.datum,
+                    'tijd': data.Reminder.tijd
                 },
-                Urgentie: {
-                    naam: data.Urgentie.naam,
-                    kleur: data.Urgentie.kleur,
-                    niveau: data.Urgentie.niveau
+                'Urgentie': {
+                    'naam': data.Urgentie.naam,
+                    'kleur': data.Urgentie.kleur,
+                    'niveau': data.Urgentie.niveau
                 }
             });
         }

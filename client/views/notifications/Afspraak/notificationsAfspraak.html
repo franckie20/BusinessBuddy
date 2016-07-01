@@ -1,0 +1,49 @@
+<div class="page-with-sidebar page-sidebar-expanded">
+    <div ng-controller="NotificationsMenuCtrl">
+        <menu></menu>
+    </div>
+    <div class="content-wrapper">
+        <div class="flash-container"></div>
+        <div class="container-fluid container-limited">
+            <div class="content">
+                <div class="col-lg-12">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th ng-click="businessbuddy.sortBy('Titel')">
+                                Titel<span class="sortorder" ng-show="businessbuddy.propertyName === 'Titel'" ng-class="{reverse: businessbuddy.reverse}"></span>
+                            </th>
+                            <th ng-click="businessbuddy.sortBy('Omschrijving')">
+                                Omschrijving
+                                <span class="sortorder" ng-show="businessbuddy.propertyName === 'Omschrijving'" ng-class="{reverse: businessbuddy.reverse}"></span>
+                            </th>
+                            <th ng-click="businessbuddy.sortBy('Einddatum')">
+                                Einddatum
+                                <span class="sortorder" ng-show="businessbuddy.propertyName === 'Einddatum'" ng-class="{reverse: businessbuddy.reverse}"></span>
+                            </th>
+                            <th ng-click="businessbuddy.sortBy('Eindtijd')">
+                                Eindtijd
+                                <span class="sortorder" ng-show="businessbuddy.propertyName === 'Eindtijd'" ng-class="{reverse: businessbuddy.reverse}"></span>
+                            </th>
+                            <th ng-click="businessbuddy.sortBy('Type')">
+                                Type
+                                <span class="sortorder" ng-show="businessbuddy.propertyName === 'Type'" ng-class="{reverse: businessbuddy.reverse}"></span>
+                            </th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr dir-paginate="notificatie in businessbuddy.notifications | filter: overzichtnotificatieafspraak.isAfspraak | orderBy:businessbuddy.propertyName:businessbuddy.reverse| itemsPerPage: overzichtnotifications.perPage">
+                            <td>{{notificatie.Titel}}</td>
+                            <td>{{notificatie.Omschrijving}}</td>
+                            <td>{{notificatie.Einddatum | date: "dd-MM-yyyy"}}</td>
+                            <td style="width: 12%;">{{notificatie.Eindtijd | date: "HH:mm"}}</td>
+                            <td>{{notificatie.Type}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

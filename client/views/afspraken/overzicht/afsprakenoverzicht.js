@@ -76,6 +76,9 @@ angular.module('afsprakenoverzicht').directive('overzichtafspraak', function() {
                 skip: parseInt((this.getReactively('page') - 1) * this.perPage),
                 sort: this.getReactively('sort')}
             ]);
+            
+            this.error = '';
+            this.success = '';
 
             this.details = {
                 _id: '',
@@ -119,7 +122,8 @@ angular.module('afsprakenoverzicht').directive('overzichtafspraak', function() {
                 var from = this.details.Einddatum.split("-");
                 var f = new Date(from[2], from[1] - 1, from[0]);
                 this.details.Einddatum = f;
-
+                
+                this.success = "afspraak gewijzigd!";
                 Meteor.call('afspraken.update', this.details);
             }
 

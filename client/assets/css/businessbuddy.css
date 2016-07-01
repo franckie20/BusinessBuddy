@@ -633,3 +633,10 @@ header.navbar-businessbuddy .container-fluid .navbar-toggle:hover {
 #formFix .form-control {
     height: auto;
 }
+
+.sortorder:after {
+    content: '\25b2';
+}
+.sortorder.reverse:after {
+    content: '\25bc';
+}

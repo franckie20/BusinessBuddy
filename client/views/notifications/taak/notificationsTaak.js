@@ -1,13 +1,13 @@
 'use strict';
 
-angular.module('notifications', [
+angular.module('notificationsTaak', [
     'ui.router'
 ]);
 
-angular.module('notifications').config(function ($urlRouterProvider, $stateProvider, $locationProvider) {
-    $stateProvider.state('notifications', {
-        url: '/dashboard/notifications',
-        //template: '<overzichtlease></overzichtlease>',
+angular.module('notificationsTaak').config(function ($urlRouterProvider, $stateProvider, $locationProvider) {
+    $stateProvider.state('notificationsTaak', {
+        url: '/dashboard/notifications/taak',
+        template: '<overzichtnotificatietaak></overzichtnotificatietaak>',
         resolve: {
             currentUser: ($q) => {
             var deferred = $q.defer();
@@ -28,19 +28,37 @@ angular.module('notifications').config(function ($urlRouterProvider, $stateProvi
     });
 });
 
-angular.module('notifications').directive('overzichtnotifications', function() {
+angular.module('notificationsTaak').controller('NotificationsMenuCtrl', function ($scope) {
+    $scope.title = 'Notificaties';
+    $scope.link = "/dashboard/notifications";
+    $scope.showGoToDashboard = true;
+
+    $scope.menuItems =  [{
+        'text': 'Notificaties',
+        'link': '/dashboard/notifications',
+        'icon': 'fa-bell-o',
+        'active': 'active'
+    }]
+});
+
+
+angular.module('notificationsTaak').directive('overzichtnotificatietaak', function() {
     return {
         restrict: 'E',
-        templateUrl: 'client/views/notifications/notifications.html',
-        controllerAs: 'notifications',
+        controllerAs: 'overzichtnotificatietaak',
+        templateUrl: 'client/views/notifications/taak/notificationsTaak.html',
         controller: function ($scope, $reactive, $state) {
             $reactive(this).attach($scope);
 
             this.perPage = 15;
             this.currentPage = 1;
             this.sort = {
-                name: 1
+                type: 1
             };
+
+            this.isTaak = function(data) {
+                return data.Type == "taak";
+            }
 
             this.removeNotification = (notification) => {
                 Meteor.call('notifications.remove', notification);
