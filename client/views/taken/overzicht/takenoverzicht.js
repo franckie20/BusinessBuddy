@@ -96,7 +96,8 @@ angular.module('takenoverzicht').directive('overzichttaak', function() {
                 },
                 Urgentie: {
                     naam: '',
-                    kleur: ''
+                    kleur: '',
+                    niveau: ''
                 }
             };
 
@@ -113,6 +114,7 @@ angular.module('takenoverzicht').directive('overzichttaak', function() {
                 this.details.Reminder.datum = this.taak.Reminder.datum;
                 this.details.Reminder.tijd = this.taak.Reminder.tijd;
                 this.details.Urgentie.naam = this.taak.Urgentie.naam;
+                this.details.Urgentie.niveau = this.taak.Urgentie.niveau;
                 this.details.Urgentie.kleur = this.taak.Urgentie.kleur;
             }
 

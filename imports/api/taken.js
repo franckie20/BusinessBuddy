@@ -33,7 +33,8 @@ Meteor.methods({
                 },
                 Urgentie: {
                     naam: data.Urgentie.naam,
-                    kleur: data.Urgentie.kleur
+                    kleur: data.Urgentie.kleur,
+                    niveau: data.Urgentie.niveau
                 }
             });
         }
@@ -66,7 +67,8 @@ Meteor.methods({
                 },
                 'Urgentie': {
                     'naam': details.Urgentie.naam,
-                    'kleur': details.Urgentie.kleur
+                    'kleur': details.Urgentie.kleur,
+                    'niveau': details.Urgentie.niveau
                 }
             }
         });

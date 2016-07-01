@@ -60,22 +60,22 @@
                             <div class="form-group" id="formFix" ng-class="{'has-error': nieuweTaakForm.tUrgentie.$invalid && nieuweTaakForm.$submitted}">
                                 <label class="label-light">Urgentie</label>
                                 <ui-select ng-model="urgent.selected" required="" name="tUrgentie" theme="bootstrap" ng-disabled="disabled" style="min-width: 300px;">
-                                    <ui-select-match placeholder="Selecteer de urgentie van de taak uit de lijst">{{$select.selected.naam}}</ui-select-match>
+                                    <ui-select-match placeholder="Selecteer de urgentie van de taak uit de lijst">{{$select.selected.niveau}}</ui-select-match>
                                     <ui-select-choices repeat="urgent in businessbuddy.urgentie | propsFilter: {naam: $select.search} | limitTo: 50">
-                                        <div ng-bind-html="urgent.naam | highlight: $select.search"></div>
+                                        <div ng-bind-html="urgent.niveau | highlight: $select.search"></div>
                                     </ui-select-choices>
                                 </ui-select>
                                 <span class="help-block">Kies hier de urgentie van de taak</span>
                             </div>
 
                             <div class="form-group" ng-class="{'has-error': nieuweTaakForm.rDatum.$invalid && nieuweTaakForm.$submitted}">
-                                <label class="label-light">Datum</label>
+                                <label class="label-light">Datum reminder</label>
                                 <input type="text" class="form-control" data-provide="datepicker" name="rDatum" required="" ng-model="reminder.datum">
                                 <span class="help-block">Vul hier de datum in voor de reminder</span>
                             </div>
 
                             <div class="form-group" ng-class="{'has-error': nieuweTaakForm.rTijd.$invalid && nieuweTaakForm.$submitted}">
-                                <label class="label-light">Tijd</label>
+                                <label class="label-light">Tijd reminder</label>
                                 <input type="time" class="form-control" name="rTijd" required="" ng-model="reminder.tijd" placeholder="HH:mm:ss">
                                 <span class="help-block">Vul hier de tijd in voor de reminder</span>
                             </div>
