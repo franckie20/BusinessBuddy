@@ -19,7 +19,9 @@ if (Meteor.isClient) {
     'afspraken',
     'afsprakenoverzicht',
     'lease',
-    'leaseoverzicht'
+    'leaseoverzicht',
+    'notifications'
+
   ]);
 
   angular.module('businessbuddy').config(function ($urlRouterProvider, $stateProvider, $locationProvider) {
@@ -41,6 +43,7 @@ if (Meteor.isClient) {
         this.subscribe('afspraken');
         this.subscribe('users');
         this.subscribe('urgentie');
+        this.subscribe('notifications');
 
         this.helpers({
           isLoggedIn: () => {
@@ -77,6 +80,9 @@ if (Meteor.isClient) {
           users() {
             return Meteor.users.find({});
           },
+          notifications() {
+            return Notifications.find({});
+          },
           urgentie() {
             return Urgentie.find({});
           }
@@ -84,6 +90,10 @@ if (Meteor.isClient) {
 
         this.logout = () => {
           Accounts.logout();
+        };
+
+        this.notifications = () => {
+          // ga naar notifications
         };
       }
     }
