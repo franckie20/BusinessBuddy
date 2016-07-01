@@ -47,7 +47,7 @@
 
                             <div class="form-group" ng-class="{'has-error': nieuweTaakForm.tEinddatum.$invalid && nieuweTaakForm.$submitted}">
                                 <label class="label-light">Einddatum</label>
-                                <input type="text" class="form-control" data-provide="datepicker" name="tEinddatum" required="" ng-model="taak.Einddatum">
+                                <input type="text" class="form-control" data-provide="datepicker" data-date-format="dd-mm-yyyy" name="tEinddatum" required="" ng-model="taak.Einddatum" placeholder="dd-mm-yyyy">
                                 <span class="help-block">Vul hier de einddatum in van de taak</span>
                             </div>
 
@@ -70,7 +70,7 @@
 
                             <div class="form-group" ng-class="{'has-error': nieuweTaakForm.rDatum.$invalid && nieuweTaakForm.$submitted}">
                                 <label class="label-light">Datum reminder</label>
-                                <input type="text" class="form-control" data-provide="datepicker" name="rDatum" required="" ng-model="reminder.datum">
+                                <input type="text" class="form-control" data-provide="datepicker" data-date-format="dd-mm-yyyy" name="rDatum" required="" ng-model="reminder.datum" placeholder="dd-mm-yyyy">
                                 <span class="help-block">Vul hier de datum in voor de reminder</span>
                             </div>
 

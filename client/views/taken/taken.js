@@ -128,6 +128,14 @@ angular.module('taken').controller('TakenCtrl', ['$scope', function($scope) {
             $scope.taak.Urgentie.niveau = $scope.urgent.selected.niveau;
             $scope.taak.Urgentie.kleur = $scope.urgent.selected.kleur;
 
+            var fromTE = $scope.taak.Einddatum.split("-");
+            var toTE = new Date(fromTE[2], fromTE[1] - 1, fromTE[0]);
+            $scope.taak.Einddatum = toTE;
+
+            var fromRD = $scope.taak.Reminder.datum.split("-");
+            var toRD = new Date(fromRD[2], fromRD[1] - 1, fromRD[0]);
+            $scope.taak.Reminder.datum = toRD;
+
             Meteor.call('taken.insert', $scope.taak);
         }
     }

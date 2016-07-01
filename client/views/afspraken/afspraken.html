@@ -62,7 +62,7 @@
 
                             <div class="form-group" ng-class="{'has-error': nieuweAfspraakForm.aEinddatum.$invalid && nieuweAfspraakForm.$submitted}">
                                 <label class="label-light">Einddatum</label>
-                                <input type="text" class="form-control" data-provide="datepicker" name="aEinddatum" required="" ng-model="afspraak.Einddatum">
+                                <input type="text" class="form-control" data-provide="datepicker" name="aEinddatum" required="" ng-model="afspraak.Einddatum" data-date-format="dd-mm-yyyy">
                                 <span class="help-block">Vul hier de einddatum in van de afspraak</span>
                             </div>
 

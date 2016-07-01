@@ -27,7 +27,7 @@
                     <tr dir-paginate="taak in businessbuddy.taken | filter:q | itemsPerPage: overzichttaak.perPage" class="{{taak.Urgentie.kleur}}">
                         <td>{{taak.Titel}}</td>
                         <td>{{taak.Omschrijving}}</td>
-                        <td>{{taak.Einddatum}}</td>
+                        <td>{{taak.Einddatum | date: "dd-MM-yyyy"}}</td>
                         <td style="width: 12%;">{{taak.Eindtijd | date: "HH:mm"}}</td>
                         <td style="width: 12%;">{{taak.Uitvoerder.profile.name}}</td>
                         <td style="width: 12%;">{{taak.Urgentie.niveau}}</td>

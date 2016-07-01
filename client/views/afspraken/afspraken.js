@@ -89,7 +89,7 @@ angular.module('afspraken').controller('AfsprakenMenuCtrl', function ($scope) {
     }]
 });
 
-angular.module('afspraken').controller('AfsprakenCtrl', ['$scope', function($scope) {
+angular.module('afspraken').controller('AfsprakenCtrl', ['$scope', '$filter', function($scope, $filter) {
     $scope.klant = {};
     $scope.user = {};
     
@@ -113,8 +113,13 @@ angular.module('afspraken').controller('AfsprakenCtrl', ['$scope', function($sco
         }
     };
 
+
     $scope.success = '';
     $scope.error = '';
+
+    $scope.$watch('afspraak.Einddatum', function (newValue) {
+        $scope.afspraak.Einddatum = $filter('date')(newValue, 'dd-MM-yyyy');
+    });
 
     $scope.nieuweAfspraak = (afspraak) => {
         if($scope.nieuweAfspraakForm.$valid) {
@@ -126,8 +131,12 @@ angular.module('afspraken').controller('AfsprakenCtrl', ['$scope', function($sco
             $scope.afspraak.Uitvoerder.username = $scope.user.selected.username;
             $scope.afspraak.Uitvoerder.profile.name = $scope.user.selected.profile.name;
 
+            var from = $scope.afspraak.Einddatum.split("-");
+            var f = new Date(from[2], from[1] - 1, from[0]);
+
+            $scope.afspraak.Einddatum = f;
+
             console.log($scope.user.selected.profile.name);
-            
             Meteor.call('afspraken.insert', $scope.afspraak);
 
         } else {

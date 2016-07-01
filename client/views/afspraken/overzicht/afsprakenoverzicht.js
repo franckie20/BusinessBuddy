@@ -61,7 +61,7 @@ angular.module('afsprakenoverzicht').directive('overzichtafspraak', function() {
         restrict: 'E',
         templateUrl: 'client/views/afspraken/overzicht/afsprakenoverzicht.html',
         controllerAs: 'overzichtafspraak',
-        controller: function ($scope, $reactive, $state) {
+        controller: function ($scope, $reactive, $state, $filter) {
             $reactive(this).attach($scope);
 
             this.afspraak = '';
@@ -85,7 +85,10 @@ angular.module('afsprakenoverzicht').directive('overzichtafspraak', function() {
                 Eindtijd: '',
                 Uitvoerder: {
                     _id: '',
-                    username: ''
+                    username: '',
+                    profile: {
+                        name: ''
+                    }
                 },
                 Klant: {
                     _id: '',
@@ -100,22 +103,27 @@ angular.module('afsprakenoverzicht').directive('overzichtafspraak', function() {
                 this.details._id = this.afspraak._id;
                 this.details.Titel = this.afspraak.Titel;
                 this.details.Omschrijving = this.afspraak.Omschrijving;
-                this.details.Einddatum = this.afspraak.Einddatum;
+                this.details.Einddatum = $filter('date')(this.afspraak.Einddatum, 'dd-MM-yyyy');
                 this.details.Eindtijd = this.afspraak.Eindtijd;
                 this.details.Klant._id = this.afspraak.Klant._id;
                 this.details.Klant.Voornaam = this.afspraak.Klant.Voornaam;
                 this.details.Klant.Achternaam = this.afspraak.Klant.Achternaam;
                 this.details.Klant.Bedrijf = this.afspraak.Klant.Bedrijf;
                 this.details.Uitvoerder._id = this.afspraak.Uitvoerder._id;
+                this.details.Uitvoerder.profile.name = this.afspraak.Uitvoerder.profile.name;
                 this.details.Uitvoerder.username = this.afspraak.Uitvoerder.username;
             }
 
             this.updateAfspraak = () => {
-                Meteor.call('afspraak.update', this.details);
+                var from = this.details.Einddatum.split("-");
+                var f = new Date(from[2], from[1] - 1, from[0]);
+                this.details.Einddatum = f;
+
+                Meteor.call('afspraken.update', this.details);
             }
 
             this.removeAfspraak = () =>  {
-                Meteor.call('afspraak.remove', this.afspraak);
+                Meteor.call('afspraken.remove', this.afspraak);
             }
 
         }

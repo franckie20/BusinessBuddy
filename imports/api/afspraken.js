@@ -43,7 +43,7 @@ Meteor.methods({
     },
 
     'afspraken.update' (details) {
-        Taken.update({
+        Afspraken.update({
             _id: details._id
         }, {
             $set: {
