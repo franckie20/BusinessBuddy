@@ -102,6 +102,18 @@
                         <span class="help-block">Kies hier de medewerker die de taak moet gaan uitvoeren</span>
                     </div>
                 </div>
+                <div class="form-group col-lg-12">
+                    <div class="form-group" id="formFix" ng-class="{'has-error': nieuweTaakForm.tUrgentie.$invalid && nieuweTaakForm.$submitted}">
+                        <label class="label-light">Urgentie</label>
+                        <ui-select ng-model="overzichttaak.details.Urgentie" required="" name="tUrgentie" theme="bootstrap" ng-disabled="disabled" style="min-width: 300px;">
+                            <ui-select-match placeholder="Selecteer de urgentie van de taak uit de lijst">{{$select.selected.niveau}}</ui-select-match>
+                            <ui-select-choices repeat="urgent in businessbuddy.urgentie | propsFilter: {naam: $select.search} | limitTo: 50">
+                                <div ng-bind-html="urgent.niveau | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
+                        <span class="help-block">Kies hier de urgentie van de taak</span>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Nee</button>

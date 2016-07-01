@@ -7,7 +7,7 @@ angular.module('afsprakenoverzicht', [
 angular.module('afsprakenoverzicht').config(function ($urlRouterProvider, $stateProvider, $locationProvider) {
     $stateProvider.state('afsprakenoverzicht', {
         url: '/dashboard/afspraken/overzicht',
-        templateUrl: 'client/views/afspraken/overzicht/afsprakenoverzicht.html',
+        template: '<overzichtafspraak></overzichtafspraak>',
         resolve: {
             currentUser: ($q) => {
                 var deferred = $q.defer();

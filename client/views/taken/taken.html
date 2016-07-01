@@ -60,9 +60,9 @@
                             <div class="form-group" id="formFix" ng-class="{'has-error': nieuweTaakForm.tUrgentie.$invalid && nieuweTaakForm.$submitted}">
                                 <label class="label-light">Urgentie</label>
                                 <ui-select ng-model="urgent.selected" required="" name="tUrgentie" theme="bootstrap" ng-disabled="disabled" style="min-width: 300px;">
-                                    <ui-select-match placeholder="Selecteer de urgentie van de taak uit de lijst">{{$select.selected.naam}}</ui-select-match>
+                                    <ui-select-match placeholder="Selecteer de urgentie van de taak uit de lijst">{{$select.selected.niveau}}</ui-select-match>
                                     <ui-select-choices repeat="urgent in businessbuddy.urgentie | propsFilter: {naam: $select.search} | limitTo: 50">
-                                        <div ng-bind-html="urgent.naam | highlight: $select.search"></div>
+                                        <div ng-bind-html="urgent.niveau | highlight: $select.search"></div>
                                     </ui-select-choices>
                                 </ui-select>
                                 <span class="help-block">Kies hier de urgentie van de taak</span>

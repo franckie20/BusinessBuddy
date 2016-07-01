@@ -40,5 +40,31 @@ Meteor.methods({
         Afspraken.remove({
             '_id': afspraak._id
         });
+    },
+
+    'afspraken.update' (details) {
+        Taken.update({
+            _id: details._id
+        }, {
+            $set: {
+                'Titel': details.Titel,
+                'Omschrijving': details.Omschrijving,
+                'Einddatum': details.Einddatum,
+                'Eindtijd': details.Eindtijd,
+                'Uitvoerder': {
+                    '_id': details.Uitvoerder._id,
+                    'username': details.Uitvoerder.username,
+                    'profile': {
+                        'name': details.Uitvoerder.profile.name
+                    }
+                },
+                'Klant': {
+                    '_id': details.Klant._id,
+                    'Voornaam': details.Klant.Voornaam,
+                    'Achternaam': details.Klant.Achternaam,
+                    'Bedrijf': details.Klant.Bedrijf
+                }
+            }
+        });
     }
 });

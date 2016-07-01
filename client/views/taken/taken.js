@@ -109,7 +109,8 @@ angular.module('taken').controller('TakenCtrl', ['$scope', function($scope) {
         },
         Urgentie: {
             naam: '',
-            kleur: ''
+            kleur: '',
+            niveau: ''
         }
     };
 
@@ -124,6 +125,7 @@ angular.module('taken').controller('TakenCtrl', ['$scope', function($scope) {
             $scope.taak.Reminder.datum = $scope.reminder.datum;
             $scope.taak.Reminder.tijd = $scope.reminder.tijd;
             $scope.taak.Urgentie.naam = $scope.urgent.selected.naam;
+            $scope.taak.Urgentie.niveau = $scope.urgent.selected.niveau;
             $scope.taak.Urgentie.kleur = $scope.urgent.selected.kleur;
 
             Meteor.call('taken.insert', $scope.taak);
