@@ -91,10 +91,6 @@ if (Meteor.isClient) {
         this.logout = () => {
           Accounts.logout();
         };
-
-        this.notifications = () => {
-          // ga naar notifications
-        };
       }
     }
   });

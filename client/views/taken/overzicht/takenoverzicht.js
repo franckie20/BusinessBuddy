@@ -61,7 +61,7 @@ angular.module('takenoverzicht').directive('overzichttaak', function() {
         restrict: 'E',
         templateUrl: 'client/views/taken/overzicht/takenoverzicht.html',
         controllerAs: 'overzichttaak',
-        controller: function ($scope, $reactive, $state) {
+        controller: function ($scope, $reactive, $state, $filter) {
             $reactive(this).attach($scope);
 
             this.taak = '';
@@ -107,11 +107,13 @@ angular.module('takenoverzicht').directive('overzichttaak', function() {
                 this.details.Titel = this.taak.Titel;
                 this.details.Omschrijving = this.taak.Omschrijving;
                 this.details.Einddatum = this.taak.Einddatum;
+                this.details.Einddatum = $filter('date')(this.taak.Einddatum, 'dd-MM-yyyy');
                 this.details.Eindtijd = this.taak.Eindtijd;
                 this.details.Uitvoerder._id = this.taak.Uitvoerder._id;
                 this.details.Uitvoerder.username = this.taak.Uitvoerder.username;
                 this.details.Uitvoerder.profile.name = this.taak.Uitvoerder.profile.name;
                 this.details.Reminder.datum = this.taak.Reminder.datum;
+                this.details.Reminder.datum = $filter('date')(this.taak.Reminder.datum, 'dd-MM-yyyy');
                 this.details.Reminder.tijd = this.taak.Reminder.tijd;
                 this.details.Urgentie.naam = this.taak.Urgentie.naam;
                 this.details.Urgentie.niveau = this.taak.Urgentie.niveau;
@@ -119,6 +121,14 @@ angular.module('takenoverzicht').directive('overzichttaak', function() {
             }
 
             this.updateTaak = () => {
+                var from = this.details.Einddatum.split("-");
+                var f = new Date(from[2], from[1] - 1, from[0]);
+                this.details.Einddatum = f;
+
+                var fromReminder = this.details.Reminder.datum.split("-");
+                var fReminder = new Date(fromReminder[2], fromReminder[1] - 1, fromReminder[0]);
+                this.details.Reminder.datum = fReminder;
+
                 Meteor.call('taken.update', this.details);
             }
 

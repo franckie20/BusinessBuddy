@@ -103,6 +103,7 @@ angular.module('afsprakenoverzicht').directive('overzichtafspraak', function() {
                 this.details._id = this.afspraak._id;
                 this.details.Titel = this.afspraak.Titel;
                 this.details.Omschrijving = this.afspraak.Omschrijving;
+                this.details.Einddatum = this.afspraak.Einddatum;
                 this.details.Einddatum = $filter('date')(this.afspraak.Einddatum, 'dd-MM-yyyy');
                 this.details.Eindtijd = this.afspraak.Eindtijd;
                 this.details.Klant._id = this.afspraak.Klant._id;
