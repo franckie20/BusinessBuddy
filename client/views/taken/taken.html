@@ -69,13 +69,13 @@
                             </div>
 
                             <div class="form-group" ng-class="{'has-error': nieuweTaakForm.rDatum.$invalid && nieuweTaakForm.$submitted}">
-                                <label class="label-light">Datum</label>
+                                <label class="label-light">Datum reminder</label>
                                 <input type="text" class="form-control" data-provide="datepicker" name="rDatum" required="" ng-model="reminder.datum">
                                 <span class="help-block">Vul hier de datum in voor de reminder</span>
                             </div>
 
                             <div class="form-group" ng-class="{'has-error': nieuweTaakForm.rTijd.$invalid && nieuweTaakForm.$submitted}">
-                                <label class="label-light">Tijd</label>
+                                <label class="label-light">Tijd reminder</label>
                                 <input type="time" class="form-control" name="rTijd" required="" ng-model="reminder.tijd" placeholder="HH:mm:ss">
                                 <span class="help-block">Vul hier de tijd in voor de reminder</span>
                             </div>
