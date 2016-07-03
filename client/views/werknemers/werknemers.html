@@ -3,47 +3,48 @@
         <menu></menu>
     </div>
 
-    <div class="content-wrapper">
-        <div class="flash-container"></div>
+    <div class="content-wrapper" ng-controller="WerknemersCtrl">
+        <div class="flash-container">
+            <div class="flash-alert" ng-show="error" ng-click="error = null">{{ error }}</div>
+            <div class="flash-success" ng-show="success" ng-click="success = null">{{ success }}</div>
+        </div>
         <div class="container-fluid container-limited">
             <div class="content">
                 <div class="row">
                     <div class="col-lg-3 profile-settings-sidebar">
-                        <h4 class="prepend-top-0">Main settings</h4>
-                        <p>This information will appear on your profile.</p>
+                        <h4 class="prepend-top-0">Nieuwe medewerker</h4>
+                        <p>Geef hier de informatie op voor een nieuwe medewerker.</p>
                     </div>
                     <div class="col-lg-9">
-                        <form class="updateProfile" accept-charset="UTF-8">
-                            <div class="form-group">
-                                <label class="label-light" for="user_name">Name</label>
-                                <input class="form-control" required="required" type="text" value="{{ businessbuddy.currentUser.username }}" name="user[name]" id="user_name">
-                                <span class="help-block">Enter your name, so people you know can recognize you.</span>
+                        <form novalidate name="nieuweMedewerkerForm" accept-charset="UTF-8">
+                            <div class="form-group" ng-class="{'has-error': nieuweMedewerkerForm.wNaam.$invalid && nieuweMedewerkerForm.$submitted}">
+                                <label class="label-light">Naam</label>
+                                <input class="form-control" required="" type="text" name="wNaam" ng-model="werknemer.Naam">
+                                <span class="help-block">Vul hier de naam in.</span>
                             </div>
-                            <div class="form-group">
-                                <label class="label-light" for="user_email">Email</label>
-                                <input class="form-control" required="required" type="text" value="{{ businessbuddy.currentUser.emails[0].address }}" name="user[email]" id="user_email">
-                                <span class="help-block">voer je email in jongiu.</span>
+                            <div class="form-group" ng-class="{'has-error': nieuweMedewerkerForm.wEmail.$invalid && nieuweMedewerkerForm.$submitted}">
+                                <label class="label-light">Email</label>
+                                <input class="form-control" required="" type="text" name="wEmail" ng-model="werknemer.Email">
+                                <span class="help-block">Vul hier de email in.</span>
                             </div>
-                            <div class="form-group">
-                                <label class="label-light" for="user_linkedin">Linkedin</label>
-                                <input class="form-control" type="text" value="" name="user[linkedin]">
+                            <div class="form-group" ng-class="{'has-error': nieuweMedewerkerForm.wTelefoon.$invalid && nieuweMedewerkerForm.$submitted}">
+                                <label class="label-light">Telefoon</label>
+                                <input class="form-control" required="" type="text" name="wTelefoon" ng-model="werknemer.Telefoon">
+                                <span class="help-block">Vul hier het telefoon nummer in.</span>
                             </div>
-                            <div class="form-group">
-                                <label class="label-light" for="user_website_url">Website</label>
-                                <input class="form-control" type="text" value="" name="user[website_url]" id="user_website_url">
+                            <div class="form-group" ng-class="{'has-error': nieuweMedewerkerForm.wBedrijf.$invalid && nieuweMedewerkerForm.$submitted}">
+                                <label class="label-light">Bedrijf</label>
+                                <input class="form-control" required="" type="text" name="wBedrijf" ng-model="werknemer.Bedrijf">
+                                <span class="help-block">Vul hier het bedrijf in.</span>
                             </div>
-                            <div class="form-group">
-                                <label class="label-light" for="user_location">Location</label>
-                                <input class="form-control" type="text" name="user[location]" id="user_location">
-                            </div>
-                            <div class="form-group">
-                                <label class="label-light" for="user_bio">Bio</label>
-                                <textarea rows="4" class="form-control" maxlength="250" name="user[bio]" id="user_bio"></textarea>
-                                <span class="help-block">Tell us about yourself in fewer than 250 characters.</span>
+                            <div class="form-group" ng-class="{'has-error': nieuweMedewerkerForm.wStart.$invalid && nieuweMedewerkerForm.$submitted}">
+                                <label class="label-light">Start datum</label>
+                                <input class="form-control" data-provide="datepicker" data-date-format="dd-mm-yyyy" name="wStart" required="" ng-model="werknemer.Start" placeholder="dd-mm-yyyy">
+                                <span class="help-block">Kies hier de start datum.</span>
                             </div>
                             <div class="prepend-top-default append-bottom-default">
-                                <input ng-click="profile.profile()" aria-label="profile" ng-disabled="profile.updateProfile.$invalid()" type="submit" value="Update profile settings" class="btn-create btn">
-                                <a class="btn btn-cancel" href="/u/franckie20">Cancel</a>
+                                <input input ng-click="nieuweWerknemer(werknemer)" aria-label="werknemer" type="submit" value="Nieuwe werknemer toevoegen" class="btn-create btn">
+                                <a class="btn btn-cancel" href="/dashboard">Cancel</a>
                             </div>
                         </form>
                     </div>

@@ -44,3 +44,40 @@ angular.module('werknemers').controller('WerknemersMenuCtrl', function ($scope) 
         'icon': 'fa-users'
     }]
 });
+
+angular.module('werknemers').controller('WerknemersCtrl', ['$scope', '$filter', function($scope, $filter) {
+    $scope.werknemer = {
+        _id: '',
+        Naam: '',
+        Email: '',
+        Telefoon: '',
+        Bedrijf: '',
+        Start: '',
+        Eind: ''
+    };
+
+    $scope.success = '';
+    $scope.error = '';
+
+    $scope.$watch('werknemer.Start', function (newValue) {
+        $scope.werknemer.Start = $filter('date')(newValue, 'dd-MM-yyyy');
+    });
+
+    $scope.nieuweWerknemer = (werknemer) => {
+        if($scope.nieuweMedewerkerForm.$valid) {
+
+            var fromWS = $scope.werknemer.Start.split("-");
+            var toWS = new Date(fromWS[2], fromWS[1] - 1, fromWS[0]);
+            $scope.werknemer.Start = toWS;
+
+            if (Werknemers.find({Naam: $scope.werknemer.Naam}, {Email: $scope.werknemer.Email}).count() == 1) {
+                $scope.error = "Werknemer bestaat al!";
+            } else {
+                $scope.success = "Werknemer " + $scope.werknemer.Naam + " aangemaakt!";
+                Meteor.call('werknemers.insert', $scope.werknemer);
+            }
+        }  else {
+            $scope.error = "Controleer de velden";
+        }
+    }
+}]);
