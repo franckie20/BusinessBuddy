@@ -123,7 +123,7 @@ angular.module('afsprakenoverzicht').directive('overzichtafspraak', function() {
                 var f = new Date(from[2], from[1] - 1, from[0]);
                 this.details.Einddatum = f;
                 
-                this.success = "afspraak gewijzigd!";
+                this.success = "Afspraak gewijzigd!";
                 Meteor.call('afspraken.update', this.details);
             }
 

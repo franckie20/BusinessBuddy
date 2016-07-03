@@ -87,7 +87,7 @@ angular.module('taken').filter('propsFilter', function() {
     }
 });
 
-angular.module('taken').controller('TakenCtrl', ['$scope', function($scope) {
+angular.module('taken').controller('TakenCtrl', ['$scope', '$filter', function($scope, $filter) {
     $scope.user = {};
     $scope.urgent = {};
 
@@ -117,6 +117,10 @@ angular.module('taken').controller('TakenCtrl', ['$scope', function($scope) {
     $scope.success = '';
     $scope.error = '';
 
+    $scope.$watch('afspraak.Einddatum', function (newValue) {
+        $scope.taak.Einddatum = $filter('date')(newValue, 'dd-MM-yyyy');
+    });
+
     $scope.nieuweTaak = (taak) => {
         if($scope.nieuweTaakForm.$valid) {
             $scope.taak.Uitvoerder._id = $scope.user.selected._id;
@@ -136,7 +140,15 @@ angular.module('taken').controller('TakenCtrl', ['$scope', function($scope) {
             var toRD = new Date(fromRD[2], fromRD[1] - 1, fromRD[0]);
             $scope.taak.Reminder.datum = toRD;
 
-            Meteor.call('taken.insert', $scope.taak);
+            if(Taken.find({Titel: $scope.taak.Titel}, {Omschrijving: $scope.taak.Omschrijving}).count() == 1) {
+                $scope.error = "Taak bestaat al!";
+            } else {
+                $scope.success = "Taak " + $scope.taak.Titel + " aangemaakt!";
+                Meteor.call('taken.insert', $scope.taak);
+            }
+
+        } else {
+            $scope.error = "Controleer de velden";
         }
     }
 }]);

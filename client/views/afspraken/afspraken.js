@@ -136,8 +136,12 @@ angular.module('afspraken').controller('AfsprakenCtrl', ['$scope', '$filter', fu
 
             $scope.afspraak.Einddatum = f;
 
-            console.log($scope.user.selected.profile.name);
-            Meteor.call('afspraken.insert', $scope.afspraak);
+            if(Afspraken.find({Titel: $scope.afspraak.Titel}, {Omschrijving: $scope.afspraak.Omschrijving}).count() == 1) {
+                $scope.error = "Afspraak bestaat al!";
+            } else {
+                $scope.success = "Afspraak " + $scope.afspraak.Titel + " aangemaakt!";
+                Meteor.call('afspraken.insert', $scope.afspraak);
+            }
 
         } else {
             $scope.error = "Controleer de velden";

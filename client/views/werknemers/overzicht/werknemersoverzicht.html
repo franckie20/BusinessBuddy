@@ -3,7 +3,10 @@
         <menu></menu>
     </div>
     <div class="content-wrapper">
-        <div class="flash-container"></div>
+        <div class="flash-container">
+            <div class="flash-success" ng-show="overzichtwerknemers.success" ng-click="overzichtwerknemers.success = null">{{ overzichtwerknemers.success }}</div>
+            <div class="flash-alert" ng-show="overzichtwerknemers.error" ng-click="overzichtwerknemers.error = null">{{ overzichtwerknemers.error }}</div>
+        </div>
         <div class="container-fluid container-limited">
             <div class="content">
                 <div class="col-lg-12">

@@ -62,6 +62,9 @@ angular.module('werknemersoverzicht').directive('overzichtwerknemers', function(
                 name: 1
             };
 
+            this.error = '';
+            this.success = '';
+
             this.details = {
                 _id: '',
                 Naam: '',
@@ -71,6 +74,12 @@ angular.module('werknemersoverzicht').directive('overzichtwerknemers', function(
                 Start: '',
                 Eind: ''
             };
+
+            this.subscribe('werknemers', () => [{
+                limit: parseInt(this.perPage),
+                skip: parseInt((this.getReactively('page') - 1) * this.perPage),
+                sort: this.getReactively('sort')}
+            ]);
 
             this.selectedWerknemer = (werknemer) => {
                 this.werknemer = werknemer;
@@ -94,19 +103,16 @@ angular.module('werknemersoverzicht').directive('overzichtwerknemers', function(
                 var f = new Date(from[2], from[1] - 1, from[0]);
                 this.details.Start = f;
 
-                var fromEind = this.details.Eind.split("-");
-                var fEind = new Date(fromEind[2], fromEind[1] - 1, fromEind[0]);
-                this.details.Eind = fEind;
+                if(this.details.Eind != null) {
+                    var fromEind = this.details.Eind.split("-");
+                    var fEind = new Date(fromEind[2], fromEind[1] - 1, fromEind[0]);
+                    this.details.Eind = fEind;
+                }
 
                 this.success = "Werknemer gewijzigd!";
                 Meteor.call('werknemers.update', this.details);
-            }
-            this.subscribe('werknemers', () => [{
-                limit: parseInt(this.perPage),
-                skip: parseInt((this.getReactively('page') - 1) * this.perPage),
-                sort: this.getReactively('sort')}
-            ]);
 
+            }
         }
     }
 });

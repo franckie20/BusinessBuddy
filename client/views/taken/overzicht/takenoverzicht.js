@@ -132,7 +132,7 @@ angular.module('takenoverzicht').directive('overzichttaak', function() {
                 var fReminder = new Date(fromReminder[2], fromReminder[1] - 1, fromReminder[0]);
                 this.details.Reminder.datum = fReminder;
 
-                this.success = "taak gewijzigd!";
+                this.success = "Taak gewijzigd!";
                 Meteor.call('taken.update', this.details);
             }
 

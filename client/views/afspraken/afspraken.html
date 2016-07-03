@@ -62,13 +62,13 @@
 
                             <div class="form-group" ng-class="{'has-error': nieuweAfspraakForm.aEinddatum.$invalid && nieuweAfspraakForm.$submitted}">
                                 <label class="label-light">Einddatum</label>
-                                <input type="text" class="form-control" data-provide="datepicker" name="aEinddatum" required="" ng-model="afspraak.Einddatum" data-date-format="dd-mm-yyyy">
+                                <input type="text" class="form-control" data-provide="datepicker" name="aEinddatum" required="" ng-model="afspraak.Einddatum" data-date-format="dd-mm-yyyy" placeholder="dd-mm-yyyy">
                                 <span class="help-block">Vul hier de einddatum in van de afspraak</span>
                             </div>
 
                             <div class="form-group" ng-class="{'has-error': nieuweAfspraakForm.aEindtijd.$invalid && nieuweAfspraakForm.$submitted}">
                                 <label class="label-light">Eindtijd</label>
-                                <input class="form-control" required="" type="time" name="aEindtijd" ng-model="afspraak.Eindtijd">
+                                <input class="form-control" required="" type="time" name="aEindtijd" ng-model="afspraak.Eindtijd" placeholder="HH:mm:ss">
                                 <span class="help-block">Vul hier de eindtijd in van de afspraak</span>
                             </div>
 
