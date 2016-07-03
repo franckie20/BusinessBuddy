@@ -56,6 +56,11 @@ angular.module('notificationsTaak').directive('overzichtnotificatietaak', functi
                 type: 1
             };
 
+            var modal = angular.element(document.querySelector('div.modal-backdrop'));
+            if(modal != null) {
+                modal.remove();
+            }
+
             this.isTaak = function(data) {
                 return data.Type == "taak";
             }

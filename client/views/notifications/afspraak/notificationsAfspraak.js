@@ -56,6 +56,11 @@ angular.module('notificationsAfspraak').directive('overzichtnotificatieafspraak'
                 type: 1
             };
 
+            var modal = angular.element(document.querySelector('div.modal-backdrop'));
+            if(modal != null) {
+                modal.remove();
+            }
+
             this.isAfspraak = function(data) {
                 return data.Type == "afspraak";
             }

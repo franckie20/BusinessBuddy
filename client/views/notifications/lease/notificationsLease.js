@@ -56,6 +56,11 @@ angular.module('notificationsLease').directive('overzichtnotificatielease', func
                 type: 1
             };
 
+            var modal = angular.element(document.querySelector('div.modal-backdrop'));
+            if(modal != null) {
+                modal.remove();
+            }
+
             this.isLease = function(data) {
                 return data.Type == "lease";
             }

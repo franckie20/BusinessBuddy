@@ -79,33 +79,33 @@
             <div class="username">{{ businessbuddy.currentUser.username }}</div>
         </a>
     </div>
-</businessbuddy>
 
-<!-- Modal -->
-<div class="modal fade" id="popupNotifications" tabindex="-1" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Notificaties</h4>
-            </div>
-            <div class="modal-body">
-                <ul class="list-group">
-                    <a class="list-group-item" href="/dashboard/notifications/afspraak">
-                        Afspraken<span class="badge">{{businessbuddy.totalAfsprakenNotifications}}</span>
-                    </a>
-                    <a class="list-group-item" href="/dashboard/notifications/taak">
-                        Taken<span class="badge">{{businessbuddy.totalTakenNotifications}}</span>
-                    </a>
+    <!-- Modal -->
+    <div class="modal fade" id="popupNotifications" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Notificaties</h4>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-group">
+                        <a class="list-group-item" href="/dashboard/notifications/afspraak">
+                            Afspraken<span class="badge">{{businessbuddy.totalAfsprakenNotifications}}</span>
+                        </a>
+                        <a class="list-group-item" href="/dashboard/notifications/taak">
+                            Taken<span class="badge">{{businessbuddy.totalTakenNotifications}}</span>
+                        </a>
 
-                    <a class="list-group-item" href="/dashboard/notifications/lease">
-                        Lease contracten<span class="badge">{{businessbuddy.totalLeaseAfsprakenNotifications}}</span>
-                    </a>
-                </ul>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Sluiten</button>
+                        <a class="list-group-item" href="/dashboard/notifications/lease">
+                            Lease contracten<span class="badge">{{businessbuddy.totalLeaseAfsprakenNotifications}}</span>
+                        </a>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Sluiten</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</businessbuddy>
