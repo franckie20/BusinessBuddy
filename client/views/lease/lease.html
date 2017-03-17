@@ -3,53 +3,61 @@
         <menu></menu>
     </div>
 
-    <div class="content-wrapper">
+    <div class="content-wrapper" ng-controller="LeaseCtrl">
         <div class="flash-container">
-            <div class="flash-success" ng-show="lease.success" ng-click="lease.success = null">{{ lease.success }}</div>
-            <div class="flash-alert" ng-show="lease.error" ng-click="lease.error = null">{{ lease.error }}</div>
+            <div class="flash-alert" ng-show="error" ng-click="error = null">{{ error }}</div>
+            <div class="flash-success" ng-show="success" ng-click="success = null">{{ success }}</div>
         </div>
         <div class="container-fluid container-limited">
             <div class="content">
                 <div class="row">
                     <div class="col-lg-3 profile-settings-sidebar">
                         <h4 class="prepend-top-0">Main settings</h4>
-                        <p>Information about the lease contract.</p>
+                        <p>Informatie voor het lease contract.</p>
                     </div>
                     <div class="col-lg-9">
-                        <form class="updateProfile" accept-charset="UTF-8">
-
-                            <div class="form-group">
-                                <label class="label-light" for="user_name">Name of driver</label>
-                                <input class="form-control" required="required" type="text" value="" ng-model="lease.info.name" aria-label="drivername">
-                                <span class="help-block"></span>
+                        <form novalidate name="nieuwContractForm" accept-charset="UTF-8">
+                          <div class="form-group" id="formFix" ng-class="{'has-error': nieuwContractForm.cBestuurder.$invalid && nieuwContractForm.$submitted}">
+                                <label class="label-light">Naam bestuurder</label>
+                                <ui-select ng-model="contract.selected" required="" name="cBestuurder" theme="bootstrap" ng-disabled="disabled" style="min-width: 300px;">
+                                    <ui-select-match placeholder="Selecteer een medewerker uit de lijst of zoek op naam">{{$select.selected.profile.name}}</ui-select-match>
+                                    <ui-select-choices repeat="user in businessbuddy.users | propsFilter: {username: $select.search} | limitTo: 50">
+                                        <div ng-bind-html="user.profile.name | highlight: $select.search"></div>
+                                        <small>
+                                            name: {{user.profile.name}}
+                                            email: <span ng-bind-html="'' + user.emails[0].address | highlight: $select.search"></span>
+                                        </small>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <span class="help-block">Kies hier de medewerker voor het lease contract</span>
                             </div>
 
-                            <div class="form-group">
-                                <label class="label-light" for="user_name">Lease company </label>
-                                <input class="form-control" required="required" type="text" value="" ng-model="lease.info.company" aria-label="company">
-                                <span class="help-block"></span>
+                            <div class="form-group" ng-class="{'has-error': nieuwContractForm.cBedrijf.$invalid && nieuwContractForm.$submitted}">
+                                <label class="label-light">Lease bedrijf</label>
+                                <input class="form-control" required="" type="text" name="cBedrijf" ng-model="contract.Bedrijf" aria-label="company">
+                                <span class="help-block">Vul hier de naam van het bedrijf in</span>
                             </div>
 
-                            <div class="form-group">
-                                <label class="label-light" for="user_name">Start of contract</label>
-                                <input class="form-control" required="required" type="text" value="" ng-model="lease.info.start" aria-label="start">
-                                <span class="help-block"></span>
+                            <div class="form-group" ng-class="{'has-error': nieuwContractForm.cStart.$invalid && nieuwContractForm.$submitted}">
+                                <label class="label-light">Startdatum</label>
+                                <input type="text" class="form-control" data-provide="datepicker" required="" name="cStart" ng-model="contract.Startdatum" data-date-format="dd-mm-yyyy" placeholder="dd-mm-yyyy">
+                                <span class="help-block">Kies hier de startdatum van het contract</span>
                             </div>
 
-                            <div class="form-group">
-                                <label class="label-light" for="user_name">End of contract</label>
-                                <input class="form-control" required="required" type="text" value="" ng-model="lease.info.end" aria-label="end">
-                                <span class="help-block"></span>
+                            <div class="form-group" ng-class="{'has-error': nieuwContractForm.cEind.$invalid && nieuwContractForm.$submitted}">
+                                <label class="label-light">Einddatum van het contract</label>
+                                <input type="text" class="form-control" data-provide="datepicker" required="" name="cEind" ng-model="contract.Einddatum" data-date-format="dd-mm-yyyy" placeholder="dd-mm-yyyy">
+                                <span class="help-block">Kies hier de einddatum van het contract</span>
                             </div>
 
-                            <div class="form-group">
-                                <label class="label-light" for="user_bio">Comments</label>
-                                <textarea rows="4" class="form-control" maxlength="250" ng-model="lease.info.comments" aria-label="comments"></textarea>
+                            <div class="form-group" ng-class="{'has-error': nieuwContractForm.cOpmerkingen.$invalid && nieuwContractForm.$submitted}">
+                                <label class="label-light">Opmerkingen</label>
+                                <textarea rows="4" class="form-control" maxlength="250" name="cOpmerkingen" ng-model="contract.Opmerkingen" aria-label="comments"></textarea>
                                 <span class="help-block"></span>
                             </div>
 
                             <div class="prepend-top-default append-bottom-default">
-                                <input ng-click="lease.creating()" aria-label="create" ng-disabled="lease.updateProfile.$invalid()" type="submit" value="New lease contract" class="btn-create btn">
+                                <input ng-click="nieuwContract(contract)" aria-label="create" type="submit" value="Nieuw lease contract" class="btn-create btn">
                                 <a class="btn btn-cancel" href="/u/franckie20">Cancel</a>
                             </div>
                         </form>

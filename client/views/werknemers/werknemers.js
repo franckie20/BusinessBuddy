@@ -71,7 +71,7 @@ angular.module('werknemers').controller('WerknemersCtrl', ['$scope', '$filter', 
             $scope.werknemer.Start = toWS;
 
             if (Werknemers.find({Naam: $scope.werknemer.Naam}, {Email: $scope.werknemer.Email}).count() == 1) {
-                $scope.error = "Werknemer bestaat al!";
+              $scope.error = "Werknemer bestaat al!";
             } else {
                 $scope.success = "Werknemer " + $scope.werknemer.Naam + " aangemaakt!";
                 Meteor.call('werknemers.insert', $scope.werknemer);

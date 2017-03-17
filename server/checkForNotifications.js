@@ -16,7 +16,10 @@ if(Meteor.isServer) {
                 Titel: taak[i].Titel,
                 Omschrijving: taak[i].Omschrijving,
                 Einddatum: taak[i].Einddatum,
-                Eindtijd: taak[i].Eindtijd
+                Eindtijd: taak[i].Eindtijd,
+                Uitvoerder: {
+                  _id: taak[i].Uitvoerder._id,
+                }
             }
             Meteor.call('notifications.insert', dataTaak);
         }
@@ -31,7 +34,10 @@ if(Meteor.isServer) {
                 Titel: afspraak[i].Titel,
                 Omschrijving: afspraak[i].Omschrijving,
                 Einddatum: afspraak[i].Einddatum,
-                Eindtijd: afspraak[i].Eindtijd
+                Eindtijd: afspraak[i].Eindtijd,
+                Uitvoerder: {
+                  _id: afspraak[i].Uitvoerder._id,
+                }
             }
             Meteor.call('notifications.insert', dataAfspraak);
         }

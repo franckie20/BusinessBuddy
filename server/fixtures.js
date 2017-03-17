@@ -62,23 +62,35 @@ Meteor.startup(() => {
 
     if (Lease.find().count() === 0) {
         const leasefixtures = [{
-            'name': 'Jos Verstappen',
-            'company': 'BlueRent',
-            'start': '08-04-16',
-            'end': '08-08-16',
-            'comments': 'Let op, beetje snel aangebrand'
+            'Bestuurder': {
+              'profile': {
+                'username': 'Jos Verstappen'
+              }
+            },
+            'Bedrijf': 'BlueRent',
+            'Startdatum': '08-04-16',
+            'Einddatum': '08-08-16',
+            'Opmerkingen': 'Let op, beetje snel aangebrand'
         }, {
-            'name': 'Max Verstappen',
-            'company': 'WhiteRent',
-            'start': '08-04-16',
-            'end': '08-08-16',
-            'comments': 'Goed oppassen, bakt er niks van'
+            'Bestuurder': {
+              'profile': {
+                'username': 'Max Verstappen'
+              }
+            },
+            'Bedrijf': 'WhiteRent',
+            'Startdatum': '08-04-16',
+            'Einddatum': '08-08-16',
+            'Opmerkingen': 'Goed oppassen, bakt er niks van'
         }, {
-            'name': 'Kimi Raikonen',
-            'company': 'RedRent',
-            'start': '08-04-16',
-            'end': '08-08-16',
-            'comments': 'Woon-werk verkeer'
+            'Bestuurder': {
+              'profile': {
+                'username': 'Kimi Raikonen'
+              }
+            },
+            'Bedrijf': 'RedRent',
+            'Startdatum': '08-04-16',
+            'Einddatum': '08-08-16',
+            'Opmerkingen': 'Woon-werk verkeer'
         }];
 
         leasefixtures.forEach((lease) => {
@@ -89,20 +101,17 @@ Meteor.startup(() => {
 
     if (Notifications.find().count() === 0) {
         const notificationFixtures = [{
-            'type': 'afspraak',
-            'content': 'BlueRent',
-            'eind': '02-07-2016',
-            'contact': 'Henkie Mcskou'
-        }, {
-            'type': 'taak',
-            'content': 'Herinnering voor uw taak',
-            'eind': '04-07-2016',
-            'contact': 'Boris vd Swag',
-        }, {
-            'type': 'lease',
-            'content': 'Contract loopt af',
-            'eind': '08-08-2016',
-            'contact': 'BlueRent',
+            'Type': 'afspraak',
+            'Titel': 'BlueRent',
+            'Omschrijving': 'BlueRent',
+            'Einddatum': '02-07-2016',
+            'Eindtijd': '',
+            'Uitvoerder': {
+              'username': 'franckie20',
+              'profile': {
+                'name': 'Franck Verschuur'
+              }
+            }
         }];
 
         notificationFixtures.forEach((notification) => {

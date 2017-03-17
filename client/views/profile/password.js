@@ -34,8 +34,6 @@ angular.module('password').directive('password', function() {
           }
           else {
             this.success = "Password was successfully changed!";
-            Accounts.logout();
-            $state.go('sign_in');
           }
         });
       };

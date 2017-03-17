@@ -63,8 +63,7 @@ angular.module('leaseoverzicht').directive('overzichtlease', function() {
                 Meteor.call('lease.remove', lease);
             }
 
-            this.subscribe('lease', () => [{
-
+            this.subscribe('leasecontracts', () => [{
                 limit: parseInt(this.perPage),
                 skip: parseInt((this.getReactively('page') - 1) * this.perPage),
                 sort: this.getReactively('sort')}

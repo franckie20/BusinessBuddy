@@ -17,7 +17,10 @@ Meteor.methods({
                     'Titel': data.Titel,
                     'Omschrijving': data.Omschrijving,
                     'Einddatum': data.Einddatum,
-                    'Eindtijd': data.Eindtijd
+                    'Eindtijd': data.Eindtijd,
+                    'Uitvoerder': {
+                      '_id': data.Uitvoerder._id,
+                    }
                 });
             }
         }

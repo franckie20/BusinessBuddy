@@ -16,8 +16,8 @@
                     <tr>
                         <th>Regelmatige bestuurder</th>
                         <th>Bedrijf</th>
-                        <th>Start datum</th>
-                        <th>Eind datum</th>
+                        <th>Startdatum</th>
+                        <th>Einddatum</th>
                         <th>Opmerkingen</th>
                         <th></th>
                     </tr>
@@ -25,12 +25,12 @@
 
                     <tbody>
                     <tr dir-paginate="lease in businessbuddy.leasecontracts | filter:q | itemsPerPage: overzichtlease.perPage">
-                        <td>{{lease.name}}</td>
-                        <td>{{lease.company}}</td>
-                        <td>{{lease.start}}</td>
-                        <td>{{lease.end}}</td>
-                        <td>{{lease.comments}}</td>
-                        <td><button class="delete" ng-click="leaseoverzicht.removeLease(lease)">&times;</button></td>
+                        <td>{{ lease.Bestuurder.profile.name }}</td>
+                        <td>{{ lease.Bedrijf }}</td>
+                        <td>{{ lease.Startddatum | date: "dd-MM-yyyy" }}</td>
+                        <td>{{ lease.Einddatum | date: "dd-MM-yyyy" }}</td>
+                        <td>{{ lease.Opmerkingen }}</td>
+                        <td><button class="btn btn-primary btn-sm" ng-click="leaseoverzicht.removeLease(lease)"><span class="fa fa-trash"></span></button></td>
                     </tr>
                     </tbody>
                 </table>

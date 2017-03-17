@@ -108,10 +108,8 @@ angular.module('werknemersoverzicht').directive('overzichtwerknemers', function(
                     var fEind = new Date(fromEind[2], fromEind[1] - 1, fromEind[0]);
                     this.details.Eind = fEind;
                 }
-
-                this.success = "Werknemer gewijzigd!";
+                this.success = "Wijzigingen bij " + this.werknemer.Naam + " doorgevoerd!";
                 Meteor.call('werknemers.update', this.details);
-
             }
         }
     }

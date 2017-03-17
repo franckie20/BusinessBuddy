@@ -7,7 +7,7 @@ angular.module('lease', [
 angular.module('lease').config(function ($urlRouterProvider, $stateProvider, $locationProvider) {
     $stateProvider.state('lease', {
         url: '/dashboard/lease',
-        template: '<lease></lease>',
+        templateUrl: 'client/views/lease/lease.html',
         resolve: {
             currentUser: ($q) => {
                 var deferred = $q.defer();
@@ -45,33 +45,37 @@ angular.module('lease').controller('LeaseMenuCtrl', function ($scope) {
     }]
 });
 
-angular.module('lease').directive('lease', function() {
-    return {
-        restrict: 'E',
-        templateUrl: 'client/views/lease/lease.html',
-        controllerAs: 'lease',
-        controller: function ($scope, $reactive, $state) {
-            $reactive(this).attach($scope);
+angular.module('lease').controller('LeaseCtrl', ['$scope', '$filter', function($scope, $filter) {
+  $scope.contract = {
+    Bestuurder: {
+      _id: '',
+      username: '',
+      profile: {
+        name: ''
+      }
+    },
+    Bedrijf: '',
+    Startdatum: '',
+    Einddatum:'',
+    Opmerkingen: ''
+  };
 
-            this.info = {
-                name: '',
-                company: '',
-                start: '',
-                end:'',
-                comments: ''
-            };
+  $scope.error = '';
+  $scope.success = '';
 
-            this.error = '';
-            this.success = '';
+  $scope.nieuwContract = (contract) => {
+    if($scope.nieuwContractForm.$valid) {
+        $scope.contract.Bestuurder._id = $scope.contract.selected._id;
+        $scope.contract.Bestuurder.username = $scope.contract.selected.username;
+        $scope.contract.Bestuurder.profile.name = $scope.contract.selected.profile.name;
 
-            this.creating = () => {
-                if (this.info.name != '' || this.info.company != '' || this.info.start != '' || this.info.end != '' || this.info.comments != '') {
-                    Meteor.call('lease.insert', this.info);
-                    this.success = "Successfully added contract " + this.info.name;
-                } else {
-                    this.error = 'error';
-                }
-            };
-        }
+      if(Lease.find({"Bestuurder.username": $scope.contract.Bestuurder.username}, {Bedrijf: $scope.contract.Bedrijf}).count() == 1) {
+          $scope.error = "Lease contract bestaat al!";
+      } else {
+        Meteor.call('lease.insert', $scope.contract);
+        $scope.success = "Het lease contract voor " + $scope.contract.Bestuurder.profile.name + " is aangemaakt!";
+      }
     }
-});
+  }
+
+}]);

@@ -6,12 +6,10 @@ if (Meteor.isClient) {
     'menu',
     'dashboard',
     'taken',
-    'category',
     'profile',
     'password',
     'sign_in',
     'register',
-    'klanten',
     'klantenoverzicht',
     'takenoverzicht',
     'notificationsLease',
@@ -64,12 +62,12 @@ if (Meteor.isClient) {
             });
           },
           taken() {
-            return Taken.find({}, {
+            return Taken.find({"Uitvoerder._id": Meteor.userId()}, {
               sort : this.getReactively('sort')
             });
           },
           afspraken() {
-            return Afspraken.find({}, {
+            return Afspraken.find({"Uitvoerder._id": Meteor.userId()}, {
               sort : this.getReactively('sort')
             });
           },

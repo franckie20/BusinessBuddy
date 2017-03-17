@@ -104,6 +104,12 @@ angular.module('takenoverzicht').directive('overzichttaak', function() {
             this.error = '';
             this.success = '';
 
+            /** 
+             * @Author: Franck V 
+             * Fill in all the modal data and keep it up to date
+             * @params(taak)
+             */
+
             this.selectedTaak = (taak) => {
                 this.taak = taak;
                 this.details._id = this.taak._id;

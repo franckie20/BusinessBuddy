@@ -15,11 +15,17 @@ Meteor.methods({
         }
 
         Lease.insert({
-            'name': data.name,
-            'company': data.company,
-            'start': data.start,
-            'end': data.end,
-            'comments': data.comments
+            "Bestuurder": {
+              "_id": data.Bestuurder._id,
+              "username": data.Bestuurder.username,
+              "profile": {
+                "name": data.Bestuurder.profile.name
+              }
+            },
+            'Bedrijf': data.Bedrijf,
+            'Startdatum': data.Startdatum,
+            'Einddatum': data.Einddatum,
+            'Opmerkingen': data.Opmerkingen
         });
     },
     'Lease.remove' (lease) {
