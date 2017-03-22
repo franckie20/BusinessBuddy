@@ -59,15 +59,44 @@ angular.module('leaseoverzicht').directive('overzichtlease', function() {
                 name: 1
             };
 
-            this.removeLease = (lease) => {
-                Meteor.call('lease.remove', lease);
-            }
-
             this.subscribe('leasecontracts', () => [{
                 limit: parseInt(this.perPage),
                 skip: parseInt((this.getReactively('page') - 1) * this.perPage),
                 sort: this.getReactively('sort')}
             ]);
+
+            this.details = {
+                _id: '',
+                Bestuurder: {
+                    _id: '',
+                    username: '',
+                    profile: {
+                        name: '',
+                    }
+                },
+                Bedrijf: '',
+                Startdatum: '',
+                Einddatum: '',
+                Opmerkingen: ''
+            };
+
+            this.selectedLease = (lease) => {
+                this.lease = lease;
+                this.details._id = this.lease._id;
+                this.details.Bestuurder = this.lease.Bestuurder;
+                this.details.Bedrijf = this.lease.Bedrijf;
+                this.details.Startdatum = this.lease.Startdatum;
+                this.details.Einddatum = this.lease.Einddatum;
+                this.details.Opmerkingen = this.lease.Opmerkingen;
+            }
+
+            this.updateLease = () => {
+                Meteor.call('lease.update', this.details);
+            }
+
+            this.removeLease = () =>  {
+                Meteor.call('lease.remove', this.lease);
+            }
 
         }
     }

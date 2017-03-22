@@ -42,5 +42,23 @@ if(Meteor.isServer) {
             Meteor.call('notifications.insert', dataAfspraak);
         }
 
+        var leaseSize = Lease.find({"Einddatum": {$gte: start, $lt: end}}).count();
+        var lease = Lease.find({"Einddatum": {$gte: start, $lt: end}}).fetch();
+        var dataLease;
+
+        for(var i=0; i < leaseSize; i++) {
+            dataLease = {
+                Type: "lease",
+                Bedrijf: lease[i].Bedrijf,
+                Opmerkingen: lease[i].Opmerkingen,
+                Startdatum: lease[i].Startdatum,
+                Einddatum: lease[i].Einddatum,
+                Uitvoerder: {
+                    _id: afspraak[i].Bestuurder._id,
+                }
+            }
+            Meteor.call('notifications.insert', dataAfspraak);
+        }
+
     }, 10000);
 }

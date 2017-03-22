@@ -53,12 +53,12 @@ header.navbar-businessbuddy .container-fluid .navbar-toggle {
 }
 header.navbar-businessbuddy .container-fluid .nav>li>a {
     color: #7f8fa4;
-    font-size: 18px;
+    font-size: 20px;
     padding: 0;
     margin: 15px 0;
-    margin-left: 10px;
+    margin-left: 15px;
     height: 28px;
-    width: 28px;
+    width: auto;
     line-height: 28px;
     text-align: center;
 }
@@ -628,6 +628,10 @@ header.navbar-businessbuddy .container-fluid .navbar-toggle:hover {
     float: left;
     text-align: center;
     padding-top: 22%;
+}
+
+.label-as-badge {
+    border-radius: 1em;
 }
 
 #formFix .form-control {

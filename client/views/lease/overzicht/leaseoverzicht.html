@@ -27,10 +27,13 @@
                     <tr dir-paginate="lease in businessbuddy.leasecontracts | filter:q | itemsPerPage: overzichtlease.perPage">
                         <td>{{ lease.Bestuurder.profile.name }}</td>
                         <td>{{ lease.Bedrijf }}</td>
-                        <td>{{ lease.Startddatum | date: "dd-MM-yyyy" }}</td>
+                        <td>{{ lease.Startdatum | date: "dd-MM-yyyy" }}</td>
                         <td>{{ lease.Einddatum | date: "dd-MM-yyyy" }}</td>
                         <td>{{ lease.Opmerkingen }}</td>
-                        <td><button class="btn btn-primary btn-sm" ng-click="leaseoverzicht.removeLease(lease)"><span class="fa fa-trash"></span></button></td>
+                        <td style="width: 10%">
+                            <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#wijzigLeaseModal" style="margin-right: 5px;" ng-click="overzichtlease.selectedLease(lease)"><span class="fa fa-pencil"></span></button>
+                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#verwijderLeaseModal" ng-click="overzichtklant.selectedKlant(lease)"><span class="fa fa-trash"></span></button>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
@@ -39,6 +42,76 @@
     </div>
     </leaseoverzicht>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="verwijderLeaseModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Lease contract verwijderen</h4>
+            </div>
+            <div class="modal-body">
+                Weet je zeker dat je het contract van <b>{{overzichtlease.lease.Bestuurder.profile.name}} bij {{overzichtlease.lease.Bedrijf}}</b> wilt verwijderen?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Nee</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="overzichtlease.removeLease()">Verwijder</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="wijzigLeaseModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Lease wijzigen</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group col-lg-12">
+                    <div class="form-group" id="formFix">
+                        <label class="label-light">Bestuurder</label>
+                        <ui-select ng-model="overzichtlease.details.Bestuurder" required="" theme="bootstrap" ng-disabled="disabled" style="min-width: 300px;">
+                            <ui-select-match placeholder="Selecteer een bestuurder uit de lijst of zoek op naam">{{$select.selected.profile.name}}</ui-select-match>
+                            <ui-select-choices repeat="user in businessbuddy.users | propsFilter: {username: $select.search} | limitTo: 50">
+                                <div ng-bind-html="user.profile.name | highlight: $select.search"></div>
+                                <small>
+                                    name: {{user.profile.name}}
+                                    email: <span ng-bind-html="'' + user.emails[0].address | highlight: $select.search"></span>
+                                </small>
+                            </ui-select-choices>
+                        </ui-select>
+                        <span class="help-block">Kies hier de medewerker die de taak moet gaan uitvoeren</span>
+                    </div>
+                </div>
+                <div class="form-group col-lg-12">
+                    <label class="label-light" for="user_name"><b>Bedrijf</b></label>
+                    <input class="form-control" required="required" type="text" ng-model="overzichtlease.details.Bedrijf"><br>
+                </div>
+                <div class="form-group col-lg-6">
+                    <label class="label-light"><b>Startdatum</b></label>
+                    <input class="form-control" required="required" type="text" data-provide="datepicker" ng-model="overzichtlease.details.Startdatum" data-date-format="dd-mm-yyyy">
+                </div>
+                <div class="form-group col-lg-6">
+                    <label class="label-light"><b>Einddatum</b></label>
+                    <input class="form-control" required="required" type="text" data-provide="datepicker" ng-model="overzichtlease.details.Einddatum" data-date-format="dd-mm-yyyy">
+                </div>
+                <div class="form-group col-lg-12">
+                     <label class="label-light" for="user_name"><b>Opmerkingen</b></label>
+                    <textarea class="form-control" rows="5" id="textArea" ng-model="overzichtlease.details.Opmerkingen"></textarea><br>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Nee</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="overzichtlease.updateLease()">Wijzig</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 

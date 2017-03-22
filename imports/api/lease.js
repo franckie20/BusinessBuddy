@@ -28,9 +28,29 @@ Meteor.methods({
             'Opmerkingen': data.Opmerkingen
         });
     },
-    'Lease.remove' (lease) {
+    'lease.remove' (lease) {
         Lease.remove({
             '_id': lease._id
+        });
+    },
+
+    'lease.update' (details) {
+        Lease.update({
+            _id: details._id
+        }, {
+            $set: {
+                'Bestuurder': {
+                    "_id": details.Bestuurder._id,
+                    "username": details.Bestuurder.username,
+                    "profile": {
+                        "name": details.Bestuurder.profile.name
+                    }
+                },
+                'Bedrijf': details.Bedrijf,
+                'Startdatum': details.Startdatum,
+                'Einddatum': details.Einddatum,
+                'Opmerkingen': details.Opmerkingen
+            }
         });
     }
 });

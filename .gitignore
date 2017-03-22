@@ -47,3 +47,4 @@ Temporary Items
 .apdisk
 *.xml
 client/views/menu/afsprakenmenu.html
+client/app.js
